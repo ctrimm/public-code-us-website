@@ -20,7 +20,8 @@ Before deploying, make sure to:
 1. Update the `site` field in `astro.config.js` with your production URL
 2. Update `robots.txt` with your production sitemap URL
 3. Configure environment variables (copy `.env.example` to `.env`)
-4. Test your build locally: `npm run build && npm run preview`
+4. Test your build locally: `pnpm build && pnpm preview`
+5. Ensure you have **pnpm** installed globally: `npm install -g pnpm`
 
 ---
 
