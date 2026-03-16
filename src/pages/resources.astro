@@ -1,0 +1,188 @@
+---
+import Layout from '../layouts/main.astro';
+---
+
+<Layout
+	title="Resources - Public Code Downloads & References"
+	description="Downloadable materials, guides, social media toolkit, and links to organizations working on public code advocacy."
+	currentPage="/resources"
+>
+	{/* Hero */}
+	<section class="bg-nb-dark text-nb-light border-b-4 border-nb-dark py-20">
+		<div class="max-w-4xl mx-auto px-4">
+			<h1 class="text-5xl md:text-6xl font-black uppercase italic mb-6">Resources</h1>
+			<p class="text-lg font-bold">
+				Materials to help you understand, advocate for, and share public code.
+			</p>
+		</div>
+	</section>
+
+	{/* Downloadables */}
+	<section class="bg-nb-light border-b-4 border-nb-dark py-20">
+		<div class="max-w-4xl mx-auto px-4">
+			<h2 class="text-4xl font-black uppercase italic text-nb-dark mb-12">Download Materials</h2>
+			<div class="grid md:grid-cols-2 gap-6">
+				{/* One-Pager */}
+				<div class="card-nb bg-nb-yellow">
+					<h3 class="text-xl font-black uppercase italic text-nb-dark mb-3">One-Page Guide</h3>
+					<p class="font-bold text-nb-dark mb-6">
+						Quick overview of why public code matters. Perfect for sharing with friends and policymakers.
+					</p>
+					<a href="/downloads/public-code-one-pager.pdf" download class="btn-nb inline-block">
+						📥 Download PDF
+					</a>
+				</div>
+
+				{/* Deep Dive */}
+				<div class="card-nb bg-nb-pink text-nb-light">
+					<h3 class="text-xl font-black uppercase italic mb-3">Complete Guide</h3>
+					<p class="font-bold mb-6">
+						In-depth explanation: history, benefits, case studies, and implementation strategies.
+					</p>
+					<a href="/downloads/public-code-complete-guide.pdf" download class="btn-nb">
+						📥 Download PDF
+					</a>
+				</div>
+
+				{/* Cost Analysis */}
+				<div class="card-nb bg-nb-purple text-nb-light">
+					<h3 class="text-xl font-black uppercase italic mb-3">Cost Savings Analysis</h3>
+					<p class="font-bold mb-6">
+						Data-driven breakdown of how much taxpayers waste on duplicated proprietary software.
+					</p>
+					<a href="/downloads/cost-savings-analysis.pdf" download class="btn-nb">
+						📥 Download PDF
+					</a>
+				</div>
+
+				{/* FAQ */}
+				<div class="card-nb bg-nb-cyan">
+					<h3 class="text-xl font-black uppercase italic text-nb-dark mb-3">FAQ Document</h3>
+					<p class="font-bold text-nb-dark mb-6">
+						Answers to common questions about public code, open source, and ballot initiatives.
+					</p>
+					<a href="/downloads/faq.pdf" download class="btn-nb">
+						📥 Download PDF
+					</a>
+				</div>
+
+				{/* State Guide */}
+				<div class="card-nb bg-nb-light border-4 border-nb-dark">
+					<h3 class="text-xl font-black uppercase italic text-nb-dark mb-3">State Ballot Guide</h3>
+					<p class="font-bold text-nb-dark mb-6">
+						How to qualify for ballot initiatives in your state. Laws vary—find your state's requirements.
+					</p>
+					<a href="/downloads/state-ballot-guide.pdf" download class="btn-nb">
+						📥 Download PDF
+					</a>
+				</div>
+
+				{/* Presentation */}
+				<div class="card-nb bg-nb-light border-4 border-nb-dark">
+					<h3 class="text-xl font-black uppercase italic text-nb-dark mb-3">Presentation Deck</h3>
+					<p class="font-bold text-nb-dark mb-6">
+						PowerPoint/Google Slides you can use for community presentations and education.
+					</p>
+					<a href="/downloads/presentation.pptx" download class="btn-nb">
+						📥 Download PPTX
+					</a>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	{/* Social Toolkit */}
+	<section class="bg-nb-cyan border-b-4 border-nb-dark py-20">
+		<div class="max-w-4xl mx-auto px-4">
+			<h2 class="text-4xl font-black uppercase italic text-nb-dark mb-12">Social Media Toolkit</h2>
+			<p class="text-lg font-bold text-nb-dark mb-8">
+				Share on social media. All images are open for use under CC-BY-SA.
+			</p>
+			<div class="grid md:grid-cols-2 gap-6">
+				<div class="border-4 border-nb-dark bg-nb-light p-4">
+					<div class="bg-gradient-to-br from-nb-pink to-nb-purple text-nb-light p-8 font-black text-center mb-3">
+						PUBLIC<br />CODE
+					</div>
+					<a href="/downloads/social-1.png" download class="btn-nb w-full text-center">
+						📥 Download 1:1 Square
+					</a>
+				</div>
+
+				<div class="border-4 border-nb-dark bg-nb-light p-4">
+					<div class="bg-nb-yellow text-nb-dark p-12 font-black text-center text-2xl mb-3">
+						PUBLIC<br />CODE<br />NOW
+					</div>
+					<a href="/downloads/social-2.png" download class="btn-nb w-full text-center">
+						📥 Download 16:9 Banner
+					</a>
+				</div>
+
+				<div class="border-4 border-nb-dark bg-nb-light p-4">
+					<div class="bg-nb-dark text-nb-light p-8 font-black text-center mb-3">
+						Your Tax<br />Dollars.<br />Your Code.
+					</div>
+					<a href="/downloads/social-3.png" download class="btn-nb w-full text-center">
+						📥 Download Quote
+					</a>
+				</div>
+
+				<div class="border-4 border-nb-dark bg-nb-light p-4">
+					<div class="bg-gradient-to-r from-nb-purple via-nb-pink to-nb-cyan p-8 font-black text-center mb-3">
+						SIGN THE<br />PETITION
+					</div>
+					<a href="/downloads/social-4.png" download class="btn-nb w-full text-center">
+						📥 Download CTA
+					</a>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	{/* External Resources */}
+	<section class="bg-nb-light border-b-4 border-nb-dark py-20">
+		<div class="max-w-4xl mx-auto px-4">
+			<h2 class="text-4xl font-black uppercase italic text-nb-dark mb-12">Learn More</h2>
+			<div class="space-y-4">
+				<a href="https://publiccode.eu" target="_blank" rel="noopener noreferrer"
+					class="border-4 border-nb-dark p-6 block hover:shadow-nb-lg bg-nb-yellow transition-all">
+					<h3 class="font-black uppercase italic text-nb-dark text-lg mb-2">Public Money, Public Code (EU)</h3>
+					<p class="font-bold text-nb-dark text-sm">The original campaign in Europe with 200+ organizations</p>
+				</a>
+
+				<a href="https://fsfe.org/activities/publiccode/" target="_blank" rel="noopener noreferrer"
+					class="border-4 border-nb-dark p-6 block hover:shadow-nb-lg bg-nb-pink text-nb-light transition-all">
+					<h3 class="font-black uppercase italic text-lg mb-2">FSFE Public Code Initiative</h3>
+					<p class="font-bold text-sm">Free Software Foundation Europe advocacy and resources</p>
+				</a>
+
+				<a href="https://standard.publiccode.net" target="_blank" rel="noopener noreferrer"
+					class="border-4 border-nb-dark p-6 block hover:shadow-nb-lg bg-nb-purple text-nb-light transition-all">
+					<h3 class="font-black uppercase italic text-lg mb-2">Public Code Standard</h3>
+					<p class="font-bold text-sm">Official standard for public code implementation</p>
+				</a>
+
+				<a href="https://www.linuxfoundation.org" target="_blank" rel="noopener noreferrer"
+					class="border-4 border-nb-dark p-6 block hover:shadow-nb-lg bg-nb-cyan transition-all">
+					<h3 class="font-black uppercase italic text-nb-dark text-lg mb-2">Linux Foundation</h3>
+					<p class="font-bold text-nb-dark text-sm">Research on open source economic value and impact</p>
+				</a>
+
+				<a href="https://www.eff.org" target="_blank" rel="noopener noreferrer"
+					class="border-4 border-nb-dark p-6 block hover:shadow-nb-lg bg-nb-light text-nb-dark transition-all">
+					<h3 class="font-black uppercase italic text-lg mb-2">Electronic Frontier Foundation</h3>
+					<p class="font-bold text-sm">Digital rights and open source advocacy</p>
+				</a>
+			</div>
+		</div>
+	</section>
+
+	{/* CTA */}
+	<section class="bg-nb-purple text-nb-light border-b-4 border-nb-dark py-16">
+		<div class="max-w-4xl mx-auto px-4 text-center">
+			<h2 class="text-3xl md:text-4xl font-black uppercase italic mb-6">Ready to Make a Difference?</h2>
+			<a href="/sign" class="btn-nb btn-nb-yellow inline-block">
+				Sign the Petition Today
+			</a>
+		</div>
+	</section>
+</Layout>
