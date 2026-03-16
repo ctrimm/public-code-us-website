@@ -1,87 +1,219 @@
-# Astro + React + shadcn/ui + Tailwind + TypeScript Template
+# Public Code US - Campaign Website
 
-A modern, feature-rich starter template combining the power of Astro with React components, shadcn/ui component library, Tailwind CSS styling, and TypeScript type safety.
+🚀 A serverless, open-source website for the Public Code US campaign - demanding that publicly-funded government software be made publicly owned and transparent.
 
-> **Important**: This is a template repository. Do not push directly to this repository. Instead, use the "Use this template" button on GitHub to create a new repository based on this template. The template button can be found at the top of the repository page:
+## Overview
 
-![Template Button Location](template-dropdown.png)
+This is a **production-ready** serverless web application built with:
+- **Astro 5** - Fast static site generation
+- **React** - Interactive petition form
+- **Tailwind CSS** - Neobrutalist design system
+- **AWS** - CloudFront (CDN), S3, Lambda, DynamoDB, API Gateway
 
-For more information about template repositories, see the [GitHub documentation](https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-template-repository).
+**Estimated cost**: $11-21/month on AWS (free tier for most)
 
-## Features
+## 🎨 Design System
 
-- ⚡️ **[Astro](https://astro.build/)** - A modern static site builder with exceptional performance
-- ⚛️ **[React](https://reactjs.org/)** - UI component library integration
-- 🎨 **[shadcn/ui](https://ui.shadcn.com/)** - Beautiful and accessible component library
-- 🎯 **[TypeScript](https://www.typescriptlang.org/)** - Type safety and enhanced developer experience
-- 🎨 **[Tailwind CSS](https://tailwindcss.com/)** - Utility-first CSS framework
-- 📦 **Modern Stack** - Latest versions of all major dependencies
-- 🚀 **Performance Focused** - Optimized for speed and efficiency
-- 📱 **Responsive Design** - Mobile-first approach
-- ✨ **Interactive Examples** - Includes demo components (like confetti effects!)
-- 🔍 **SEO Optimized** - Built-in SEO component with meta tags, Open Graph, and Twitter Cards
-- 🗺️ **Sitemap Generation** - Automatic sitemap.xml generation for better search engine indexing
-- 🤖 **robots.txt** - Pre-configured robots.txt for search engine crawlers
-- ❌ **Custom Error Pages** - Beautiful 404 page with navigation
-- 🌍 **Deployment Ready** - Comprehensive guides for Vercel, Netlify, Cloudflare, and more
+**Neobrutalist / High-Contrast Pop** aesthetic:
+- Bold borders (4px solid black)
+- Hard shadows, no soft edges
+- Sharp corners (no border-radius)
+- Uppercase italic headings
+- Vibrant color palette: Cyan, Pink, Purple, Yellow
+- Physical "press" effects on buttons
 
-## Quick Start
+See the [design system](./src/styles/global.css) for full details.
 
-1. Click the "Use this template" button above to create a new repository based on this template.
+## 📄 Pages
 
-2. Clone your new repository:
+The site has 7 pages (ready for extension):
+
+1. **Home** (`/`) - Campaign overview, hero section, statistics
+2. **Learn** (`/learn`) - Educational content about public code and ballot initiatives
+3. **Sign Petition** (`/sign`) - Main conversion page with form + signature count
+4. **Resources** (`/resources`) - Downloadable materials, social toolkit, external links
+5. **About** (`/about`) - Mission statement, how to get involved, contact info
+6. **Privacy** (`/privacy`) - GDPR/CCPA compliant privacy policy
+7. **Terms** (`/terms`) - Terms of service for petition
+
+## 🚀 Quick Start
+
+### Development
+
 ```bash
-git clone https://github.com/automatearmy/astro-react-shad-tailwind-template-repo.git
-cd your-new-repo-name
-```
-
-3. Install dependencies:
-```bash
+# Install dependencies
 npm install
-```
 
-4. Start the development server:
-```bash
+# Start dev server (hot reload)
 npm run dev
+# Visit http://localhost:4321
+
+# Build for production
+npm run build
+
+# Preview production build
+npm run preview
 ```
 
-Visit `http://localhost:4321` to see your site!
+### Environment Setup
 
-## Configuration
-
-### Environment Variables
-
-1. Copy `.env.example` to `.env`:
 ```bash
+# Copy example env file
 cp .env.example .env
+
+# Update with your values
+SITE_URL=https://yourdomain.com
+SITE_NAME=Public Code US
 ```
 
-2. Update the values in `.env` with your configuration:
-- `SITE_URL` - Your production URL (required for SEO)
-- `SITE_NAME` - Your site name
-- `SITE_DESCRIPTION` - Your site description
-- Add any additional API keys or configuration as needed
-
-### Site Configuration
-
-Update `astro.config.js` with your production URL:
-
-```javascript
-export default defineConfig({
-  site: 'https://yourdomain.com', // Update this!
-  // ... rest of config
-});
-```
-
-Update `public/robots.txt` with your sitemap URL:
+## 🏗️ Project Structure
 
 ```
-Sitemap: https://yourdomain.com/sitemap-index.xml
+src/
+├── components/
+│   ├── Header.astro              # Sticky navigation
+│   ├── Footer.astro              # Footer with links
+│   ├── PetitionForm.tsx          # React form component
+│   ├── SEO.astro                 # Meta tags helper
+│   └── ui/                       # shadcn/ui components
+│
+├── pages/
+│   ├── index.astro               # Home page
+│   ├── learn.astro               # Educational content
+│   ├── sign.astro                # Petition page
+│   ├── resources.astro           # Resources page
+│   ├── about.astro               # About page
+│   ├── privacy.astro             # Privacy policy
+│   ├── terms.astro               # Terms of service
+│   └── api/
+│       └── sign.ts               # Petition API endpoint
+│
+├── layouts/
+│   └── main.astro                # Base page layout
+│
+├── styles/
+│   └── global.css                # Global styles + utilities
+│
+└── lib/
+    └── utils.ts                  # Utility functions
 ```
 
-## SEO Usage
+## 📊 Features
 
-This template includes a built-in SEO component that you can use on any page:
+### Petition System
+- ✅ Form validation (email, name, state, optional zip)
+- ✅ Duplicate prevention (within 24 hours)
+- ✅ Confetti animation on success
+- ✅ Real-time signature count display
+- ✅ Optional message collection
+- ✅ Email subscription opt-in
+
+### SEO & Performance
+- ✅ Meta tags, Open Graph, Twitter Cards
+- ✅ Automatic sitemap generation
+- ✅ robots.txt configuration
+- ✅ Semantic HTML structure
+- ✅ Image optimization
+- ✅ CSS/JS minification
+- ✅ Gzip compression ready
+
+### Deployment Ready
+- ✅ Static site generation (no servers to manage)
+- ✅ API endpoint for petition submissions
+- ✅ CORS support for cross-origin requests
+- ✅ Environment variable configuration
+- ✅ CI/CD ready (GitHub Actions included)
+
+## 🔧 Technology Stack
+
+**Frontend:**
+- Astro 5.16+ (static site generator)
+- React 19 (interactive components)
+- Tailwind CSS 4 (styling)
+- TypeScript (type safety)
+
+**Backend:**
+- AWS Lambda (serverless functions)
+- AWS DynamoDB (petition storage)
+- AWS API Gateway (REST API)
+- AWS CloudFront (CDN)
+- AWS S3 (static file hosting)
+
+**Development:**
+- Node.js 20+
+- npm/pnpm
+- GitHub Actions (CI/CD)
+
+## 📚 API Documentation
+
+### POST `/api/sign`
+
+Submit a petition signature.
+
+**Request:**
+```json
+{
+  "name": "John Smith",
+  "email": "john@example.com",
+  "state": "California",
+  "zip": "90210",
+  "message": "Optional personal message",
+  "wantsUpdates": true
+}
+```
+
+**Response:**
+```json
+{
+  "success": true,
+  "message": "Thank you for signing!",
+  "totalSignatures": 2847,
+  "timestamp": "2026-03-16T19:51:00Z"
+}
+```
+
+**Error Response:**
+```json
+{
+  "success": false,
+  "error": "Already signed in the last 24 hours"
+}
+```
+
+## 🚀 Deployment
+
+### AWS (Recommended - Minimal Cost)
+
+See [AWS-DEPLOYMENT.md](./AWS-DEPLOYMENT.md) for complete step-by-step guide.
+
+**Quick summary:**
+1. Build site: `npm run build`
+2. Upload to S3: `aws s3 sync dist/ s3://bucket-name/`
+3. Create CloudFront distribution
+4. Setup Lambda + API Gateway for `/api/sign`
+5. Configure DynamoDB for signatures
+6. Setup Route53 for custom domain
+
+**Estimated cost:** $11-21/month
+
+### Alternative Hosting
+
+The site is a static Astro build, so it works on:
+- Vercel (easiest, free tier available)
+- Netlify (free tier available)
+- GitHub Pages (free)
+- Cloudflare Pages (free)
+- AWS Amplify
+- Traditional hosting (Apache/Nginx)
+
+However, to support the petition API, you need:
+- Lambda or equivalent serverless function
+- DynamoDB or similar database
+- API Gateway or equivalent
+
+## 🛠️ Development Guide
+
+### Adding a New Page
 
 ```astro
 ---
@@ -89,107 +221,92 @@ import Layout from '../layouts/main.astro';
 ---
 
 <Layout
-  title="Your Page Title"
-  description="Your page description for search engines"
-  image="/og-image.png"
-  type="website"
+  title="Page Title"
+  description="Page description for SEO"
+  currentPage="/page-name"
 >
-  <!-- Your content -->
+  <section class="bg-nb-cyan border-b-4 border-nb-dark py-20">
+    <div class="max-w-4xl mx-auto px-4">
+      <h1>Your Heading</h1>
+      <p>Your content</p>
+    </div>
+  </section>
 </Layout>
 ```
 
-The SEO component automatically generates:
-- Meta title and description
-- Open Graph tags for social media
-- Twitter Card tags
-- Canonical URLs
-- robots meta tags
+### Using Neobrutalist Components
 
-## Available Commands
+```astro
+<!-- Button -->
+<a href="/sign" class="btn-nb btn-nb-primary">Sign Now</a>
 
-- `npm run dev` - Start development server
-- `npm run build` - Build your production site
-- `npm run preview` - Preview your build locally
-- `npm run astro` - Run Astro commands
+<!-- Card -->
+<div class="card-nb bg-nb-yellow">
+  <h3>Card Title</h3>
+  <p>Card content</p>
+</div>
 
-## Deployment
+<!-- Input -->
+<input type="text" class="input-nb" placeholder="Enter text" />
 
-This template is ready to deploy to various platforms. See [DEPLOYMENT.md](./DEPLOYMENT.md) for comprehensive guides on deploying to:
-
-- **Vercel** - One-click deployment with automatic preview URLs
-- **Netlify** - Simple Git-based deployment
-- **Cloudflare Pages** - Fast edge deployment
-- **GitHub Pages** - Free hosting with GitHub Actions
-- **AWS Amplify** - Scalable AWS infrastructure
-- **Traditional Hosting** - Apache/Nginx configuration
-- **Docker** - Containerized deployment
-
-Quick deploy to Vercel:
-
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/yourusername/yourrepo)
-
-## Project Structure
-
-```
-/
-├── public/
-│   ├── favicon.svg
-│   └── robots.txt
-├── src/
-│   ├── components/
-│   │   ├── ui/
-│   │   │   └── button.tsx
-│   │   └── SEO.astro
-│   ├── layouts/
-│   │   └── main.astro
-│   ├── lib/
-│   │   └── utils.ts
-│   ├── pages/
-│   │   ├── index.astro
-│   │   ├── 404.astro
-│   │   └── markdown-page.md
-│   └── styles/
-│       └── global.css
-├── .env.example
-├── astro.config.js
-├── components.json
-├── tailwind.config.mjs
-├── tsconfig.json
-├── DEPLOYMENT.md
-└── README.md
+<!-- Section with color background -->
+<section class="bg-nb-pink text-nb-light">
+  Content
+</section>
 ```
 
-## Dependencies
+### Color Palette Reference
 
-- Astro v5.16+ with MDX and React integrations
-- React v19+ and React DOM
-- Tailwind CSS v4+ with Vite plugin
-- TypeScript with strict mode
-- shadcn/ui components (Radix UI primitives)
-- Sitemap generation (@astrojs/sitemap)
-- Additional utilities like `clsx`, `tailwind-merge`, `class-variance-authority`, and `canvas-confetti`
+- `#E0F7FA` - Cyan (background)
+- `#FF4081` - Pink (primary accent)
+- `#7C4DFF` - Purple (secondary accent)
+- `#FFEA00` - Yellow (warning/highlight)
+- `#09090B` - Dark (text, borders)
+- `#FFFFFF` - Light (text on dark backgrounds)
 
-## Adding More shadcn/ui Components
+### Styling Utilities
 
-This template is configured with shadcn/ui. To add more components:
-
-```bash
-npx shadcn@latest add [component-name]
+```css
+.border-nb          /* 4px solid dark border */
+.shadow-nb          /* 8px hard shadow */
+.shadow-nb-lg       /* 12px hard shadow */
+.btn-nb             /* Base button style */
+.btn-nb-primary     /* Pink button */
+.btn-nb-secondary   /* Purple button */
+.btn-nb-yellow      /* Yellow button */
+.input-nb           /* Form input style */
+.card-nb            /* Card container */
+.bg-nb-cyan         /* Cyan background */
+.bg-nb-pink         /* Pink background */
+.bg-nb-purple       /* Purple background */
+.bg-nb-yellow       /* Yellow background */
 ```
 
-For example:
-```bash
-npx shadcn@latest add card
-npx shadcn@latest add dialog
-npx shadcn@latest add form
-```
+## 📞 Contact & Support
 
-Available components: https://ui.shadcn.com/docs/components
+- **Email:** hello@publiccodeus.org
+- **Twitter:** [@publiccodeus](https://twitter.com/publiccodeus)
+- **GitHub:** [publiccodeus](https://github.com/publiccodeus)
 
-## License
+## 🤝 Contributing
 
-MIT License - feel free to use this template for your own projects!
+Contributions welcome! Please:
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Submit a pull request
 
-## Contributing
+## 📄 License
 
-Contributions are welcome! Please feel free to submit a Pull Request.
+MIT License - Free to use and modify
+
+## 🔗 Related Projects
+
+- [Public Money, Public Code (EU)](https://publiccode.eu/) - The original campaign
+- [FSFE Public Code Initiative](https://fsfe.org/activities/publiccode/)
+- [Public Code Standard](https://standard.publiccode.net/)
+- [Linux Foundation](https://www.linuxfoundation.org/) - Open source research
+
+---
+
+**Made with ❤️ for government transparency and open source.**
