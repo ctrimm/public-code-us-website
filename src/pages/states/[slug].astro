@@ -67,12 +67,19 @@ const signatureProgress = 45; // Percentage (demo)
 
           <div class="card-nb bg-nb-cyan">
             <p class="font-black uppercase italic text-nb-dark text-sm mb-2">Progress</p>
-            <div class="w-full bg-gray-300 border-2 border-nb-dark h-8 mb-2">
+            <div
+              class="w-full bg-gray-300 border-2 border-nb-dark h-8 mb-2"
+              role="progressbar"
+              aria-valuenow={signatureProgress}
+              aria-valuemin={0}
+              aria-valuemax={100}
+              aria-label={`Signature progress: ${signatureProgress}%`}
+            >
               <div
                 class="bg-nb-yellow h-full border-r-2 border-nb-dark flex items-center justify-center text-sm font-black"
                 style={`width: ${signatureProgress}%`}
               >
-                {signatureProgress}%
+                <span aria-hidden="true">{signatureProgress}%</span>
               </div>
             </div>
             <p class="text-sm font-bold text-nb-dark">
@@ -147,7 +154,7 @@ const signatureProgress = 45; // Percentage (demo)
             rel="noopener noreferrer"
             class="btn-nb btn-nb-primary inline-block text-sm"
           >
-            Contact →
+            Contact →<span class="sr-only"> (opens in new tab)</span>
           </a>
         </div>
 
@@ -170,7 +177,7 @@ const signatureProgress = 45; // Percentage (demo)
             rel="noopener noreferrer"
             class="btn-nb btn-nb-primary inline-block text-sm"
           >
-            Contact →
+            Contact →<span class="sr-only"> (opens in new tab)</span>
           </a>
         </div>
       </div>

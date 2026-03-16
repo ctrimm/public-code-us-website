@@ -29,7 +29,6 @@ export function ShareButtons({
 
   const shareOnThreads = () => {
     const text = `${title} ${description ? '\n\n' + description : ''}\n\n${url}`;
-    // Threads uses a simple share URL (doesn't have native tweet intent like Twitter)
     const threadsUrl = `https://www.threads.net/intent/post?text=${encodeURIComponent(text)}`;
     window.open(threadsUrl, '_blank', 'width=550,height=420');
   };
@@ -51,46 +50,50 @@ export function ShareButtons({
   };
 
   return (
-    <div className="flex flex-wrap gap-2">
+    <div className="flex flex-wrap gap-2" role="group" aria-label="Share this page">
       <button
         onClick={shareOnThreads}
         className={`${sizeClasses[size]} btn-nb-primary`}
-        title="Share on Threads"
+        aria-label="Share on Threads (opens in new window)"
       >
-        @ Threads
+        Threads
       </button>
 
       <button
         onClick={shareOnFacebook}
         className={`${sizeClasses[size]} btn-nb-primary`}
-        title="Share on Facebook"
+        aria-label="Share on Facebook (opens in new window)"
       >
-        f Share
+        Facebook
       </button>
 
       <button
         onClick={shareViaEmail}
         className={`${sizeClasses[size]} btn-nb-secondary`}
-        title="Share via Email"
+        aria-label="Share via email"
       >
-        ✉️ Email
+        Email
       </button>
 
       <button
         onClick={shareOnLinkedin}
         className={`${sizeClasses[size]} btn-nb-secondary`}
-        title="Share on LinkedIn"
+        aria-label="Share on LinkedIn (opens in new window)"
       >
-        in Share
+        LinkedIn
       </button>
 
       <button
         onClick={copyToClipboard}
         className={`${sizeClasses[size]} btn-nb-yellow`}
-        title="Copy link"
+        aria-label={copied ? 'Link copied to clipboard' : 'Copy link to clipboard'}
       >
-        {copied ? '✓ Copied!' : '🔗 Copy'}
+        {copied ? 'Copied!' : 'Copy Link'}
       </button>
+
+      <div aria-live="polite" className="sr-only">
+        {copied && <span>Link copied to clipboard</span>}
+      </div>
     </div>
   );
 }

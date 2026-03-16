@@ -1,30 +1,28 @@
 ---
 import Layout from '../layouts/main.astro';
-import { Button } from "@/components/ui/button";
 ---
 
 <Layout
   title="404 - Page Not Found"
   description="The page you're looking for doesn't exist."
 >
-  <div class="flex items-center justify-center min-h-screen">
-    <div class="text-center space-y-6 max-w-md px-4">
-      <div class="space-y-2">
-        <h1 class="text-9xl font-bold text-primary">404</h1>
-        <h2 class="text-2xl font-semibold">Page Not Found</h2>
-        <p class="text-muted-foreground">
-          Oops! The page you're looking for doesn't exist. It might have been moved or deleted.
+  <section class="bg-nb-light border-b-4 border-nb-dark">
+    <div class="flex items-center justify-center min-h-[60vh]">
+      <div class="text-center space-y-6 max-w-md px-4">
+        <h1 class="text-9xl font-black italic text-nb-pink">404</h1>
+        <h2 class="text-3xl font-black uppercase italic text-nb-dark">Page Not Found</h2>
+        <p class="font-bold text-nb-dark">
+          The page you're looking for doesn't exist. It might have been moved or deleted.
         </p>
-      </div>
-
-      <div class="flex flex-col sm:flex-row gap-3 justify-center">
-        <a href="/">
-          <Button>Go Home</Button>
-        </a>
-        <a href="javascript:history.back()">
-          <Button variant="outline">Go Back</Button>
-        </a>
+        <div class="flex flex-col sm:flex-row gap-3 justify-center">
+          <a href="/" class="btn-nb btn-nb-primary inline-block text-center">
+            Go Home
+          </a>
+          <button onclick="history.back()" class="btn-nb inline-block text-center">
+            Go Back
+          </button>
+        </div>
       </div>
     </div>
-  </div>
+  </section>
 </Layout>
