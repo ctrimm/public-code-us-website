@@ -77,35 +77,57 @@ const url = Astro.url.href;
     }
 
     .prose h2 {
-      @apply text-3xl font-black uppercase italic mt-8 mb-4 text-nb-dark;
+      font-size: 1.875rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      font-style: italic;
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: #09090B;
     }
 
     .prose h3 {
-      @apply text-2xl font-black uppercase italic mt-6 mb-3 text-nb-dark;
+      font-size: 1.5rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      font-style: italic;
+      margin-top: 1.5rem;
+      margin-bottom: 0.75rem;
+      color: #09090B;
     }
 
     .prose p {
-      @apply mb-4;
+      margin-bottom: 1rem;
     }
 
     .prose ul, .prose ol {
-      @apply mb-4 ml-6;
+      margin-bottom: 1rem;
+      margin-left: 1.5rem;
     }
 
     .prose li {
-      @apply mb-2;
+      margin-bottom: 0.5rem;
     }
 
     .prose a {
-      @apply text-nb-pink underline hover:no-underline;
+      color: #FF4081;
+      text-decoration: underline;
+    }
+
+    .prose a:hover {
+      text-decoration: none;
     }
 
     .prose strong {
-      @apply font-black;
+      font-weight: 900;
     }
 
     .prose blockquote {
-      @apply border-l-4 border-nb-pink pl-4 italic text-gray-700 my-4;
+      border-left: 4px solid #FF4081;
+      padding-left: 1rem;
+      font-style: italic;
+      color: #6b7280;
+      margin: 1rem 0;
     }
   </style>
 </Layout>
