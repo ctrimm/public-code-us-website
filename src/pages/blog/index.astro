@@ -1,0 +1,113 @@
+---
+import Layout from '../../layouts/main.astro';
+import { NewsletterSignup } from '../../components/NewsletterSignup';
+
+// Simple blog post metadata
+const posts = [
+  {
+    slug: 'welcome-to-public-code-us',
+    title: 'Welcome to Public Code US',
+    description: 'Why we\'re fighting for public code, and why you should care',
+    date: '2026-03-16',
+    author: 'The Public Code US Team',
+    readTime: '5 min read'
+  }
+];
+
+// Sort by date, newest first
+const sortedPosts = posts.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+---
+
+<Layout
+  title="Blog - Public Code US Campaign Updates"
+  description="Latest news, updates, and stories from the Public Code US campaign"
+  currentPage="/blog"
+>
+  {/* Hero */}
+  <section class="bg-nb-purple text-nb-light border-b-4 border-nb-dark py-20">
+    <div class="max-w-4xl mx-auto px-4">
+      <h1 class="text-5xl md:text-6xl font-black uppercase italic mb-6">Campaign Blog</h1>
+      <p class="text-lg font-bold">
+        Stories, updates, and insights from the Public Code US movement.
+      </p>
+    </div>
+  </section>
+
+  {/* Blog Posts */}
+  <section class="bg-nb-light border-b-4 border-nb-dark py-20">
+    <div class="max-w-4xl mx-auto px-4">
+      <div class="space-y-8">
+        {sortedPosts.map((post) => (
+          <article class="border-4 border-nb-dark p-8 hover:shadow-nb-lg transition-all">
+            <div class="mb-4">
+              <p class="text-sm font-black uppercase tracking-widest text-nb-dark mb-2">
+                {new Date(post.date).toLocaleDateString('en-US', {
+                  year: 'numeric',
+                  month: 'long',
+                  day: 'numeric'
+                })} • {post.readTime} • By {post.author}
+              </p>
+              <h2 class="text-3xl font-black uppercase italic text-nb-dark mb-2">
+                {post.title}
+              </h2>
+              <p class="font-bold text-nb-dark text-lg mb-4">{post.description}</p>
+              <a
+                href={`/blog/${post.slug}`}
+                class="btn-nb btn-nb-primary inline-block"
+              >
+                Read More →
+              </a>
+            </div>
+          </article>
+        ))}
+      </div>
+
+      {sortedPosts.length === 0 && (
+        <div class="text-center py-12">
+          <p class="text-xl font-bold text-nb-dark">Coming soon!</p>
+          <p class="font-bold text-gray-600">Subscribe to stay updated.</p>
+        </div>
+      )}
+    </div>
+  </section>
+
+  {/* Newsletter CTA */}
+  <section class="bg-nb-cyan border-b-4 border-nb-dark py-20">
+    <div class="max-w-4xl mx-auto px-4">
+      <NewsletterSignup
+        client:load
+        variant="card"
+        source="blog"
+      />
+    </div>
+  </section>
+
+  {/* Latest Post Featured */}
+  {sortedPosts.length > 0 && (
+    <section class="bg-nb-yellow border-b-4 border-nb-dark py-20">
+      <div class="max-w-4xl mx-auto px-4">
+        <h2 class="text-3xl font-black uppercase italic text-nb-dark mb-8">Latest Update</h2>
+        <div class="card-nb bg-nb-light">
+          <h3 class="text-2xl font-black uppercase italic text-nb-dark mb-4">
+            {sortedPosts[0].title}
+          </h3>
+          <p class="font-bold text-nb-dark mb-6">{sortedPosts[0].description}</p>
+          <div class="flex flex-wrap gap-4">
+            <a
+              href={`/blog/${sortedPosts[0].slug}`}
+              class="btn-nb btn-nb-primary"
+            >
+              Read Full Post
+            </a>
+            <a
+              href="/blog"
+              class="btn-nb"
+            >
+              All Posts
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  )}
+</Layout>

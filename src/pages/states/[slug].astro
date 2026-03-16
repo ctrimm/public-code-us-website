@@ -1,0 +1,275 @@
+---
+import Layout from '../../layouts/main.astro';
+import { ShareButtons } from '../../components/ShareButtons';
+import { STATES, getStateBySlug } from '../../lib/states';
+
+export function getStaticPaths() {
+  return STATES.map(state => ({
+    params: { slug: state.slug },
+    props: { state }
+  }));
+}
+
+interface Props {
+  state: typeof STATES[0];
+}
+
+const { slug } = Astro.params;
+const state = getStateBySlug(slug!);
+
+if (!state) {
+  return Astro.redirect('/campaign');
+}
+
+const signatureProgress = 45; // Percentage (demo)
+---
+
+<Layout
+  title={`Public Code in ${state.name} - Signature Drive`}
+  description={`Join the Public Code initiative in ${state.name}. ${state.signatureTarget} signatures needed for the ballot.`}
+  currentPage={`/states/${slug}`}
+>
+  {/* Hero */}
+  <section class="bg-nb-pink text-nb-light border-b-4 border-nb-dark py-20">
+    <div class="max-w-4xl mx-auto px-4">
+      <h1 class="text-6xl md:text-7xl font-black uppercase italic mb-4">{state.name}</h1>
+      <p class="text-xl font-bold mb-6">
+        {state.campaignStatus === 'active'
+          ? '🚀 Campaign Active - Help us reach our goal!'
+          : state.campaignStatus === 'coming-soon'
+          ? '⏰ Coming Soon - Stay tuned for launch'
+          : 'Not yet launched - Contact us to organize'}
+      </p>
+      <a href="/sign" class="btn-nb btn-nb-yellow inline-block">
+        Sign the Petition
+      </a>
+    </div>
+  </section>
+
+  {/* Signature Progress */}
+  <section class="bg-nb-light border-b-4 border-nb-dark py-20">
+    <div class="max-w-4xl mx-auto px-4">
+      <h2 class="text-4xl font-black uppercase italic text-nb-dark mb-12">Signature Progress</h2>
+
+      <div class="grid md:grid-cols-2 gap-8">
+        <div>
+          <div class="mb-4">
+            <p class="text-sm font-black uppercase tracking-widest text-nb-dark mb-2">
+              Signatures Needed
+            </p>
+            <p class="text-5xl font-black italic text-nb-pink">
+              {state.signatureTarget.toLocaleString()}
+            </p>
+            <p class="font-bold text-nb-dark text-sm mt-2">
+              {state.populationPercent} of registered voters
+            </p>
+          </div>
+
+          <div class="card-nb bg-nb-cyan">
+            <p class="font-black uppercase italic text-nb-dark text-sm mb-2">Progress</p>
+            <div class="w-full bg-gray-300 border-2 border-nb-dark h-8 mb-2">
+              <div
+                class="bg-nb-yellow h-full border-r-2 border-nb-dark flex items-center justify-center text-sm font-black"
+                style={`width: ${signatureProgress}%`}
+              >
+                {signatureProgress}%
+              </div>
+            </div>
+            <p class="text-sm font-bold text-nb-dark">
+              ~{Math.floor(state.signatureTarget * (signatureProgress / 100)).toLocaleString()} signatures collected
+            </p>
+          </div>
+        </div>
+
+        <div>
+          <div class="space-y-4">
+            <div class="card-nb bg-nb-purple text-nb-light">
+              <p class="font-black uppercase italic mb-2">Campaign Status</p>
+              <p class="font-bold">
+                {state.campaignStatus === 'active'
+                  ? 'We\'re actively collecting signatures. Help us reach the goal!'
+                  : state.campaignStatus === 'coming-soon'
+                  ? 'We\'re preparing to launch. Check back soon.'
+                  : 'No active campaign yet. Interest in organizing?'}
+              </p>
+            </div>
+
+            {state.hasOrganizer ? (
+              <div class="card-nb bg-nb-yellow">
+                <p class="font-black uppercase italic text-nb-dark mb-2">✓ Local Organizer</p>
+                <p class="font-bold text-nb-dark">
+                  We have a local organizer coordinating the effort. <a href="/about" class="underline">Contact us</a> to get involved.
+                </p>
+              </div>
+            ) : (
+              <div class="card-nb border-4 border-nb-dark bg-nb-light">
+                <p class="font-black uppercase italic text-nb-dark mb-2">Need a Local Organizer</p>
+                <p class="font-bold text-nb-dark mb-4">
+                  We're looking for someone to lead the {state.name} campaign.
+                </p>
+                <a href="mailto:organize@publiccodeus.org" class="btn-nb btn-nb-primary inline-block">
+                  ✉️ Express Interest
+                </a>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {/* Contact Your Representatives */}
+  <section class="bg-nb-cyan border-b-4 border-nb-dark py-20">
+    <div class="max-w-4xl mx-auto px-4">
+      <h2 class="text-4xl font-black uppercase italic text-nb-dark mb-12">
+        Contact Your Representatives
+      </h2>
+
+      <div class="grid md:grid-cols-2 gap-6">
+        {/* Senior Senator */}
+        <div class="card-nb border-4 border-nb-dark bg-nb-light">
+          <p class="text-sm font-black uppercase tracking-widest text-nb-dark mb-2">U.S. Senator (Senior)</p>
+          <h3 class="text-2xl font-black uppercase italic text-nb-dark mb-2">
+            {state.seniorSenator.name}
+          </h3>
+          <p class="text-sm font-bold text-nb-dark mb-4">
+            Party: <strong>{state.seniorSenator.party === 'D' ? 'Democratic' : 'Republican'}</strong>
+          </p>
+          <p class="font-bold text-nb-dark mb-4">
+            📞 {state.seniorSenator.phone}<br />
+            🌐 {state.seniorSenator.website}
+          </p>
+          <a
+            href={`https://${state.seniorSenator.website}/contact`}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn-nb btn-nb-primary inline-block text-sm"
+          >
+            Contact →
+          </a>
+        </div>
+
+        {/* Junior Senator */}
+        <div class="card-nb border-4 border-nb-dark bg-nb-light">
+          <p class="text-sm font-black uppercase tracking-widest text-nb-dark mb-2">U.S. Senator (Junior)</p>
+          <h3 class="text-2xl font-black uppercase italic text-nb-dark mb-2">
+            {state.juniorSenator.name}
+          </h3>
+          <p class="text-sm font-bold text-nb-dark mb-4">
+            Party: <strong>{state.juniorSenator.party === 'D' ? 'Democratic' : 'Republican'}</strong>
+          </p>
+          <p class="font-bold text-nb-dark mb-4">
+            📞 {state.juniorSenator.phone}<br />
+            🌐 {state.juniorSenator.website}
+          </p>
+          <a
+            href={`https://${state.juniorSenator.website}/contact`}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn-nb btn-nb-primary inline-block text-sm"
+          >
+            Contact →
+          </a>
+        </div>
+      </div>
+
+      <div class="mt-8 border-4 border-nb-dark bg-nb-light p-6">
+        <p class="font-bold text-nb-dark mb-4">
+          💡 <strong>Tip:</strong> Tell your representatives why public code matters to {state.name}.
+        </p>
+        <ul class="space-y-2 font-bold text-nb-dark">
+          <li>• Share stories of wasted taxpayer money</li>
+          <li>• Explain how public code saves money</li>
+          <li>• Ask them to support the ballot initiative</li>
+          <li>• Share your personal experience</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  {/* How to Organize Locally */}
+  <section class="bg-nb-dark text-nb-light border-b-4 border-nb-dark py-20">
+    <div class="max-w-4xl mx-auto px-4">
+      <h2 class="text-4xl font-black uppercase italic mb-12">How to Organize in {state.name}</h2>
+
+      <div class="grid md:grid-cols-2 gap-6">
+        <div class="border-4 border-nb-light p-6">
+          <p class="text-2xl font-black uppercase italic mb-4">🗣️ Spread the Word</p>
+          <ul class="space-y-2 font-bold">
+            <li>• Share on social media</li>
+            <li>• Talk to friends and family</li>
+            <li>• Post in community groups</li>
+            <li>• Write a letter to your local paper</li>
+          </ul>
+        </div>
+
+        <div class="border-4 border-nb-light p-6">
+          <p class="text-2xl font-black uppercase italic mb-4">✍️ Collect Signatures</p>
+          <ul class="space-y-2 font-bold">
+            <li>• Host signature gathering events</li>
+            <li>• Set up tables at farmers markets</li>
+            <li>• Door-knock in neighborhoods</li>
+            <li>• Share the online petition</li>
+          </ul>
+        </div>
+
+        <div class="border-4 border-nb-light p-6">
+          <p class="text-2xl font-black uppercase italic mb-4">🤝 Build Community</p>
+          <ul class="space-y-2 font-bold">
+            <li>• Form a local organizing group</li>
+            <li>• Host community meetings</li>
+            <li>• Partner with tech organizations</li>
+            <li>• Recruit volunteers</li>
+          </ul>
+        </div>
+
+        <div class="border-4 border-nb-light p-6">
+          <p class="text-2xl font-black uppercase italic mb-4">📰 Build Support</p>
+          <ul class="space-y-2 font-bold">
+            <li>• Pitch stories to local media</li>
+            <li>• Speak at public events</li>
+            <li>• Write op-eds</li>
+            <li>• Document your efforts</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="mt-8 border-4 border-nb-light p-6 text-center">
+        <p class="text-xl font-black uppercase italic mb-4">Need Help?</p>
+        <a href="/organize" class="btn-nb btn-nb-pink inline-block">
+          View Organizing Guide →
+        </a>
+      </div>
+    </div>
+  </section>
+
+  {/* Share This Page */}
+  <section class="bg-nb-cyan border-b-4 border-nb-dark py-20">
+    <div class="max-w-4xl mx-auto px-4">
+      <h2 class="text-3xl font-black uppercase italic text-nb-dark mb-6">Share This Page</h2>
+      <ShareButtons
+        client:load
+        url={Astro.url.href}
+        title={`Help Public Code in ${state.name}`}
+        description={`We need ${state.signatureTarget.toLocaleString()} signatures to bring a public code initiative to the ballot in ${state.name}.`}
+      />
+    </div>
+  </section>
+
+  {/* CTA */}
+  <section class="bg-nb-purple text-nb-light border-b-4 border-nb-dark py-16">
+    <div class="max-w-4xl mx-auto px-4 text-center">
+      <h2 class="text-3xl md:text-4xl font-black uppercase italic mb-6">
+        Ready to Take Action?
+      </h2>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="/sign" class="btn-nb btn-nb-yellow">
+          Sign the Petition
+        </a>
+        <a href="/organize" class="btn-nb btn-nb-yellow">
+          Get Organizing Tips
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>
