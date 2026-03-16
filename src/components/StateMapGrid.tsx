@@ -140,90 +140,51 @@ export function StateMapGrid({ onStateSelect }: StateMapGridProps) {
         </div>
       </div>
 
-      {/* Hex Grid Map */}
+      {/* Grid Map */}
       <div className="border-4 border-nb-dark bg-nb-light p-2 sm:p-4 md:p-6 overflow-x-auto">
-        <div className="mx-auto" style={{ maxWidth: '900px' }}>
-          <style>{`
-            .hex-grid {
-              display: flex;
-              flex-wrap: wrap;
-              justify-content: center;
-            }
-            .hex-tile {
-              width: 60px;
-              height: 60px;
-              margin: 2px;
-              clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
-              display: flex;
-              align-items: center;
-              justify-content: center;
-              font-size: 0.65rem;
-              font-weight: 900;
-              text-transform: uppercase;
-              cursor: pointer;
-              transition: all 0.1s ease;
-              border: 2px solid;
-              position: relative;
-            }
-            .hex-row {
-              display: flex;
-              margin: 0 -15px;
-            }
-            .hex-row:nth-child(odd) {
-              margin-left: 45px;
-            }
-            @media (max-width: 640px) {
-              .hex-tile {
-                width: 48px;
-                height: 48px;
-                margin: 1px;
-                font-size: 0.55rem;
-              }
-            }
-          `}</style>
-          <div className="hex-grid">
-            {grid.map((row, rowIdx) => (
-              <div key={rowIdx} className="hex-row">
-                {row.map((abbr, colIdx) => {
-                  if (!abbr) {
-                    return (
-                      <div
-                        key={`${rowIdx}-${colIdx}`}
-                        className="hex-tile"
-                        style={{ visibility: 'hidden' }}
-                      />
-                    );
-                  }
-
-                  const state = getStateByAbbr(abbr);
-                  const isSelected = selectedState === abbr;
-                  const isHovered = hoveredState === abbr;
-
+        <div className="min-w-[540px] mx-auto" style={{ maxWidth: '720px' }}>
+          {grid.map((row, rowIdx) => (
+            <div key={rowIdx} className="flex">
+              {row.map((abbr, colIdx) => {
+                if (!abbr) {
                   return (
-                    <button
+                    <div
                       key={`${rowIdx}-${colIdx}`}
-                      onClick={() => handleStateClick(abbr)}
-                      onMouseEnter={() => setHoveredState(abbr)}
-                      onMouseLeave={() => setHoveredState(null)}
-                      className={`
-                        hex-tile
-                        font-black text-[10px] sm:text-xs
-                        uppercase cursor-pointer
-                        transition-all duration-100
-                        ${getStateColor(abbr)}
-                        ${isSelected ? 'ring-2 ring-nb-purple ring-offset-0 shadow-nb z-10' : ''}
-                        ${isHovered ? 'shadow-nb scale-125 z-20 brightness-110' : ''}
-                      `}
-                      title={state ? `${state.name} — ${state.campaignStatus}` : abbr}
-                      aria-label={state ? state.name : abbr}
-                    >
-                      {abbr}
-                    </button>
+                      className="flex-1 aspect-square m-[1px]"
+                    />
                   );
-                })}
-              </div>
-            ))}
-          </div>
+                }
+
+                const state = getStateByAbbr(abbr);
+                const isSelected = selectedState === abbr;
+                const isHovered = hoveredState === abbr;
+
+                return (
+                  <button
+                    key={`${rowIdx}-${colIdx}`}
+                    onClick={() => handleStateClick(abbr)}
+                    onMouseEnter={() => setHoveredState(abbr)}
+                    onMouseLeave={() => setHoveredState(null)}
+                    className={`
+                      flex-1 aspect-square m-[1px]
+                      flex items-center justify-center
+                      border-2 border-nb-dark
+                      font-black text-[10px] sm:text-xs md:text-sm
+                      uppercase cursor-pointer
+                      transition-all duration-100
+                      ${getStateColor(abbr)}
+                      ${isSelected ? 'ring-2 ring-nb-purple ring-offset-1 shadow-nb z-10' : ''}
+                      ${isHovered ? 'shadow-nb scale-110 z-20 brightness-110' : ''}
+                    `}
+                    title={state ? `${state.name} — ${state.campaignStatus}` : abbr}
+                    aria-label={state ? state.name : abbr}
+                  >
+                    {abbr}
+                  </button>
+                );
+              })}
+            </div>
+          ))}
         </div>
       </div>
 
