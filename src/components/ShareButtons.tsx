@@ -27,10 +27,11 @@ export function ShareButtons({
     setTimeout(() => setCopied(false), 2000);
   };
 
-  const shareOnTwitter = () => {
-    const text = `${title} ${description ? '\n\n' + description : ''}`;
-    const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}&via=publiccodeus`;
-    window.open(twitterUrl, '_blank', 'width=550,height=420');
+  const shareOnThreads = () => {
+    const text = `${title} ${description ? '\n\n' + description : ''}\n\n${url}`;
+    // Threads uses a simple share URL (doesn't have native tweet intent like Twitter)
+    const threadsUrl = `https://www.threads.net/intent/post?text=${encodeURIComponent(text)}`;
+    window.open(threadsUrl, '_blank', 'width=550,height=420');
   };
 
   const shareOnFacebook = () => {
@@ -52,11 +53,11 @@ export function ShareButtons({
   return (
     <div className="flex flex-wrap gap-2">
       <button
-        onClick={shareOnTwitter}
+        onClick={shareOnThreads}
         className={`${sizeClasses[size]} btn-nb-primary`}
-        title="Share on Twitter/X"
+        title="Share on Threads"
       >
-        𝕏 Tweet
+        @ Threads
       </button>
 
       <button
