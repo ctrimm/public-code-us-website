@@ -93,5 +93,15 @@ const navItems = [
         mobileMenuBtn.setAttribute('aria-label', 'Open navigation menu');
       });
     });
+
+    // Close menu on Escape key and return focus to trigger
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !mobileMenu.classList.contains('hidden')) {
+        mobileMenu.classList.add('hidden');
+        mobileMenuBtn.setAttribute('aria-expanded', 'false');
+        mobileMenuBtn.setAttribute('aria-label', 'Open navigation menu');
+        mobileMenuBtn.focus();
+      }
+    });
   }
 </script>
