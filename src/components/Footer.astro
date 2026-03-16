@@ -1,0 +1,61 @@
+---
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="border-t-4 border-nb-dark bg-nb-dark text-nb-light">
+  <div class="max-w-7xl mx-auto px-4 py-12">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+      {/* Brand */}
+      <div class="col-span-1 md:col-span-2">
+        <h3 class="text-2xl font-black uppercase italic mb-4">Public Code US</h3>
+        <p class="font-bold text-sm mb-4">
+          A campaign demanding transparent, publicly owned software in government.
+        </p>
+        <p class="text-xs font-bold">
+          Funded by citizens. Powered by open source advocates across America.
+        </p>
+      </div>
+
+      {/* Quick Links */}
+      <div>
+        <h4 class="text-sm font-black uppercase tracking-wider mb-4">Navigation</h4>
+        <ul class="space-y-2 text-sm font-bold">
+          <li><a href="/" class="hover:underline">Home</a></li>
+          <li><a href="/learn" class="hover:underline">Learn</a></li>
+          <li><a href="/sign" class="hover:underline">Sign Petition</a></li>
+          <li><a href="/resources" class="hover:underline">Resources</a></li>
+          <li><a href="/about" class="hover:underline">About</a></li>
+        </ul>
+      </div>
+
+      {/* Legal */}
+      <div>
+        <h4 class="text-sm font-black uppercase tracking-wider mb-4">Legal</h4>
+        <ul class="space-y-2 text-sm font-bold">
+          <li><a href="/privacy" class="hover:underline">Privacy Policy</a></li>
+          <li><a href="/terms" class="hover:underline">Terms of Service</a></li>
+          <li><a href="mailto:hello@publiccodeus.org" class="hover:underline">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+
+    {/* Divider */}
+    <div class="border-t-2 border-nb-light my-8"></div>
+
+    {/* Bottom */}
+    <div class="flex flex-col md:flex-row justify-between items-center text-xs font-bold">
+      <p>&copy; {currentYear} Public Code US. All rights reserved.</p>
+      <div class="flex gap-4 mt-4 md:mt-0">
+        <a href="https://twitter.com/publiccodeus" target="_blank" rel="noopener noreferrer" class="hover:underline">
+          Twitter / X
+        </a>
+        <a href="https://github.com/publiccodeus" target="_blank" rel="noopener noreferrer" class="hover:underline">
+          GitHub
+        </a>
+        <a href="https://www.fsfe.org/activities/publiccode/" target="_blank" rel="noopener noreferrer" class="hover:underline">
+          FSFE
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>

@@ -5,9 +5,13 @@ import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://yourdomain.com', // Update this with your production URL
+  site: process.env.SITE_URL || 'https://publiccodeus.org',
+  output: 'static',
   vite: {
-    plugins: [tailwindcss()]
+    plugins: [tailwindcss()],
+    ssr: {
+      external: ['canvas-confetti']
+    }
   },
   integrations: [
     react(),
@@ -15,6 +19,7 @@ export default defineConfig({
       changefreq: 'weekly',
       priority: 0.7,
       lastmod: new Date(),
+      filter: (page) => !page.includes('/admin')
     })
   ]
 });

@@ -49,14 +49,26 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        // Neobrutalist palette
+        "nb-cyan": "#E0F7FA",
+        "nb-pink": "#FF4081",
+        "nb-purple": "#7C4DFF",
+        "nb-yellow": "#FFEA00",
+        "nb-dark": "#09090B",
+        "nb-light": "#FFFFFF",
       },
       borderRadius: {
+        none: "0px",
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
       },
       fontFamily: {
-        sans: ["Inter var", ...fontFamily.sans],
+        sans: ["Space Grotesk", "Syne", "Archivo", ...fontFamily.sans],
+      },
+      boxShadow: {
+        "nb": "8px 8px 0px 0px rgba(9, 9, 11, 0.3)",
+        "nb-lg": "12px 12px 0px 0px rgba(9, 9, 11, 0.4)",
       },
       keyframes: {
         marquee: {

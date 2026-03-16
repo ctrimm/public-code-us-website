@@ -1,0 +1,130 @@
+---
+import Layout from '../layouts/main.astro';
+import { StateMap } from '../components/StateMap';
+import { NewsletterSignup } from '../components/NewsletterSignup';
+---
+
+<Layout
+  title="Campaign Status - Public Code US"
+  description="Interactive map showing public code ballot initiative status in every state. See which states are actively organizing."
+  currentPage="/campaign"
+>
+  {/* Hero */}
+  <section class="bg-nb-dark text-nb-light border-b-4 border-nb-dark py-20">
+    <div class="max-w-4xl mx-auto px-4">
+      <h1 class="text-6xl md:text-7xl font-black uppercase italic mb-6">Campaign Map</h1>
+      <p class="text-lg font-bold">
+        See which states are actively campaigning for public code, and how you can get involved.
+      </p>
+    </div>
+  </section>
+
+  {/* Map Section */}
+  <section class="bg-nb-light border-b-4 border-nb-dark py-20">
+    <div class="max-w-6xl mx-auto px-4">
+      <StateMap client:load />
+    </div>
+  </section>
+
+  {/* State Stats */}
+  <section class="bg-nb-cyan border-b-4 border-nb-dark py-20">
+    <div class="max-w-4xl mx-auto px-4">
+      <h2 class="text-4xl font-black uppercase italic text-nb-dark mb-12">Campaign Status</h2>
+
+      <div class="grid md:grid-cols-3 gap-6 mb-12">
+        <div class="card-nb bg-nb-pink text-nb-light">
+          <p class="text-sm font-black uppercase tracking-widest mb-2">Active Campaigns</p>
+          <p class="text-5xl font-black italic">4</p>
+          <p class="font-bold mt-2">States currently organizing</p>
+        </div>
+
+        <div class="card-nb bg-nb-purple text-nb-light">
+          <p class="text-sm font-black uppercase tracking-widest mb-2">Coming Soon</p>
+          <p class="text-5xl font-black italic">2</p>
+          <p class="font-bold mt-2">States preparing to launch</p>
+        </div>
+
+        <div class="card-nb bg-nb-yellow text-nb-dark">
+          <p class="text-sm font-black uppercase tracking-widest mb-2">Need Organizers</p>
+          <p class="text-5xl font-black italic">44+</p>
+          <p class="font-bold mt-2">States looking for leaders</p>
+        </div>
+      </div>
+
+      <div class="border-4 border-nb-dark bg-nb-light p-8">
+        <h3 class="text-2xl font-black uppercase italic text-nb-dark mb-4">How Campaign Status Works</h3>
+        <div class="space-y-4 font-bold text-nb-dark">
+          <div>
+            <p class="text-nb-pink font-black mb-2">🚀 Active Campaign</p>
+            <p>We're collecting signatures and organizing. Visit the state page to sign and get involved.</p>
+          </div>
+          <div>
+            <p class="text-nb-purple font-black mb-2">⏰ Coming Soon</p>
+            <p>We're preparing for launch. Subscribe to our newsletter for the start date.</p>
+          </div>
+          <div>
+            <p class="font-black mb-2">❓ Need Organizer</p>
+            <p>No campaign yet. Interested in leading the effort? Contact <a href="mailto:organize@publiccodeus.org" class="underline">organize@publiccodeus.org</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {/* Newsletter CTA */}
+  <section class="bg-nb-pink text-nb-light border-b-4 border-nb-dark py-20">
+    <div class="max-w-4xl mx-auto px-4">
+      <h2 class="text-3xl md:text-4xl font-black uppercase italic mb-8 text-center">
+        Get Campaign Updates
+      </h2>
+      <div class="max-w-md mx-auto">
+        <NewsletterSignup
+          client:load
+          variant="card"
+          source="campaign"
+        />
+      </div>
+    </div>
+  </section>
+
+  {/* Next Steps */}
+  <section class="bg-nb-light border-b-4 border-nb-dark py-20">
+    <div class="max-w-4xl mx-auto px-4">
+      <h2 class="text-4xl font-black uppercase italic text-nb-dark mb-12">How to Help</h2>
+
+      <div class="grid md:grid-cols-2 gap-6">
+        <a href="/sign" class="card-nb bg-nb-yellow hover:shadow-nb-lg transition-all cursor-pointer">
+          <p class="text-2xl font-black uppercase italic text-nb-dark mb-4">Sign the Petition</p>
+          <p class="font-bold text-nb-dark mb-4">
+            Add your signature to show support for public code in America.
+          </p>
+          <p class="text-nb-pink font-black">Start Here →</p>
+        </a>
+
+        <a href="/organize" class="card-nb bg-nb-purple text-nb-light hover:shadow-nb-lg transition-all cursor-pointer">
+          <p class="text-2xl font-black uppercase italic mb-4">Get Organizing Guide</p>
+          <p class="font-bold mb-4">
+            Learn how to collect signatures and build a campaign in your state.
+          </p>
+          <p class="text-nb-light font-black">Learn More →</p>
+        </a>
+
+        <a href="mailto:organize@publiccodeus.org" class="card-np bg-nb-dark text-nb-light hover:shadow-nb-lg transition-all cursor-pointer">
+          <p class="text-2xl font-black uppercase italic mb-4">Lead a State Campaign</p>
+          <p class="font-bold mb-4">
+            Interested in organizing in your state? We need leaders.
+          </p>
+          <p class="text-nb-light font-black">Express Interest →</p>
+        </a>
+
+        <a href="/blog" class="card-nb bg-nb-cyan hover:shadow-nb-lg transition-all cursor-pointer">
+          <p class="text-2xl font-black uppercase italic text-nb-dark mb-4">Read Our Blog</p>
+          <p class="font-bold text-nb-dark mb-4">
+            Campaign updates, organizing tips, and public code insights.
+          </p>
+          <p class="text-nb-dark font-black">Read Posts →</p>
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>

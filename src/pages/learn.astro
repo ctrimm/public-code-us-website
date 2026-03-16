@@ -1,0 +1,203 @@
+---
+import Layout from '../layouts/main.astro';
+---
+
+<Layout
+	title="Learn About Public Code - Education & Resources"
+	description="Understand public code, ballot initiatives, and why open source software matters for government. Complete educational guide."
+	currentPage="/learn"
+>
+	{/* Hero */}
+	<section class="bg-nb-purple text-nb-light border-b-4 border-nb-dark py-20">
+		<div class="max-w-4xl mx-auto px-4">
+			<h1 class="text-5xl md:text-6xl font-black uppercase italic mb-6">Learn Public Code</h1>
+			<p class="text-lg font-bold">
+				Understand why public money should fund public code, how it benefits everyone, and what you can do about it.
+			</p>
+		</div>
+	</section>
+
+	{/* What is Public Code */}
+	<section class="bg-nb-light border-b-4 border-nb-dark py-20">
+		<div class="max-w-4xl mx-auto px-4">
+			<h2 class="text-4xl font-black uppercase italic text-nb-dark mb-8">What is Public Code?</h2>
+			<div class="space-y-6">
+				<div class="border-4 border-nb-dark p-6 bg-nb-cyan">
+					<p class="font-bold text-nb-dark text-lg leading-relaxed">
+						Public Code is software developed with public money that is made openly available as Free and Open Source Software. It means:
+					</p>
+				</div>
+				<ul class="space-y-4 text-lg font-bold text-nb-dark">
+					<li class="flex gap-4">
+						<span class="text-nb-pink text-2xl font-black">→</span>
+						<span><strong class="text-nb-pink">Transparency:</strong> The code is public. Anyone can inspect it.</span>
+					</li>
+					<li class="flex gap-4">
+						<span class="text-nb-purple text-2xl font-black">→</span>
+						<span><strong class="text-nb-purple">Security:</strong> Thousands of eyes find and fix bugs faster.</span>
+					</li>
+					<li class="flex gap-4">
+						<span class="text-nb-yellow text-2xl font-black">→</span>
+						<span><strong class="text-nb-dark">Reusability:</strong> Other governments can use and improve the code.</span>
+					</li>
+					<li class="flex gap-4">
+						<span class="text-nb-pink text-2xl font-black">→</span>
+						<span><strong class="text-nb-pink">Efficiency:</strong> Stops reinventing the wheel in every city and state.</span>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</section>
+
+	{/* How Ballot Initiatives Work */}
+	<section class="bg-nb-yellow border-b-4 border-nb-dark py-20">
+		<div class="max-w-4xl mx-auto px-4">
+			<h2 class="text-4xl font-black uppercase italic text-nb-dark mb-8">How Ballot Initiatives Work in the USA</h2>
+			<div class="space-y-6">
+				<div class="grid md:grid-cols-2 gap-6">
+					{/* Step 1 */}
+					<div class="border-4 border-nb-dark bg-nb-light p-6">
+						<div class="text-5xl font-black italic mb-4 text-nb-pink">1</div>
+						<h3 class="text-xl font-black uppercase italic text-nb-dark mb-3">Signature Gathering</h3>
+						<p class="font-bold text-nb-dark">
+							Collect signatures from voters. Each state requires a percentage of registered voters to sign (usually 5-10%).
+						</p>
+					</div>
+
+					{/* Step 2 */}
+					<div class="border-4 border-nb-dark bg-nb-light p-6">
+						<div class="text-5xl font-black italic mb-4 text-nb-purple">2</div>
+						<h3 class="text-xl font-black uppercase italic text-nb-dark mb-3">Ballot Qualification</h3>
+						<p class="font-bold text-nb-dark">
+							Once enough signatures are verified, the initiative is placed on the ballot. Usually happens in November general elections.
+						</p>
+					</div>
+
+					{/* Step 3 */}
+					<div class="border-4 border-nb-dark bg-nb-light p-6">
+						<div class="text-5xl font-black italic mb-4 text-nb-yellow">3</div>
+						<h3 class="text-xl font-black uppercase italic text-nb-dark mb-3">Public Campaign</h3>
+						<p class="font-bold text-nb-dark">
+							Public awareness campaign. Supporters and opponents both make their case. Voters learn about the issue.
+						</p>
+					</div>
+
+					{/* Step 4 */}
+					<div class="border-4 border-nb-dark bg-nb-light p-6">
+						<div class="text-5xl font-black italic mb-4 text-nb-pink">4</div>
+						<h3 class="text-xl font-black uppercase italic text-nb-dark mb-3">Vote & Enactment</h3>
+						<p class="font-bold text-nb-dark">
+							Voters vote yes or no. If approved, the measure becomes law. No need for legislature approval.
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	{/* Success Stories */}
+	<section class="bg-nb-cyan border-b-4 border-nb-dark py-20">
+		<div class="max-w-4xl mx-auto px-4">
+			<h2 class="text-4xl font-black uppercase italic text-nb-dark mb-12">Success Stories</h2>
+			<div class="space-y-6">
+				<div class="card-nb bg-nb-light">
+					<h3 class="text-2xl font-black uppercase italic text-nb-dark mb-3">Italy's Public Code Mandate</h3>
+					<p class="font-bold text-nb-dark mb-4">
+						Italy made it law: all software developed by public administration must be open source. Result: massive cost savings and improved security across government agencies.
+					</p>
+					<p class="text-sm font-bold text-nb-dark opacity-75">📍 Italy • 2016-Present</p>
+				</div>
+
+				<div class="card-nb bg-nb-light">
+					<h3 class="text-2xl font-black uppercase italic text-nb-dark mb-3">France's Digital Republic Law</h3>
+					<p class="font-bold text-nb-dark mb-4">
+						France passed a law requiring all government software to be open source and publicly reusable. Agencies now collaborate instead of duplicating work.
+					</p>
+					<p class="text-sm font-bold text-nb-dark opacity-75">📍 France • 2016-Present</p>
+				</div>
+
+				<div class="card-nb bg-nb-light">
+					<h3 class="text-2xl font-black uppercase italic text-nb-dark mb-3">EU Open Digital Ecosystem Strategy</h3>
+					<p class="font-bold text-nb-dark mb-4">
+						The European Union committed to open-source software as critical infrastructure. Billions in funding for FOSS development and security.
+					</p>
+					<p class="text-sm font-bold text-nb-dark opacity-75">📍 European Union • 2026-Present</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	{/* FAQ */}
+	<section class="bg-nb-light border-b-4 border-nb-dark py-20">
+		<div class="max-w-4xl mx-auto px-4">
+			<h2 class="text-4xl font-black uppercase italic text-nb-dark mb-12">Frequently Asked Questions</h2>
+			<div class="space-y-4">
+				<details class="border-4 border-nb-dark p-6 cursor-pointer bg-nb-cyan group">
+					<summary class="font-black uppercase italic text-nb-dark text-lg flex justify-between items-center">
+						<span>Won't open source make government software insecure?</span>
+						<span class="group-open:rotate-180 transition-transform">+</span>
+					</summary>
+					<p class="font-bold text-nb-dark mt-4">
+						No. Actually the opposite. Open-source code gets reviewed by thousands of independent security experts. Closed proprietary code only gets reviewed by the vendor's small team. Open is more secure.
+					</p>
+				</details>
+
+				<details class="border-4 border-nb-dark p-6 cursor-pointer bg-nb-cyan group">
+					<summary class="font-black uppercase italic text-nb-dark text-lg flex justify-between items-center">
+						<span>What about intellectual property and patents?</span>
+						<span class="group-open:rotate-180 transition-transform">+</span>
+					</summary>
+					<p class="font-bold text-nb-dark mt-4">
+						Open-source licenses protect IP while allowing free use. Developers retain credit and attribution. Companies can still contribute and profit by offering services and support around the code.
+					</p>
+				</details>
+
+				<details class="border-4 border-nb-dark p-6 cursor-pointer bg-nb-cyan group">
+					<summary class="font-black uppercase italic text-nb-dark text-lg flex justify-between items-center">
+						<span>Which states can have ballot initiatives?</span>
+						<span class="group-open:rotate-180 transition-transform">+</span>
+					</summary>
+					<p class="font-bold text-nb-dark mt-4">
+						24 U.S. states allow ballot initiatives. We're targeting states where there's strong public support and lower signature thresholds. Check your state's requirements—they vary significantly.
+					</p>
+				</details>
+
+				<details class="border-4 border-nb-dark p-6 cursor-pointer bg-nb-cyan group">
+					<summary class="font-black uppercase italic text-nb-dark text-lg flex justify-between items-center">
+						<span>How much does government software cost taxpayers?</span>
+						<span class="group-open:rotate-180 transition-transform">+</span>
+					</summary>
+					<p class="font-bold text-nb-dark mt-4">
+						Billions annually. The U.S. government spends $60+ billion/year on IT services, much on duplicated proprietary software. Studies show public code could save 20-40% through reuse and competition.
+					</p>
+				</details>
+
+				<details class="border-4 border-nb-dark p-6 cursor-pointer bg-nb-cyan group">
+					<summary class="font-black uppercase italic text-nb-dark text-lg flex justify-between items-center">
+						<span>How do I get involved?</span>
+						<span class="group-open:rotate-180 transition-transform">+</span>
+					</summary>
+					<p class="font-bold text-nb-dark mt-4">
+						Sign the petition. Share with friends. Reach out to your state representatives. Volunteer for the campaign. Donate to support ballot initiatives in your state.
+					</p>
+				</details>
+			</div>
+		</div>
+	</section>
+
+	{/* CTA */}
+	<section class="bg-nb-pink text-nb-light border-b-4 border-nb-dark py-16">
+		<div class="max-w-4xl mx-auto px-4 text-center">
+			<h2 class="text-3xl md:text-4xl font-black uppercase italic mb-6">Ready to Take Action?</h2>
+			<a href="/sign" class="btn-nb btn-nb-yellow inline-block">
+				Sign the Petition
+			</a>
+		</div>
+	</section>
+</Layout>
+
+<style>
+	details summary::-webkit-details-marker {
+		display: none;
+	}
+</style>

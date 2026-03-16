@@ -77,6 +77,130 @@
     background-color: var(--background);
     color: var(--foreground);
   }
+
+  /* Neobrutalist typography */
+  h1, h2, h3, h4, h5, h6 {
+    font-weight: 900;
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+    font-style: italic;
+  }
+
+  h1 {
+    font-size: clamp(2.5rem, 10vw, 4rem);
+    line-height: 1;
+  }
+
+  h2 {
+    font-size: clamp(2rem, 8vw, 3rem);
+    line-height: 1.1;
+  }
+
+  h3 {
+    font-size: clamp(1.5rem, 5vw, 2rem);
+  }
+
+  p {
+    font-weight: 600;
+    line-height: 1.6;
+  }
+}
+
+@layer components {
+  /* Neobrutalist utility classes */
+  .border-nb {
+    border: 4px solid #09090B;
+  }
+
+  .shadow-nb {
+    box-shadow: 8px 8px 0px 0px rgba(9, 9, 11, 0.3);
+  }
+
+  .shadow-nb-lg {
+    box-shadow: 12px 12px 0px 0px rgba(9, 9, 11, 0.4);
+  }
+
+  .shadow-nb-pressed {
+    box-shadow: none;
+  }
+
+  .bg-nb-cyan {
+    background-color: #E0F7FA;
+    color: #09090B;
+  }
+
+  .bg-nb-pink {
+    background-color: #FF4081;
+    color: #FFFFFF;
+  }
+
+  .bg-nb-purple {
+    background-color: #7C4DFF;
+    color: #FFFFFF;
+  }
+
+  .bg-nb-yellow {
+    background-color: #FFEA00;
+    color: #09090B;
+  }
+
+  .btn-nb {
+    @apply px-6 py-3 cursor-pointer uppercase font-black tracking-wider transition-all duration-100 no-underline inline-block;
+    border: 4px solid #09090B;
+    background-color: #FFFFFF;
+    color: #09090B;
+    box-shadow: 4px 4px 0px 0px rgba(9, 9, 11, 0.3);
+  }
+
+  .btn-nb:hover {
+    transform: translateY(-4px);
+    box-shadow: 6px 6px 0px 0px rgba(9, 9, 11, 0.3);
+  }
+
+  .btn-nb:active {
+    transform: translateX(4px) translateY(4px);
+    box-shadow: none;
+  }
+
+  .btn-nb-primary {
+    background-color: #FF4081;
+    color: #FFFFFF;
+  }
+
+  .btn-nb-secondary {
+    background-color: #7C4DFF;
+    color: #FFFFFF;
+  }
+
+  .btn-nb-yellow {
+    background-color: #FFEA00;
+    color: #09090B;
+  }
+
+  .input-nb {
+    border: 4px solid #09090B;
+    border-radius: 0;
+    padding: 0.5rem 1rem;
+    font-weight: 700;
+    color: #09090B;
+  }
+
+  .input-nb::placeholder {
+    color: #9CA3AF;
+  }
+
+  .input-nb:focus {
+    outline: none;
+    ring: 2px solid #09090B;
+  }
+
+  .card-nb {
+    border: 4px solid #09090B;
+    border-radius: 0;
+    padding: 1.5rem;
+    background-color: #FFFFFF;
+    box-shadow: 8px 8px 0px 0px rgba(9, 9, 11, 0.3);
+  }
 }
 
 /* Custom animation classes */

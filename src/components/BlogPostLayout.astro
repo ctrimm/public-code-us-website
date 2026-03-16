@@ -1,0 +1,111 @@
+---
+import Layout from '../layouts/main.astro';
+import { ShareButtons } from './ShareButtons';
+
+export interface Props {
+  title: string;
+  description: string;
+  date: string;
+  author?: string;
+  image?: string;
+  readTime?: string;
+}
+
+const { title, description, date, author = 'Public Code US Team', image, readTime } = Astro.props;
+const url = Astro.url.href;
+---
+
+<Layout
+  title={`${title} - Public Code US Blog`}
+  description={description}
+  image={image}
+  currentPage="/blog"
+>
+  <article>
+    {/* Hero Section */}
+    <section class="bg-nb-purple text-nb-light border-b-4 border-nb-dark py-20">
+      <div class="max-w-3xl mx-auto px-4">
+        <div class="flex items-center gap-4 mb-4 font-bold text-sm">
+          <span>{new Date(date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
+          {readTime && <span>•</span>}
+          {readTime && <span>{readTime}</span>}
+          {author && <span>•</span>}
+          {author && <span>By {author}</span>}
+        </div>
+        <h1 class="text-5xl md:text-6xl font-black uppercase italic mb-6">{title}</h1>
+        <p class="text-lg font-bold">{description}</p>
+      </div>
+    </section>
+
+    {/* Content */}
+    <section class="bg-nb-light border-b-4 border-nb-dark py-20">
+      <div class="max-w-3xl mx-auto px-4">
+        <div class="prose prose-lg max-w-none font-bold text-nb-dark">
+          <slot />
+        </div>
+      </div>
+    </section>
+
+    {/* Share Section */}
+    <section class="bg-nb-cyan border-b-4 border-nb-dark py-20">
+      <div class="max-w-3xl mx-auto px-4">
+        <h2 class="text-3xl font-black uppercase italic text-nb-dark mb-6">Share This Post</h2>
+        <ShareButtons
+          client:load
+          url={url}
+          title={title}
+          description={description}
+        />
+      </div>
+    </section>
+
+    {/* CTA Section */}
+    <section class="bg-nb-pink text-nb-light border-b-4 border-nb-dark py-16">
+      <div class="max-w-3xl mx-auto px-4 text-center">
+        <h2 class="text-3xl font-black uppercase italic mb-6">Ready to Take Action?</h2>
+        <a href="/sign" class="btn-nb btn-nb-yellow inline-block">
+          Sign the Petition
+        </a>
+      </div>
+    </section>
+  </article>
+
+  <style>
+    .prose {
+      font-weight: 600;
+      line-height: 1.8;
+    }
+
+    .prose h2 {
+      @apply text-3xl font-black uppercase italic mt-8 mb-4 text-nb-dark;
+    }
+
+    .prose h3 {
+      @apply text-2xl font-black uppercase italic mt-6 mb-3 text-nb-dark;
+    }
+
+    .prose p {
+      @apply mb-4;
+    }
+
+    .prose ul, .prose ol {
+      @apply mb-4 ml-6;
+    }
+
+    .prose li {
+      @apply mb-2;
+    }
+
+    .prose a {
+      @apply text-nb-pink underline hover:no-underline;
+    }
+
+    .prose strong {
+      @apply font-black;
+    }
+
+    .prose blockquote {
+      @apply border-l-4 border-nb-pink pl-4 italic text-gray-700 my-4;
+    }
+  </style>
+</Layout>
