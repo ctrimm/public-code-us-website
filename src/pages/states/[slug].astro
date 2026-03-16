@@ -40,9 +40,11 @@ const signatureProgress = 45; // Percentage (demo)
           ? '⏰ Coming Soon - Stay tuned for launch'
           : 'Not yet launched - Contact us to organize'}
       </p>
-      <a href="/sign" class="btn-nb btn-nb-yellow inline-block">
-        Sign the Petition
-      </a>
+      {state.hasBallotInitiative && (
+        <a href="/sign" class="btn-nb btn-nb-yellow inline-block">
+          Sign the Petition
+        </a>
+      )}
     </div>
   </section>
 
