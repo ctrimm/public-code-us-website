@@ -36,8 +36,8 @@ CloudFront (CDN)
 ## Step 1: Build the Static Site
 
 ```bash
-npm install
-npm run build
+pnpm install
+pnpm build
 ```
 
 This creates a `dist/` folder with all static files ready for S3.

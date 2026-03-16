@@ -38,21 +38,26 @@ The site has 7 pages (ready for extension):
 
 ## 🚀 Quick Start
 
+### Prerequisites
+
+- **Node.js 20+** ([download](https://nodejs.org))
+- **pnpm** (install globally: `npm install -g pnpm`)
+
 ### Development
 
 ```bash
 # Install dependencies
-npm install
+pnpm install
 
 # Start dev server (hot reload)
-npm run dev
+pnpm dev
 # Visit http://localhost:4321
 
 # Build for production
-npm run build
+pnpm build
 
 # Preview production build
-npm run preview
+pnpm preview
 ```
 
 ### Environment Setup
