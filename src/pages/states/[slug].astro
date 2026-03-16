@@ -67,12 +67,19 @@ const signatureProgress = 45; // Percentage (demo)
 
           <div class="card-nb bg-nb-cyan">
             <p class="font-black uppercase italic text-nb-dark text-sm mb-2">Progress</p>
-            <div class="w-full bg-gray-300 border-2 border-nb-dark h-8 mb-2">
+            <div
+              class="w-full bg-gray-300 border-2 border-nb-dark h-8 mb-2"
+              role="progressbar"
+              aria-valuenow={signatureProgress}
+              aria-valuemin={0}
+              aria-valuemax={100}
+              aria-label={`Signature progress: ${signatureProgress}%`}
+            >
               <div
                 class="bg-nb-yellow h-full border-r-2 border-nb-dark flex items-center justify-center text-sm font-black"
                 style={`width: ${signatureProgress}%`}
               >
-                {signatureProgress}%
+                <span aria-hidden="true">{signatureProgress}%</span>
               </div>
             </div>
             <p class="text-sm font-bold text-nb-dark">
@@ -147,7 +154,7 @@ const signatureProgress = 45; // Percentage (demo)
             rel="noopener noreferrer"
             class="btn-nb btn-nb-primary inline-block text-sm"
           >
-            Contact →
+            Contact →<span class="sr-only"> (opens in new tab)</span>
           </a>
         </div>
 
@@ -170,7 +177,7 @@ const signatureProgress = 45; // Percentage (demo)
             rel="noopener noreferrer"
             class="btn-nb btn-nb-primary inline-block text-sm"
           >
-            Contact →
+            Contact →<span class="sr-only"> (opens in new tab)</span>
           </a>
         </div>
       </div>
@@ -196,7 +203,7 @@ const signatureProgress = 45; // Percentage (demo)
 
       <div class="grid md:grid-cols-2 gap-6">
         <div class="border-4 border-nb-light p-6">
-          <p class="text-2xl font-black uppercase italic mb-4">🗣️ Spread the Word</p>
+          <h3 class="text-2xl font-black uppercase italic mb-4">🗣️ Spread the Word</h3>
           <ul class="space-y-2 font-bold">
             <li>• Share on social media</li>
             <li>• Talk to friends and family</li>
@@ -206,7 +213,7 @@ const signatureProgress = 45; // Percentage (demo)
         </div>
 
         <div class="border-4 border-nb-light p-6">
-          <p class="text-2xl font-black uppercase italic mb-4">✍️ Collect Signatures</p>
+          <h3 class="text-2xl font-black uppercase italic mb-4">✍️ Collect Signatures</h3>
           <ul class="space-y-2 font-bold">
             <li>• Host signature gathering events</li>
             <li>• Set up tables at farmers markets</li>
@@ -216,7 +223,7 @@ const signatureProgress = 45; // Percentage (demo)
         </div>
 
         <div class="border-4 border-nb-light p-6">
-          <p class="text-2xl font-black uppercase italic mb-4">🤝 Build Community</p>
+          <h3 class="text-2xl font-black uppercase italic mb-4">🤝 Build Community</h3>
           <ul class="space-y-2 font-bold">
             <li>• Form a local organizing group</li>
             <li>• Host community meetings</li>
@@ -226,7 +233,7 @@ const signatureProgress = 45; // Percentage (demo)
         </div>
 
         <div class="border-4 border-nb-light p-6">
-          <p class="text-2xl font-black uppercase italic mb-4">📰 Build Support</p>
+          <h3 class="text-2xl font-black uppercase italic mb-4">📰 Build Support</h3>
           <ul class="space-y-2 font-bold">
             <li>• Pitch stories to local media</li>
             <li>• Speak at public events</li>
@@ -237,7 +244,7 @@ const signatureProgress = 45; // Percentage (demo)
       </div>
 
       <div class="mt-8 border-4 border-nb-light p-6 text-center">
-        <p class="text-xl font-black uppercase italic mb-4">Need Help?</p>
+        <h3 class="text-xl font-black uppercase italic mb-4">Need Help?</h3>
         <a href="/organize" class="btn-nb btn-nb-pink inline-block">
           View Organizing Guide →
         </a>

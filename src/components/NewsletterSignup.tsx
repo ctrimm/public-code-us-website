@@ -53,42 +53,58 @@ export function NewsletterSignup({
         <p className="font-bold text-nb-dark mb-6">
           Get campaign updates, organizing tips, and ballot news straight to your inbox.
         </p>
-        <form onSubmit={handleSubmit} className="space-y-3">
-          {error && (
-            <div className="border-2 border-red-600 bg-red-50 p-3 text-red-900 text-sm font-bold">
-              {error}
-            </div>
-          )}
+        <form onSubmit={handleSubmit} className="space-y-3" aria-label="Newsletter signup">
+          <div aria-live="assertive">
+            {error && (
+              <div className="border-2 border-red-600 bg-red-50 p-3 text-red-900 text-sm font-bold" role="alert">
+                {error}
+              </div>
+            )}
+          </div>
 
-          {success && (
-            <div className="border-2 border-green-600 bg-green-50 p-3 text-green-900 text-sm font-bold">
-              ✓ Check your email to confirm!
-            </div>
-          )}
+          <div aria-live="polite">
+            {success && (
+              <div className="border-2 border-green-600 bg-green-50 p-3 text-green-900 text-sm font-bold" role="status">
+                Check your email to confirm!
+              </div>
+            )}
+          </div>
 
-          <input
-            type="text"
-            placeholder="Your name (optional)"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            className="input-nb w-full"
-          />
+          <div>
+            <label htmlFor={`newsletter-name-${source}`} className="sr-only">Your name (optional)</label>
+            <input
+              id={`newsletter-name-${source}`}
+              type="text"
+              placeholder="Your name (optional)"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              className="input-nb w-full"
+              autoComplete="name"
+            />
+          </div>
 
-          <input
-            type="email"
-            placeholder="your@email.com"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-            className="input-nb w-full"
-          />
+          <div>
+            <label htmlFor={`newsletter-email-${source}`} className="sr-only">Email address</label>
+            <input
+              id={`newsletter-email-${source}`}
+              type="email"
+              placeholder="your@email.com"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+              className="input-nb w-full"
+              autoComplete="email"
+              aria-required="true"
+            />
+          </div>
 
           <button
             type="submit"
             disabled={loading}
+            aria-disabled={loading}
             className="btn-nb btn-nb-primary w-full font-black uppercase"
           >
-            {loading ? '⏳ Subscribing...' : '📧 Subscribe'}
+            {loading ? 'Subscribing...' : 'Subscribe'}
           </button>
         </form>
         <p className="text-xs font-bold text-gray-600 mt-4">
@@ -100,26 +116,39 @@ export function NewsletterSignup({
 
   // Inline variant
   return (
-    <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3">
-      <input
-        type="email"
-        placeholder="Enter your email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-        required
-        className="input-nb flex-1"
-      />
+    <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3" aria-label="Newsletter signup">
+      <div className="flex-1">
+        <label htmlFor={`newsletter-inline-${source}`} className="sr-only">Email address</label>
+        <input
+          id={`newsletter-inline-${source}`}
+          type="email"
+          placeholder="Enter your email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          required
+          className="input-nb w-full"
+          autoComplete="email"
+          aria-required="true"
+        />
+      </div>
 
       <button
         type="submit"
         disabled={loading}
+        aria-disabled={loading}
         className="btn-nb btn-nb-primary whitespace-nowrap"
       >
         {loading ? 'Subscribing...' : 'Subscribe'}
       </button>
 
-      {success && <p className="text-green-600 font-bold text-sm">✓ Check your email!</p>}
-      {error && <p className="text-red-600 font-bold text-sm">{error}</p>}
+      <div aria-live="polite" className="sr-only">
+        {success && <span role="status">Successfully subscribed. Check your email!</span>}
+      </div>
+      <div aria-live="assertive" className="sr-only">
+        {error && <span role="alert">{error}</span>}
+      </div>
+      {success && <p className="text-green-700 font-bold text-sm">Check your email!</p>}
+      {error && <p className="text-red-700 font-bold text-sm">{error}</p>}
     </form>
   );
 }

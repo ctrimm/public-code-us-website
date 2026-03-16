@@ -131,12 +131,12 @@
 
   .bg-nb-pink {
     background-color: #FF4081;
-    color: #FFFFFF;
+    color: #09090B;
   }
 
   .bg-nb-purple {
     background-color: #7C4DFF;
-    color: #FFFFFF;
+    color: #09090B;
   }
 
   .bg-nb-yellow {
@@ -157,6 +157,11 @@
     box-shadow: 6px 6px 0px 0px rgba(9, 9, 11, 0.3);
   }
 
+  .btn-nb:focus-visible {
+    outline: 3px solid #09090B;
+    outline-offset: 2px;
+  }
+
   .btn-nb:active {
     transform: translateX(4px) translateY(4px);
     box-shadow: none;
@@ -164,12 +169,12 @@
 
   .btn-nb-primary {
     background-color: #FF4081;
-    color: #FFFFFF;
+    color: #09090B;
   }
 
   .btn-nb-secondary {
     background-color: #7C4DFF;
-    color: #FFFFFF;
+    color: #09090B;
   }
 
   .btn-nb-yellow {
@@ -190,8 +195,13 @@
   }
 
   .input-nb:focus {
-    outline: none;
-    ring: 2px solid #09090B;
+    outline: 3px solid #09090B;
+    outline-offset: -1px;
+  }
+
+  .input-nb:focus-visible {
+    outline: 3px solid #09090B;
+    outline-offset: -1px;
   }
 
   .card-nb {

@@ -110,8 +110,8 @@ export function PetitionForm() {
 
   if (success && successMessage) {
     return (
-      <div className="text-center py-12 px-4">
-        <div className="text-6xl mb-6">🎉</div>
+      <div className="text-center py-12 px-4" role="status" aria-live="polite">
+        <div className="text-6xl mb-6" aria-hidden="true">🎉</div>
         <h2 className="text-4xl font-black uppercase italic text-nb-pink mb-4">Thank You!</h2>
         <p className="text-lg font-bold text-nb-dark mb-4">
           Your signature has been added to the petition.
@@ -131,11 +131,13 @@ export function PetitionForm() {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-6 max-w-lg mx-auto px-4">
-      {error && (
-        <div className="border-4 border-red-600 bg-red-100 text-red-900 p-4 font-bold">
-          {error}
-        </div>
-      )}
+      <div aria-live="assertive">
+        {error && (
+          <div className="border-4 border-red-600 bg-red-100 text-red-900 p-4 font-bold" role="alert">
+            {error}
+          </div>
+        )}
+      </div>
 
       <div>
         <label htmlFor="name" className="block font-black uppercase italic text-nb-dark text-sm mb-2">

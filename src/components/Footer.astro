@@ -17,43 +17,43 @@ const currentYear = new Date().getFullYear();
       </div>
 
       {/* Quick Links */}
-      <div>
+      <nav aria-label="Footer navigation">
         <h4 class="text-sm font-black uppercase tracking-wider mb-4">Navigation</h4>
         <ul class="space-y-2 text-sm font-bold">
-          <li><a href="/" class="hover:underline">Home</a></li>
-          <li><a href="/learn" class="hover:underline">Learn</a></li>
-          <li><a href="/sign" class="hover:underline">Sign Petition</a></li>
-          <li><a href="/resources" class="hover:underline">Resources</a></li>
-          <li><a href="/about" class="hover:underline">About</a></li>
+          <li><a href="/" class="hover:underline focus-visible:outline-2 focus-visible:outline-nb-light focus-visible:outline-offset-2">Home</a></li>
+          <li><a href="/learn" class="hover:underline focus-visible:outline-2 focus-visible:outline-nb-light focus-visible:outline-offset-2">Learn</a></li>
+          <li><a href="/sign" class="hover:underline focus-visible:outline-2 focus-visible:outline-nb-light focus-visible:outline-offset-2">Sign Petition</a></li>
+          <li><a href="/resources" class="hover:underline focus-visible:outline-2 focus-visible:outline-nb-light focus-visible:outline-offset-2">Resources</a></li>
+          <li><a href="/about" class="hover:underline focus-visible:outline-2 focus-visible:outline-nb-light focus-visible:outline-offset-2">About</a></li>
         </ul>
-      </div>
+      </nav>
 
       {/* Legal */}
-      <div>
+      <nav aria-label="Legal links">
         <h4 class="text-sm font-black uppercase tracking-wider mb-4">Legal</h4>
         <ul class="space-y-2 text-sm font-bold">
-          <li><a href="/privacy" class="hover:underline">Privacy Policy</a></li>
-          <li><a href="/terms" class="hover:underline">Terms of Service</a></li>
-          <li><a href="mailto:hello@publiccodeus.org" class="hover:underline">Contact</a></li>
+          <li><a href="/privacy" class="hover:underline focus-visible:outline-2 focus-visible:outline-nb-light focus-visible:outline-offset-2">Privacy Policy</a></li>
+          <li><a href="/terms" class="hover:underline focus-visible:outline-2 focus-visible:outline-nb-light focus-visible:outline-offset-2">Terms of Service</a></li>
+          <li><a href="mailto:hello@publiccodeus.org" class="hover:underline focus-visible:outline-2 focus-visible:outline-nb-light focus-visible:outline-offset-2">Contact</a></li>
         </ul>
-      </div>
+      </nav>
     </div>
 
     {/* Divider */}
-    <div class="border-t-2 border-nb-light my-8"></div>
+    <div class="border-t-2 border-nb-light my-8" role="separator"></div>
 
     {/* Bottom */}
     <div class="flex flex-col md:flex-row justify-between items-center text-xs font-bold">
       <p>&copy; {currentYear} Public Code US. All rights reserved.</p>
       <div class="flex gap-4 mt-4 md:mt-0">
-        <a href="https://threads.net/@publiccodeus" target="_blank" rel="noopener noreferrer" class="hover:underline">
-          Threads
+        <a href="https://threads.net/@publiccodeus" target="_blank" rel="noopener noreferrer" class="hover:underline focus-visible:outline-2 focus-visible:outline-nb-light focus-visible:outline-offset-2">
+          Threads<span class="sr-only"> (opens in new tab)</span>
         </a>
-        <a href="https://github.com/publiccodeus" target="_blank" rel="noopener noreferrer" class="hover:underline">
-          GitHub
+        <a href="https://github.com/publiccodeus" target="_blank" rel="noopener noreferrer" class="hover:underline focus-visible:outline-2 focus-visible:outline-nb-light focus-visible:outline-offset-2">
+          GitHub<span class="sr-only"> (opens in new tab)</span>
         </a>
-        <a href="https://www.fsfe.org/activities/publiccode/" target="_blank" rel="noopener noreferrer" class="hover:underline">
-          FSFE
+        <a href="https://www.fsfe.org/activities/publiccode/" target="_blank" rel="noopener noreferrer" class="hover:underline focus-visible:outline-2 focus-visible:outline-nb-light focus-visible:outline-offset-2">
+          FSFE<span class="sr-only"> (opens in new tab)</span>
         </a>
       </div>
     </div>
