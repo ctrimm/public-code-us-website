@@ -1,5 +1,9 @@
 ---
 import Layout from '../layouts/main.astro';
+import { getActiveStates, getBallotInitiativeStates } from '../lib/states';
+
+const activeCount = getActiveStates().length;
+const ballotStates = getBallotInitiativeStates().length;
 ---
 
 <Layout
@@ -15,96 +19,20 @@ import Layout from '../layouts/main.astro';
 				<span class="text-nb-pink">Public Code.</span>
 			</h1>
 			<p class="text-lg md:text-xl font-bold text-nb-dark mb-8 max-w-2xl">
-				Your tax dollars shouldn't be locked in proprietary software. Demand transparency, security, and innovation. Sign the petition for public code in America.
+				Your tax dollars fund government software you can't see, audit, or reuse. We're changing that through ballot initiatives across America.
 			</p>
 			<div class="flex flex-col sm:flex-row gap-4">
 				<a href="/sign" class="btn-nb btn-nb-primary inline-block text-center">
 					Sign the Petition
 				</a>
-				<a href="/learn" class="btn-nb inline-block text-center">
-					Learn Why It Matters
+				<a href="/campaign" class="btn-nb inline-block text-center">
+					See the Campaign Map
 				</a>
 			</div>
 		</div>
 	</section>
 
-	{/* Problem Section */}
-	<section class="bg-nb-light border-b-4 border-nb-dark">
-		<div class="max-w-7xl mx-auto px-4 py-20">
-			<h2 class="text-4xl md:text-5xl font-black uppercase italic text-nb-dark mb-12 text-center">
-				The Problem
-			</h2>
-			<div class="grid md:grid-cols-3 gap-6">
-				{/* Card 1 */}
-				<div class="card-nb bg-nb-yellow">
-					<h3 class="text-2xl font-black uppercase italic text-nb-dark mb-4">No Transparency</h3>
-					<p class="font-bold text-nb-dark">
-						Government software is developed behind closed doors with public money. Citizens can't see what they're paying for.
-					</p>
-				</div>
-
-				{/* Card 2 */}
-				<div class="card-nb bg-nb-pink">
-					<h3 class="text-2xl font-black uppercase italic text-nb-dark mb-4">Duplicated Work</h3>
-					<p class="font-bold text-nb-dark">
-						Every state and city rebuilds the same solutions from scratch. Wasted millions while communities need resources elsewhere.
-					</p>
-				</div>
-
-				{/* Card 3 */}
-				<div class="card-nb bg-nb-purple">
-					<h3 class="text-2xl font-black uppercase italic text-nb-dark mb-4">Security Risks</h3>
-					<p class="font-bold text-nb-dark">
-						Closed-source code can't be audited by security experts. Vulnerabilities hide in the dark, endangering citizen data.
-					</p>
-				</div>
-			</div>
-		</div>
-	</section>
-
-	{/* Benefits Section */}
-	<section class="bg-nb-cyan border-b-4 border-nb-dark">
-		<div class="max-w-7xl mx-auto px-4 py-20">
-			<h2 class="text-4xl md:text-5xl font-black uppercase italic text-nb-dark mb-12 text-center">
-				Why Public Code Matters
-			</h2>
-			<div class="grid md:grid-cols-2 gap-6">
-				{/* Benefit 1 */}
-				<div class="border-4 border-nb-dark bg-nb-light p-6 shadow-nb">
-					<h3 class="text-xl font-black uppercase italic text-nb-dark mb-3">Democratic Accountability</h3>
-					<p class="font-bold text-nb-dark">
-						Public software should be subject to public scrutiny. Citizens deserve to know how their government works.
-					</p>
-				</div>
-
-				{/* Benefit 2 */}
-				<div class="border-4 border-nb-dark bg-nb-light p-6 shadow-nb">
-					<h3 class="text-xl font-black uppercase italic text-nb-dark mb-3">Economic Efficiency</h3>
-					<p class="font-bold text-nb-dark">
-						Open code can be shared across agencies and states. One solution solves multiple problems. Billions in savings.
-					</p>
-				</div>
-
-				{/* Benefit 3 */}
-				<div class="border-4 border-nb-dark bg-nb-light p-6 shadow-nb">
-					<h3 class="text-xl font-black uppercase italic text-nb-dark mb-3">Better Security</h3>
-					<p class="font-bold text-nb-dark">
-						Open-source code gets audited by thousands of eyes. Vulnerabilities are found and fixed. Proprietary is blind.
-					</p>
-				</div>
-
-				{/* Benefit 4 */}
-				<div class="border-4 border-nb-dark bg-nb-light p-6 shadow-nb">
-					<h3 class="text-xl font-black uppercase italic text-nb-dark mb-3">Innovation & Jobs</h3>
-					<p class="font-bold text-nb-dark">
-						Public code attracts developers and entrepreneurs. Creates tech jobs. Builds local tech ecosystems.
-					</p>
-				</div>
-			</div>
-		</div>
-	</section>
-
-	{/* Statistics Section */}
+	{/* Statistics Section — leads with credibility */}
 	<section class="bg-nb-dark text-nb-light border-b-4 border-nb-dark py-20">
 		<div class="max-w-7xl mx-auto px-4">
 			<h2 class="text-4xl md:text-5xl font-black uppercase italic mb-12 text-center">The Scale</h2>
@@ -135,18 +63,120 @@ import Layout from '../layouts/main.astro';
 		</div>
 	</section>
 
+	{/* Problem Section */}
+	<section class="bg-nb-light border-b-4 border-nb-dark">
+		<div class="max-w-7xl mx-auto px-4 py-20">
+			<h2 class="text-4xl md:text-5xl font-black uppercase italic text-nb-dark mb-12 text-center">
+				The Problem
+			</h2>
+			<div class="grid md:grid-cols-3 gap-6">
+				<div class="card-nb bg-nb-yellow">
+					<h3 class="text-2xl font-black uppercase italic text-nb-dark mb-4">No Transparency</h3>
+					<p class="font-bold text-nb-dark">
+						Government software is developed behind closed doors with public money. Citizens can't see what they're paying for.
+					</p>
+				</div>
+
+				<div class="card-nb bg-nb-pink">
+					<h3 class="text-2xl font-black uppercase italic text-nb-dark mb-4">Duplicated Work</h3>
+					<p class="font-bold text-nb-dark">
+						Every state and city rebuilds the same solutions from scratch. Wasted millions while communities need resources elsewhere.
+					</p>
+				</div>
+
+				<div class="card-nb bg-nb-purple">
+					<h3 class="text-2xl font-black uppercase italic text-nb-dark mb-4">Security Risks</h3>
+					<p class="font-bold text-nb-dark">
+						Closed-source code can't be audited by security experts. Vulnerabilities hide in the dark, endangering citizen data.
+					</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	{/* Benefits Section */}
+	<section class="bg-nb-cyan border-b-4 border-nb-dark">
+		<div class="max-w-7xl mx-auto px-4 py-20">
+			<h2 class="text-4xl md:text-5xl font-black uppercase italic text-nb-dark mb-12 text-center">
+				Why Public Code Matters
+			</h2>
+			<div class="grid md:grid-cols-2 gap-6">
+				<div class="border-4 border-nb-dark bg-nb-light p-6 shadow-nb">
+					<h3 class="text-xl font-black uppercase italic text-nb-dark mb-3">Democratic Accountability</h3>
+					<p class="font-bold text-nb-dark">
+						Public software should be subject to public scrutiny. Citizens deserve to know how their government works.
+					</p>
+				</div>
+
+				<div class="border-4 border-nb-dark bg-nb-light p-6 shadow-nb">
+					<h3 class="text-xl font-black uppercase italic text-nb-dark mb-3">Economic Efficiency</h3>
+					<p class="font-bold text-nb-dark">
+						Open code can be shared across agencies and states. One solution solves multiple problems. Billions in savings.
+					</p>
+				</div>
+
+				<div class="border-4 border-nb-dark bg-nb-light p-6 shadow-nb">
+					<h3 class="text-xl font-black uppercase italic text-nb-dark mb-3">Better Security</h3>
+					<p class="font-bold text-nb-dark">
+						Open-source code gets audited by thousands of eyes. Vulnerabilities are found and fixed faster than proprietary alternatives.
+					</p>
+				</div>
+
+				<div class="border-4 border-nb-dark bg-nb-light p-6 shadow-nb">
+					<h3 class="text-xl font-black uppercase italic text-nb-dark mb-3">Innovation & Jobs</h3>
+					<p class="font-bold text-nb-dark">
+						Public code attracts developers and entrepreneurs. Creates tech jobs. Builds local tech ecosystems.
+					</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	{/* Campaign Progress — shows momentum */}
+	<section class="bg-nb-yellow border-b-4 border-nb-dark py-20">
+		<div class="max-w-7xl mx-auto px-4">
+			<h2 class="text-4xl md:text-5xl font-black uppercase italic text-nb-dark mb-12 text-center">
+				The Campaign
+			</h2>
+			<div class="grid md:grid-cols-3 gap-6 text-center">
+				<div class="border-4 border-nb-dark bg-nb-light p-8 shadow-nb">
+					<p class="text-5xl font-black italic text-nb-pink mb-2">{activeCount}</p>
+					<p class="font-bold text-nb-dark">Active state campaigns</p>
+				</div>
+				<div class="border-4 border-nb-dark bg-nb-light p-8 shadow-nb">
+					<p class="text-5xl font-black italic text-nb-purple mb-2">{ballotStates}</p>
+					<p class="font-bold text-nb-dark">States allow ballot initiatives</p>
+				</div>
+				<div class="border-4 border-nb-dark bg-nb-light p-8 shadow-nb">
+					<p class="text-5xl font-black italic text-nb-dark mb-2">50</p>
+					<p class="font-bold text-nb-dark">States we're building toward</p>
+				</div>
+			</div>
+			<div class="text-center mt-8">
+				<a href="/campaign" class="btn-nb btn-nb-primary inline-block text-center">
+					Explore the Campaign Map
+				</a>
+			</div>
+		</div>
+	</section>
+
 	{/* CTA Section */}
 	<section class="bg-nb-pink border-b-4 border-nb-dark py-20">
-		<div class="max-w-4xl mx-auto px-4 text-center text-nb-light">
+		<div class="max-w-4xl mx-auto px-4 text-center text-nb-dark">
 			<h2 class="text-4xl md:text-5xl font-black uppercase italic mb-6">
 				Join the Movement
 			</h2>
 			<p class="text-lg font-bold mb-8">
 				Demand that governments invest public money in public code. Sign the petition. Share with your network. Push for change.
 			</p>
-			<a href="/sign" class="btn-nb btn-nb-yellow inline-block text-center">
-				Add Your Signature Now
-			</a>
+			<div class="flex flex-col sm:flex-row gap-4 justify-center">
+				<a href="/sign" class="btn-nb btn-nb-yellow inline-block text-center">
+					Add Your Signature Now
+				</a>
+				<a href="/learn" class="btn-nb inline-block text-center border-nb-dark bg-nb-light">
+					Learn Why It Matters
+				</a>
+			</div>
 		</div>
 	</section>
 </Layout>

@@ -5,117 +5,171 @@ interface StateMapGridProps {
   onStateSelect?: (stateSlug: string) => void;
 }
 
-// Geographic grid positioning for US states
-// Organized in a grid that roughly represents geographic location
-const STATE_GRID = [
-  // Row 1 (Top West)
-  ['', '', '', '', '', '', '', 'WA', 'MT', 'ND', 'MN', 'WI', 'MI', 'VT', 'NH', 'ME'],
+// Standard US state tile grid map layout
+// Each state is positioned at [row, col] on a 10-row x 12-col grid
+// This follows the widely-used NPR / FiveThirtyEight tile grid convention
+const STATE_POSITIONS: Record<string, [number, number]> = {
+  // Row 0
+  AK: [0, 0],
+  ME: [0, 11],
+  // Row 1
+  WI: [1, 6],
+  VT: [1, 9],
+  NH: [1, 10],
   // Row 2
-  ['', '', '', '', '', '', 'OR', 'ID', 'WY', 'SD', 'IA', 'IL', 'IN', 'OH', 'PA', 'NY'],
+  WA: [2, 0],
+  ID: [2, 1],
+  MT: [2, 2],
+  ND: [2, 3],
+  MN: [2, 4],
+  IL: [2, 6],
+  MI: [2, 7],
+  NY: [2, 8],
+  MA: [2, 9],
+  CT: [2, 10],
+  RI: [2, 11],
   // Row 3
-  ['CA', 'NV', 'UT', 'CO', 'NE', 'MO', 'KY', 'VA', 'WV', 'MD', 'DE', 'NJ'],
+  OR: [3, 0],
+  NV: [3, 1],
+  WY: [3, 2],
+  SD: [3, 3],
+  IA: [3, 4],
+  IN: [3, 5],
+  OH: [3, 6],
+  PA: [3, 7],
+  NJ: [3, 8],
   // Row 4
-  ['', 'AZ', 'NM', 'OK', 'AR', 'TN', 'NC', 'SC'],
-  // Row 5 (South)
-  ['', '', 'TX', 'LA', 'MS', 'AL', 'GA', 'FL'],
-  // Row 6 (Territories)
-  ['AK', '', 'HI', '', '', 'DC'],
-];
+  CA: [4, 0],
+  UT: [4, 1],
+  CO: [4, 2],
+  NE: [4, 3],
+  MO: [4, 4],
+  KY: [4, 5],
+  WV: [4, 6],
+  VA: [4, 7],
+  MD: [4, 8],
+  DC: [4, 9],
+  DE: [4, 10],
+  // Row 5
+  AZ: [5, 1],
+  NM: [5, 2],
+  KS: [5, 3],
+  AR: [5, 4],
+  TN: [5, 5],
+  NC: [5, 6],
+  SC: [5, 7],
+  // Row 6
+  OK: [6, 3],
+  LA: [6, 4],
+  MS: [6, 5],
+  AL: [6, 6],
+  GA: [6, 7],
+  // Row 7
+  HI: [7, 0],
+  TX: [7, 3],
+  FL: [7, 8],
+};
+
+const GRID_COLS = 12;
+const GRID_ROWS = 8;
 
 export function StateMapGrid({ onStateSelect }: StateMapGridProps) {
   const [hoveredState, setHoveredState] = useState<string | null>(null);
   const [selectedState, setSelectedState] = useState<string | null>(null);
 
   const handleStateClick = (abbr: string) => {
-    if (!abbr) return;
     const state = getStateByAbbr(abbr);
     if (state) {
-      setSelectedState(state.slug);
+      setSelectedState(abbr);
       if (onStateSelect) {
         onStateSelect(state.slug);
       }
+      // Navigate to state page
+      window.location.href = `/states/${state.slug}`;
     }
   };
 
   const getStateColor = (abbr: string) => {
-    if (!abbr) return 'invisible pointer-events-none';
-
     const state = getStateByAbbr(abbr);
-    if (!state) return 'bg-gray-100';
+    if (!state) return 'bg-gray-200 text-nb-dark border-gray-400';
 
     if (state.campaignStatus === 'active') {
-      return 'bg-nb-pink text-nb-light';
+      return 'bg-nb-pink text-nb-dark border-nb-dark';
     } else if (state.campaignStatus === 'coming-soon') {
-      return 'bg-nb-yellow text-nb-dark';
+      return 'bg-nb-yellow text-nb-dark border-nb-dark';
     }
-    return 'bg-gray-100 text-nb-dark';
+    return 'bg-gray-200 text-nb-dark border-nb-dark';
   };
 
-  const getStateIcon = (abbr: string) => {
-    if (!abbr) return '';
-    const state = getStateByAbbr(abbr);
-    if (!state) return '';
-    if (state.campaignStatus === 'active') return '🚀';
-    if (state.campaignStatus === 'coming-soon') return '⏰';
-    return '';
-  };
+  // Build a 2D grid for rendering
+  const grid: (string | null)[][] = Array.from({ length: GRID_ROWS }, () =>
+    Array.from({ length: GRID_COLS }, () => null)
+  );
+
+  for (const [abbr, [row, col]] of Object.entries(STATE_POSITIONS)) {
+    grid[row][col] = abbr;
+  }
+
+  const hoveredStateData = hoveredState ? getStateByAbbr(hoveredState) : null;
 
   return (
     <div className="w-full">
       {/* Legend */}
       <div className="mb-8 flex flex-wrap justify-center gap-6 text-sm font-bold">
         <div className="flex items-center gap-2">
-          <div className="w-8 h-8 bg-nb-pink border-4 border-nb-dark"></div>
-          <span>Active Campaign 🚀</span>
+          <div className="w-6 h-6 bg-nb-pink border-2 border-nb-dark"></div>
+          <span className="text-nb-dark">Active Campaign</span>
         </div>
         <div className="flex items-center gap-2">
-          <div className="w-8 h-8 bg-nb-yellow border-4 border-nb-dark"></div>
-          <span>Coming Soon ⏰</span>
+          <div className="w-6 h-6 bg-nb-yellow border-2 border-nb-dark"></div>
+          <span className="text-nb-dark">Coming Soon</span>
         </div>
         <div className="flex items-center gap-2">
-          <div className="w-8 h-8 bg-gray-100 border-4 border-nb-dark"></div>
-          <span>Not Yet Active</span>
+          <div className="w-6 h-6 bg-gray-200 border-2 border-nb-dark"></div>
+          <span className="text-nb-dark">Not Yet Active</span>
         </div>
       </div>
 
       {/* Grid Map */}
-      <div className="bg-nb-light p-6 border-4 border-nb-dark overflow-x-auto">
-        <div className="inline-block">
-          {STATE_GRID.map((row, rowIdx) => (
-            <div key={rowIdx} className="flex gap-1 mb-1">
+      <div className="border-4 border-nb-dark bg-nb-light p-2 sm:p-4 md:p-6 overflow-x-auto">
+        <div className="min-w-[540px] mx-auto" style={{ maxWidth: '720px' }}>
+          {grid.map((row, rowIdx) => (
+            <div key={rowIdx} className="flex">
               {row.map((abbr, colIdx) => {
-                const state = abbr ? getStateByAbbr(abbr) : null;
-                const isSelected = selectedState === state?.slug;
+                if (!abbr) {
+                  return (
+                    <div
+                      key={`${rowIdx}-${colIdx}`}
+                      className="flex-1 aspect-square m-[1px]"
+                    />
+                  );
+                }
+
+                const state = getStateByAbbr(abbr);
+                const isSelected = selectedState === abbr;
                 const isHovered = hoveredState === abbr;
 
                 return (
                   <button
                     key={`${rowIdx}-${colIdx}`}
                     onClick={() => handleStateClick(abbr)}
-                    onMouseEnter={() => abbr && setHoveredState(abbr)}
+                    onMouseEnter={() => setHoveredState(abbr)}
                     onMouseLeave={() => setHoveredState(null)}
-                    disabled={!abbr}
                     className={`
-                      w-14 h-14 md:w-16 md:h-16 lg:w-20 lg:h-20
+                      flex-1 aspect-square m-[1px]
                       flex items-center justify-center
-                      border-4 border-nb-dark
-                      font-black text-xs md:text-sm lg:text-base
-                      uppercase
-                      transition-all duration-150
+                      border-2 border-nb-dark
+                      font-black text-[10px] sm:text-xs md:text-sm
+                      uppercase cursor-pointer
+                      transition-all duration-100
                       ${getStateColor(abbr)}
-                      ${!abbr ? 'pointer-events-none' : 'cursor-pointer'}
-                      ${isSelected ? 'ring-4 ring-nb-purple ring-offset-2 shadow-nb-lg' : ''}
-                      ${isHovered && abbr ? 'shadow-nb-lg scale-105 z-10' : ''}
-                      ${abbr ? 'hover:shadow-nb' : ''}
+                      ${isSelected ? 'ring-2 ring-nb-purple ring-offset-1 shadow-nb z-10' : ''}
+                      ${isHovered ? 'shadow-nb scale-110 z-20 brightness-110' : ''}
                     `}
-                    title={state ? `${state.name}: ${state.campaignStatus}` : ''}
+                    title={state ? `${state.name} — ${state.campaignStatus}` : abbr}
+                    aria-label={state ? state.name : abbr}
                   >
-                    {abbr && (
-                      <div className="text-center">
-                        <div className="text-lg">{getStateIcon(abbr)}</div>
-                        <div className="leading-none">{abbr}</div>
-                      </div>
-                    )}
+                    {abbr}
                   </button>
                 );
               })}
@@ -124,27 +178,34 @@ export function StateMapGrid({ onStateSelect }: StateMapGridProps) {
         </div>
       </div>
 
-      {/* Hover Info */}
-      {hoveredState && getStateByAbbr(hoveredState) && (
-        <div className="mt-4 p-4 border-4 border-nb-dark bg-nb-cyan">
-          <p className="font-black uppercase text-nb-dark">
-            {getStateByAbbr(hoveredState)!.name}
+      {/* Hover Info Panel */}
+      <div className={`mt-4 p-4 border-4 border-nb-dark transition-all ${hoveredStateData ? 'bg-nb-cyan' : 'bg-gray-100'}`}>
+        {hoveredStateData ? (
+          <div className="flex flex-wrap items-center gap-4">
+            <p className="font-black uppercase text-nb-dark text-lg">
+              {hoveredStateData.name}
+            </p>
+            <span className={`
+              px-3 py-1 text-xs font-black uppercase border-2 border-nb-dark
+              ${hoveredStateData.campaignStatus === 'active' ? 'bg-nb-pink text-nb-dark' : ''}
+              ${hoveredStateData.campaignStatus === 'coming-soon' ? 'bg-nb-yellow text-nb-dark' : ''}
+              ${hoveredStateData.campaignStatus === 'not-yet' ? 'bg-gray-200 text-nb-dark' : ''}
+            `}>
+              {hoveredStateData.campaignStatus === 'active' && 'Active Campaign'}
+              {hoveredStateData.campaignStatus === 'coming-soon' && 'Coming Soon'}
+              {hoveredStateData.campaignStatus === 'not-yet' && 'Not Yet Active'}
+            </span>
+            {hoveredStateData.campaignStatus !== 'not-yet' && (
+              <span className="text-sm font-bold text-nb-dark">
+                Target: {hoveredStateData.signatureTarget.toLocaleString()} signatures
+              </span>
+            )}
+          </div>
+        ) : (
+          <p className="font-bold text-gray-500 text-sm text-center">
+            Hover over a state to see details. Click to visit the state page.
           </p>
-          <p className="text-sm font-bold text-nb-dark">
-            {getStateByAbbr(hoveredState)!.campaignStatus === 'active'
-              ? '🚀 Campaign Active'
-              : getStateByAbbr(hoveredState)!.campaignStatus === 'coming-soon'
-              ? '⏰ Coming Soon'
-              : '❓ Not Yet Active'}
-          </p>
-        </div>
-      )}
-
-      {/* Instructions */}
-      <div className="mt-8 text-center">
-        <p className="font-black uppercase italic text-nb-dark text-lg">
-          Click a state to see details, contact your representatives, and get involved.
-        </p>
+        )}
       </div>
     </div>
   );
