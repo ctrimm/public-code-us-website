@@ -1,6 +1,6 @@
 ---
 import Layout from '../layouts/main.astro';
-import { StateMap } from '../components/StateMap';
+import { StateMapGrid } from '../components/StateMapGrid';
 import { NewsletterSignup } from '../components/NewsletterSignup';
 ---
 
@@ -22,7 +22,7 @@ import { NewsletterSignup } from '../components/NewsletterSignup';
   {/* Map Section */}
   <section class="bg-nb-light border-b-4 border-nb-dark py-20">
     <div class="max-w-6xl mx-auto px-4">
-      <StateMap client:load />
+      <StateMapGrid client:load />
     </div>
   </section>
 
