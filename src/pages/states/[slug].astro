@@ -83,14 +83,16 @@ const signatureProgress = 45; // Percentage (demo)
 
         <div>
           <div class="space-y-4">
-            <div class="card-nb bg-nb-purple text-nb-light">
+            <div class="card-nb bg-nb-purple text-nb-dark">
               <p class="font-black uppercase italic mb-2">Campaign Status</p>
               <p class="font-bold">
                 {state.campaignStatus === 'active'
                   ? 'We\'re actively collecting signatures. Help us reach the goal!'
                   : state.campaignStatus === 'coming-soon'
                   ? 'We\'re preparing to launch. Check back soon.'
-                  : 'No active campaign yet. Interest in organizing?'}
+                  : state.hasBallotInitiative
+                  ? 'This state allows ballot initiatives. We need an organizer!'
+                  : 'This state doesn\'t allow citizen ballot initiatives. Legislative advocacy is the path forward.'}
               </p>
             </div>
 
@@ -133,7 +135,7 @@ const signatureProgress = 45; // Percentage (demo)
             {state.seniorSenator.name}
           </h3>
           <p class="text-sm font-bold text-nb-dark mb-4">
-            Party: <strong>{state.seniorSenator.party === 'D' ? 'Democratic' : 'Republican'}</strong>
+            Party: <strong>{state.seniorSenator.party === 'D' ? 'Democratic' : state.seniorSenator.party === 'I' ? 'Independent' : state.seniorSenator.party === 'R' ? 'Republican' : 'N/A'}</strong>
           </p>
           <p class="font-bold text-nb-dark mb-4">
             📞 {state.seniorSenator.phone}<br />
@@ -156,7 +158,7 @@ const signatureProgress = 45; // Percentage (demo)
             {state.juniorSenator.name}
           </h3>
           <p class="text-sm font-bold text-nb-dark mb-4">
-            Party: <strong>{state.juniorSenator.party === 'D' ? 'Democratic' : 'Republican'}</strong>
+            Party: <strong>{state.juniorSenator.party === 'D' ? 'Democratic' : state.juniorSenator.party === 'I' ? 'Independent' : state.juniorSenator.party === 'R' ? 'Republican' : 'N/A'}</strong>
           </p>
           <p class="font-bold text-nb-dark mb-4">
             📞 {state.juniorSenator.phone}<br />

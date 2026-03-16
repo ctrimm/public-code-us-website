@@ -2,6 +2,12 @@
 import Layout from '../layouts/main.astro';
 import { StateMapGrid } from '../components/StateMapGrid';
 import { NewsletterSignup } from '../components/NewsletterSignup';
+import { STATES, getActiveStates, getComingSoonStates, getBallotInitiativeStates } from '../lib/states';
+
+const activeCount = getActiveStates().length;
+const comingSoonCount = getComingSoonStates().length;
+const ballotInitiativeCount = getBallotInitiativeStates().length;
+const needOrganizerCount = ballotInitiativeCount - activeCount - comingSoonCount;
 ---
 
 <Layout
@@ -34,20 +40,20 @@ import { NewsletterSignup } from '../components/NewsletterSignup';
       <div class="grid md:grid-cols-3 gap-6 mb-12">
         <div class="card-nb bg-nb-pink text-nb-dark">
           <p class="text-sm font-black uppercase tracking-widest mb-2">Active Campaigns</p>
-          <p class="text-5xl font-black italic">4</p>
+          <p class="text-5xl font-black italic">{activeCount}</p>
           <p class="font-bold mt-2">States currently organizing</p>
         </div>
 
         <div class="card-nb bg-nb-purple text-nb-dark">
           <p class="text-sm font-black uppercase tracking-widest mb-2">Coming Soon</p>
-          <p class="text-5xl font-black italic">2</p>
+          <p class="text-5xl font-black italic">{comingSoonCount}</p>
           <p class="font-bold mt-2">States preparing to launch</p>
         </div>
 
         <div class="card-nb bg-nb-yellow text-nb-dark">
-          <p class="text-sm font-black uppercase tracking-widest mb-2">Need Organizers</p>
-          <p class="text-5xl font-black italic">44+</p>
-          <p class="font-bold mt-2">States looking for leaders</p>
+          <p class="text-sm font-black uppercase tracking-widest mb-2">Ballot Initiative States</p>
+          <p class="text-5xl font-black italic">{ballotInitiativeCount}</p>
+          <p class="font-bold mt-2">{needOrganizerCount} still need organizers</p>
         </div>
       </div>
 
