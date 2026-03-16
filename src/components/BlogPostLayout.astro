@@ -3,15 +3,31 @@ import Layout from '../layouts/main.astro';
 import { ShareButtons } from './ShareButtons';
 
 export interface Props {
-  title: string;
-  description: string;
-  date: string;
+  title?: string;
+  description?: string;
+  date?: string;
   author?: string;
   image?: string;
   readTime?: string;
+  frontmatter?: {
+    title: string;
+    description: string;
+    date: string;
+    author?: string;
+    image?: string;
+    readTime?: string;
+  };
 }
 
-const { title, description, date, author = 'Public Code US Team', image, readTime } = Astro.props;
+// Get properties from either direct props or frontmatter object
+const props = Astro.props as any;
+const frontmatter = props.frontmatter || props;
+const title = frontmatter.title || 'Untitled Post';
+const description = frontmatter.description || '';
+const date = frontmatter.date || new Date().toISOString();
+const author = frontmatter.author || 'Public Code US Team';
+const image = frontmatter.image;
+const readTime = frontmatter.readTime;
 const url = Astro.url.href;
 ---
 
