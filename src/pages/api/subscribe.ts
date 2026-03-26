@@ -80,7 +80,7 @@ export const POST: APIRoute = async ({ request }) => {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-          from: 'Public Code US <hello@publiccodeus.org>',
+          from: 'Public Code US <hello@publiccode.us>',
           to: body.email,
           subject: 'Welcome to Public Code US!',
           html: `
@@ -93,7 +93,7 @@ export const POST: APIRoute = async ({ request }) => {
               <li>Campaign milestones and victories</li>
               <li>Organizing tips and resources</li>
             </ul>
-            <p><a href="https://publiccodeus.org">Visit our website</a></p>
+            <p><a href="https://publiccode.us">Visit our website</a></p>
             <p>Together, we'll demand publicly funded software be publicly owned.</p>
             <p>— The Public Code US Team</p>
           `

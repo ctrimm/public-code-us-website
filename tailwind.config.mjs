@@ -49,13 +49,13 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
-        // Neobrutalist palette
-        "nb-cyan": "#E0F7FA",
-        "nb-pink": "#FF4081",
-        "nb-purple": "#7C4DFF",
-        "nb-yellow": "#FFEA00",
-        "nb-dark": "#09090B",
-        "nb-light": "#FFFFFF",
+        // Americana palette
+        "am-red": "#E31837",
+        "am-blue": "#0033A0",
+        "am-light-blue": "#00A3E0",
+        "am-dark": "#0A1128",
+        "am-light": "#FFFFFF",
+        "am-white": "#F8F9FA",
       },
       borderRadius: {
         none: "0px",
@@ -64,11 +64,11 @@ export default {
         sm: "calc(var(--radius) - 4px)",
       },
       fontFamily: {
-        sans: ["Space Grotesk", "Syne", "Archivo", ...fontFamily.sans],
+        sans: ["Inter", "Roboto", "Helvetica Neue", "Arial Nova", "Nimbus Sans", "Arial", "sans-serif", ...fontFamily.sans],
       },
       boxShadow: {
-        "nb": "8px 8px 0px 0px rgba(9, 9, 11, 0.3)",
-        "nb-lg": "12px 12px 0px 0px rgba(9, 9, 11, 0.4)",
+        "am": "0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)",
+        "am-lg": "0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)",
       },
       keyframes: {
         marquee: {

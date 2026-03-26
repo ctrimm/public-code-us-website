@@ -27,6 +27,39 @@ const robotsContent = [
   noindex && 'noindex',
   nofollow && 'nofollow',
 ].filter(Boolean).join(', ') || 'index, follow';
+
+const schema = type === 'article' ? {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": title,
+  "image": imageUrl,
+  "url": canonicalURL,
+  "description": description,
+  "author": {
+    "@type": "Organization",
+    "name": "Public Code US",
+    "url": "https://publiccode.us/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Public Code US",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://publiccode.us/favicon.svg"
+    }
+  }
+} : {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Public Code US",
+  "url": "https://publiccode.us/",
+  "logo": "https://publiccode.us/favicon.svg",
+  "description": "A movement to require publicly funded software to be publicly owned.",
+  "sameAs": [
+    "https://twitter.com/publiccodeus",
+    "https://github.com/public-code-us"
+  ]
+};
 ---
 
 <!-- Primary Meta Tags -->
@@ -54,3 +87,6 @@ const robotsContent = [
 
 <!-- Additional Meta Tags -->
 <meta name="generator" content={Astro.generator} />
+
+<!-- JSON-LD Structured Data for AEO -->
+<script type="application/ld+json" set:html={JSON.stringify(schema)} />

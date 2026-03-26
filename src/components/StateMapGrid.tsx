@@ -91,20 +91,20 @@ export function StateMapGrid({ onStateSelect }: StateMapGridProps) {
 
   const getStateColor = (abbr: string) => {
     const state = getStateByAbbr(abbr);
-    if (!state) return 'bg-gray-200 text-nb-dark border-gray-400';
+    if (!state) return 'bg-gray-200 text-am-dark border-gray-400';
 
     if (state.campaignStatus === 'active') {
-      return 'bg-nb-pink text-nb-dark border-nb-dark';
+      return 'bg-am-red text-am-dark border-am-dark';
     } else if (state.campaignStatus === 'coming-soon') {
-      return 'bg-nb-yellow text-nb-dark border-nb-dark';
+      return 'bg-am-white text-am-dark border-am-dark';
     }
 
     // Highlight states without ballot initiative eligibility
     if (!state.hasBallotInitiative) {
-      return 'bg-nb-light text-nb-dark border-nb-dark opacity-50';
+      return 'bg-am-light text-am-dark border-am-dark opacity-50';
     }
 
-    return 'bg-gray-200 text-nb-dark border-nb-dark';
+    return 'bg-gray-200 text-am-dark border-am-dark';
   };
 
   // Build a 2D grid for rendering
@@ -123,25 +123,25 @@ export function StateMapGrid({ onStateSelect }: StateMapGridProps) {
       {/* Legend */}
       <div className="mb-8 flex flex-wrap justify-center gap-6 text-sm font-bold">
         <div className="flex items-center gap-2">
-          <div className="w-6 h-6 bg-nb-pink border-2 border-nb-dark"></div>
-          <span className="text-nb-dark">Active Campaign</span>
+          <div className="w-6 h-6 bg-am-red border-2 border-am-dark"></div>
+          <span className="text-am-dark">Active Campaign</span>
         </div>
         <div className="flex items-center gap-2">
-          <div className="w-6 h-6 bg-nb-yellow border-2 border-nb-dark"></div>
-          <span className="text-nb-dark">Coming Soon</span>
+          <div className="w-6 h-6 bg-am-white border-2 border-am-dark"></div>
+          <span className="text-am-dark">Coming Soon</span>
         </div>
         <div className="flex items-center gap-2">
-          <div className="w-6 h-6 bg-gray-200 border-2 border-nb-dark"></div>
-          <span className="text-nb-dark">Ballot Initiative Eligible</span>
+          <div className="w-6 h-6 bg-gray-200 border-2 border-am-dark"></div>
+          <span className="text-am-dark">Ballot Initiative Eligible</span>
         </div>
         <div className="flex items-center gap-2">
-          <div className="w-6 h-6 bg-nb-light border-2 border-nb-dark opacity-50"></div>
-          <span className="text-nb-dark">No Ballot Initiative</span>
+          <div className="w-6 h-6 bg-am-light border-2 border-am-dark opacity-50"></div>
+          <span className="text-am-dark">No Ballot Initiative</span>
         </div>
       </div>
 
       {/* Grid Map */}
-      <div className="border-4 border-nb-dark bg-nb-light p-2 sm:p-4 md:p-6 overflow-x-auto">
+      <div className="border-4 border-am-dark bg-am-light p-2 sm:p-4 md:p-6 overflow-x-auto">
         <div className="min-w-[540px] mx-auto" style={{ maxWidth: '720px' }}>
           {grid.map((row, rowIdx) => (
             <div key={rowIdx} className="flex">
@@ -168,13 +168,13 @@ export function StateMapGrid({ onStateSelect }: StateMapGridProps) {
                     className={`
                       flex-1 aspect-square m-[1px]
                       flex items-center justify-center
-                      border-2 border-nb-dark
+                      border-2 border-am-dark
                       font-black text-[10px] sm:text-xs md:text-sm
                       uppercase cursor-pointer
                       transition-all duration-100
                       ${getStateColor(abbr)}
-                      ${isSelected ? 'ring-2 ring-nb-purple ring-offset-1 shadow-nb z-10' : ''}
-                      ${isHovered ? 'shadow-nb scale-110 z-20 brightness-110' : ''}
+                      ${isSelected ? 'ring-2 ring-am-light-blue ring-offset-1 shadow-am z-10' : ''}
+                      ${isHovered ? 'shadow-am scale-110 z-20 brightness-110' : ''}
                     `}
                     title={state ? `${state.name} — ${state.campaignStatus}` : abbr}
                     aria-label={state ? state.name : abbr}
@@ -189,33 +189,33 @@ export function StateMapGrid({ onStateSelect }: StateMapGridProps) {
       </div>
 
       {/* Hover Info Panel */}
-      <div className={`mt-4 p-4 border-4 border-nb-dark transition-all ${hoveredStateData ? 'bg-nb-cyan' : 'bg-gray-100'}`}>
+      <div className={`mt-4 p-4 border-4 border-am-dark transition-all ${hoveredStateData ? 'bg-am-blue' : 'bg-gray-100'}`}>
         {hoveredStateData ? (
           <div className="flex flex-wrap items-center gap-4">
-            <p className="font-black uppercase text-nb-dark text-lg">
+            <p className="font-bold uppercase text-am-dark text-lg">
               {hoveredStateData.name}
             </p>
             <span className={`
-              px-3 py-1 text-xs font-black uppercase border-2 border-nb-dark
-              ${hoveredStateData.campaignStatus === 'active' ? 'bg-nb-pink text-nb-dark' : ''}
-              ${hoveredStateData.campaignStatus === 'coming-soon' ? 'bg-nb-yellow text-nb-dark' : ''}
-              ${hoveredStateData.campaignStatus === 'not-yet' ? 'bg-gray-200 text-nb-dark' : ''}
+              px-3 py-1 text-xs font-black uppercase border-2 border-am-dark
+              ${hoveredStateData.campaignStatus === 'active' ? 'bg-am-red text-am-dark' : ''}
+              ${hoveredStateData.campaignStatus === 'coming-soon' ? 'bg-am-white text-am-dark' : ''}
+              ${hoveredStateData.campaignStatus === 'not-yet' ? 'bg-gray-200 text-am-dark' : ''}
             `}>
               {hoveredStateData.campaignStatus === 'active' && 'Active Campaign'}
               {hoveredStateData.campaignStatus === 'coming-soon' && 'Coming Soon'}
               {hoveredStateData.campaignStatus === 'not-yet' && 'Not Yet Active'}
             </span>
             {hoveredStateData.hasBallotInitiative ? (
-              <span className="text-xs font-bold text-nb-dark px-3 py-1 bg-white border-2 border-nb-dark">
+              <span className="text-xs font-bold text-am-dark px-3 py-1 bg-white border-2 border-am-dark">
                 Ballot Initiative State
               </span>
             ) : (
-              <span className="text-xs font-bold text-nb-dark px-3 py-1 bg-nb-light border-2 border-nb-dark opacity-75">
+              <span className="text-xs font-bold text-am-dark px-3 py-1 bg-am-light border-2 border-am-dark opacity-75">
                 No Ballot Initiative Option
               </span>
             )}
             {hoveredStateData.campaignStatus !== 'not-yet' && (
-              <span className="text-sm font-bold text-nb-dark">
+              <span className="text-sm font-bold text-am-dark">
                 Target: {hoveredStateData.signatureTarget.toLocaleString()} signatures
               </span>
             )}

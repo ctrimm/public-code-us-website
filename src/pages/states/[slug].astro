@@ -30,9 +30,9 @@ const signatureProgress = 45; // Percentage (demo)
   currentPage={`/states/${slug}`}
 >
   {/* Hero */}
-  <section class="bg-nb-pink text-nb-light border-b-4 border-nb-dark py-20">
+  <section class="bg-am-red text-am-light border-b-4 border-am-dark py-20">
     <div class="max-w-4xl mx-auto px-4">
-      <h1 class="text-6xl md:text-7xl font-black uppercase italic mb-4">{state.name}</h1>
+      <h1 class="text-6xl md:text-7xl font-bold mb-4">{state.name}</h1>
       <p class="text-xl font-bold mb-6">
         {state.campaignStatus === 'active'
           ? '🚀 Campaign Active - Help us reach our goal!'
@@ -40,7 +40,7 @@ const signatureProgress = 45; // Percentage (demo)
           ? '⏰ Coming Soon - Stay tuned for launch'
           : 'Not yet launched - Contact us to organize'}
       </p>
-      <a href="/sign" class="btn-nb btn-nb-yellow inline-block">
+      <a href="/sign" class="btn-am btn-am-white inline-block">
         Sign the Petition
       </a>
     </div>
@@ -48,19 +48,19 @@ const signatureProgress = 45; // Percentage (demo)
 
   {/* Ballot Initiative Status Section */}
   {!state.hasBallotInitiative && (
-    <section class="bg-nb-yellow border-b-4 border-nb-dark py-20">
+    <section class="bg-am-white border-b-4 border-am-dark py-20">
       <div class="max-w-4xl mx-auto px-4">
-        <div class="border-4 border-nb-dark bg-nb-light p-8">
-          <h2 class="text-4xl font-black uppercase italic text-nb-dark mb-6">
+        <div class="border-4 border-am-dark bg-am-light p-8">
+          <h2 class="text-4xl font-bold text-am-dark mb-6">
             No Citizen Ballot Initiative Process
           </h2>
-          <p class="text-lg font-bold text-nb-dark mb-6">
+          <p class="text-lg font-bold text-am-dark mb-6">
             {state.name} doesn't allow citizen ballot initiatives. However, that doesn't mean change is impossible.
           </p>
-          <p class="text-lg font-bold text-nb-dark mb-4">
+          <p class="text-lg font-bold text-am-dark mb-4">
             <strong>Direct legislative advocacy is the path forward.</strong> By contacting your representatives and making your voice heard, you can push for public code policies at the state level.
           </p>
-          <p class="font-bold text-nb-dark">
+          <p class="font-bold text-am-dark">
             Your phone calls, emails, and letters to your U.S. Senators and Congressional representatives matter. Tell them why public code is important to {state.name}.
           </p>
         </div>
@@ -70,28 +70,28 @@ const signatureProgress = 45; // Percentage (demo)
 
   {/* Signature Progress - Only show if state has ballot initiatives */}
   {state.hasBallotInitiative && (
-    <section class="bg-nb-light border-b-4 border-nb-dark py-20">
+    <section class="bg-am-light border-b-4 border-am-dark py-20">
       <div class="max-w-4xl mx-auto px-4">
-        <h2 class="text-4xl font-black uppercase italic text-nb-dark mb-12">Signature Progress</h2>
+        <h2 class="text-4xl font-bold text-am-dark mb-12">Signature Progress</h2>
 
         <div class="grid md:grid-cols-2 gap-8">
           <div>
             <div class="mb-4">
-              <p class="text-sm font-black uppercase tracking-widest text-nb-dark mb-2">
+              <p class="text-sm font-bold uppercase tracking-widest text-am-dark mb-2">
                 Signatures Needed
               </p>
-              <p class="text-5xl font-black italic text-nb-pink">
+              <p class="text-5xl font-bold text-am-red">
                 {state.signatureTarget.toLocaleString()}
               </p>
-              <p class="font-bold text-nb-dark text-sm mt-2">
+              <p class="font-bold text-am-dark text-sm mt-2">
                 {state.populationPercent} of registered voters
               </p>
             </div>
 
-            <div class="card-nb bg-nb-cyan">
-              <p class="font-black uppercase italic text-nb-dark text-sm mb-2">Progress</p>
+            <div class="card-am bg-am-blue">
+              <p class="font-bold text-am-dark text-sm mb-2">Progress</p>
               <div
-                class="w-full bg-gray-300 border-2 border-nb-dark h-8 mb-2"
+                class="w-full bg-gray-300 border-2 border-am-dark h-8 mb-2"
                 role="progressbar"
                 aria-valuenow={signatureProgress}
                 aria-valuemin={0}
@@ -99,13 +99,13 @@ const signatureProgress = 45; // Percentage (demo)
                 aria-label={`Signature progress: ${signatureProgress}%`}
               >
                 <div
-                  class="bg-nb-yellow h-full border-r-2 border-nb-dark flex items-center justify-center text-sm font-black"
+                  class="bg-am-white h-full border-r-2 border-am-dark flex items-center justify-center text-sm font-bold"
                   style={`width: ${signatureProgress}%`}
                 >
                   <span aria-hidden="true">{signatureProgress}%</span>
                 </div>
               </div>
-              <p class="text-sm font-bold text-nb-dark">
+              <p class="text-sm font-bold text-am-dark">
                 ~{Math.floor(state.signatureTarget * (signatureProgress / 100)).toLocaleString()} signatures collected
               </p>
             </div>
@@ -113,8 +113,8 @@ const signatureProgress = 45; // Percentage (demo)
 
           <div>
             <div class="space-y-4">
-              <div class="card-nb bg-nb-purple text-nb-dark">
-                <p class="font-black uppercase italic mb-2">Campaign Status</p>
+              <div class="card-am bg-am-light-blue text-am-dark">
+                <p class="font-bold mb-2">Campaign Status</p>
                 <p class="font-bold">
                   {state.campaignStatus === 'active'
                     ? 'We\'re actively collecting signatures. Help us reach the goal!'
@@ -125,19 +125,19 @@ const signatureProgress = 45; // Percentage (demo)
               </div>
 
               {state.hasOrganizer ? (
-                <div class="card-nb bg-nb-yellow">
-                  <p class="font-black uppercase italic text-nb-dark mb-2">✓ Local Organizer</p>
-                  <p class="font-bold text-nb-dark">
+                <div class="card-am bg-am-white">
+                  <p class="font-bold text-am-dark mb-2">✓ Local Organizer</p>
+                  <p class="font-bold text-am-dark">
                     We have a local organizer coordinating the effort. <a href="/about" class="underline">Contact us</a> to get involved.
                   </p>
                 </div>
               ) : (
-                <div class="card-nb border-4 border-nb-dark bg-nb-light">
-                  <p class="font-black uppercase italic text-nb-dark mb-2">Need a Local Organizer</p>
-                  <p class="font-bold text-nb-dark mb-4">
+                <div class="card-am border-4 border-am-dark bg-am-light">
+                  <p class="font-bold text-am-dark mb-2">Need a Local Organizer</p>
+                  <p class="font-bold text-am-dark mb-4">
                     We're looking for someone to lead the {state.name} campaign.
                   </p>
-                  <a href="mailto:organize@publiccodeus.org" class="btn-nb btn-nb-primary inline-block">
+                  <a href="mailto:organize@publiccode.us" class="btn-am btn-am-primary inline-block">
                     ✉️ Express Interest
                   </a>
                 </div>
@@ -150,23 +150,23 @@ const signatureProgress = 45; // Percentage (demo)
   )}
 
   {/* Contact Your Representatives */}
-  <section id="contact-representatives" class="bg-nb-cyan border-b-4 border-nb-dark py-20">
+  <section id="contact-representatives" class="bg-am-blue border-b-4 border-am-dark py-20">
     <div class="max-w-4xl mx-auto px-4">
-      <h2 class="text-4xl font-black uppercase italic text-nb-dark mb-12">
+      <h2 class="text-4xl font-bold text-am-dark mb-12">
         Contact Your Representatives
       </h2>
 
       <div class="grid md:grid-cols-2 gap-6">
         {/* Senior Senator */}
-        <div class="card-nb border-4 border-nb-dark bg-nb-light">
-          <p class="text-sm font-black uppercase tracking-widest text-nb-dark mb-2">U.S. Senator (Senior)</p>
-          <h3 class="text-2xl font-black uppercase italic text-nb-dark mb-2">
+        <div class="card-am border-4 border-am-dark bg-am-light">
+          <p class="text-sm font-bold uppercase tracking-widest text-am-dark mb-2">U.S. Senator (Senior)</p>
+          <h3 class="text-2xl font-bold text-am-dark mb-2">
             {state.seniorSenator.name}
           </h3>
-          <p class="text-sm font-bold text-nb-dark mb-4">
+          <p class="text-sm font-bold text-am-dark mb-4">
             Party: <strong>{state.seniorSenator.party === 'D' ? 'Democratic' : state.seniorSenator.party === 'I' ? 'Independent' : state.seniorSenator.party === 'R' ? 'Republican' : 'N/A'}</strong>
           </p>
-          <p class="font-bold text-nb-dark mb-4">
+          <p class="font-bold text-am-dark mb-4">
             📞 {state.seniorSenator.phone}<br />
             🌐 {state.seniorSenator.website}
           </p>
@@ -174,22 +174,22 @@ const signatureProgress = 45; // Percentage (demo)
             href={`https://${state.seniorSenator.website}/contact`}
             target="_blank"
             rel="noopener noreferrer"
-            class="btn-nb btn-nb-primary inline-block text-sm"
+            class="btn-am btn-am-primary inline-block text-sm"
           >
             Contact →<span class="sr-only"> (opens in new tab)</span>
           </a>
         </div>
 
         {/* Junior Senator */}
-        <div class="card-nb border-4 border-nb-dark bg-nb-light">
-          <p class="text-sm font-black uppercase tracking-widest text-nb-dark mb-2">U.S. Senator (Junior)</p>
-          <h3 class="text-2xl font-black uppercase italic text-nb-dark mb-2">
+        <div class="card-am border-4 border-am-dark bg-am-light">
+          <p class="text-sm font-bold uppercase tracking-widest text-am-dark mb-2">U.S. Senator (Junior)</p>
+          <h3 class="text-2xl font-bold text-am-dark mb-2">
             {state.juniorSenator.name}
           </h3>
-          <p class="text-sm font-bold text-nb-dark mb-4">
+          <p class="text-sm font-bold text-am-dark mb-4">
             Party: <strong>{state.juniorSenator.party === 'D' ? 'Democratic' : state.juniorSenator.party === 'I' ? 'Independent' : state.juniorSenator.party === 'R' ? 'Republican' : 'N/A'}</strong>
           </p>
-          <p class="font-bold text-nb-dark mb-4">
+          <p class="font-bold text-am-dark mb-4">
             📞 {state.juniorSenator.phone}<br />
             🌐 {state.juniorSenator.website}
           </p>
@@ -197,18 +197,18 @@ const signatureProgress = 45; // Percentage (demo)
             href={`https://${state.juniorSenator.website}/contact`}
             target="_blank"
             rel="noopener noreferrer"
-            class="btn-nb btn-nb-primary inline-block text-sm"
+            class="btn-am btn-am-primary inline-block text-sm"
           >
             Contact →<span class="sr-only"> (opens in new tab)</span>
           </a>
         </div>
       </div>
 
-      <div class="mt-8 border-4 border-nb-dark bg-nb-light p-6">
-        <p class="font-bold text-nb-dark mb-4">
+      <div class="mt-8 border-4 border-am-dark bg-am-light p-6">
+        <p class="font-bold text-am-dark mb-4">
           💡 <strong>Tip:</strong> Tell your representatives why public code matters to {state.name}.
         </p>
-        <ul class="space-y-2 font-bold text-nb-dark">
+        <ul class="space-y-2 font-bold text-am-dark">
           <li>• Share stories of wasted taxpayer money</li>
           <li>• Explain how public code saves money</li>
           {state.hasBallotInitiative && <li>• Ask them to support the ballot initiative</li>}
@@ -221,13 +221,13 @@ const signatureProgress = 45; // Percentage (demo)
 
   {/* How to Organize Locally - With Ballot Initiative */}
   {state.hasBallotInitiative && (
-    <section class="bg-nb-dark text-nb-light border-b-4 border-nb-dark py-20">
+    <section class="bg-am-dark text-am-light border-b-4 border-am-dark py-20">
       <div class="max-w-4xl mx-auto px-4">
-        <h2 class="text-4xl font-black uppercase italic mb-12">How to Organize in {state.name}</h2>
+        <h2 class="text-4xl font-bold mb-12">How to Organize in {state.name}</h2>
 
         <div class="grid md:grid-cols-2 gap-6">
-          <div class="border-4 border-nb-light p-6">
-            <h3 class="text-2xl font-black uppercase italic mb-4">🗣️ Spread the Word</h3>
+          <div class="border-4 border-am-light p-6">
+            <h3 class="text-2xl font-bold mb-4">🗣️ Spread the Word</h3>
             <ul class="space-y-2 font-bold">
               <li>• Share on social media</li>
               <li>• Talk to friends and family</li>
@@ -236,8 +236,8 @@ const signatureProgress = 45; // Percentage (demo)
             </ul>
           </div>
 
-          <div class="border-4 border-nb-light p-6">
-            <h3 class="text-2xl font-black uppercase italic mb-4">✍️ Collect Signatures</h3>
+          <div class="border-4 border-am-light p-6">
+            <h3 class="text-2xl font-bold mb-4">✍️ Collect Signatures</h3>
             <ul class="space-y-2 font-bold">
               <li>• Host signature gathering events</li>
               <li>• Set up tables at farmers markets</li>
@@ -246,8 +246,8 @@ const signatureProgress = 45; // Percentage (demo)
             </ul>
           </div>
 
-          <div class="border-4 border-nb-light p-6">
-            <h3 class="text-2xl font-black uppercase italic mb-4">🤝 Build Community</h3>
+          <div class="border-4 border-am-light p-6">
+            <h3 class="text-2xl font-bold mb-4">🤝 Build Community</h3>
             <ul class="space-y-2 font-bold">
               <li>• Form a local organizing group</li>
               <li>• Host community meetings</li>
@@ -256,8 +256,8 @@ const signatureProgress = 45; // Percentage (demo)
             </ul>
           </div>
 
-          <div class="border-4 border-nb-light p-6">
-            <h3 class="text-2xl font-black uppercase italic mb-4">📰 Build Support</h3>
+          <div class="border-4 border-am-light p-6">
+            <h3 class="text-2xl font-bold mb-4">📰 Build Support</h3>
             <ul class="space-y-2 font-bold">
               <li>• Pitch stories to local media</li>
               <li>• Speak at public events</li>
@@ -267,9 +267,9 @@ const signatureProgress = 45; // Percentage (demo)
           </div>
         </div>
 
-        <div class="mt-8 border-4 border-nb-light p-6 text-center">
-          <h3 class="text-xl font-black uppercase italic mb-4">Need Help?</h3>
-          <a href="/organize" class="btn-nb btn-nb-pink inline-block">
+        <div class="mt-8 border-4 border-am-light p-6 text-center">
+          <h3 class="text-xl font-bold mb-4">Need Help?</h3>
+          <a href="/organize" class="btn-am btn-am-red inline-block">
             View Organizing Guide →
           </a>
         </div>
@@ -279,13 +279,13 @@ const signatureProgress = 45; // Percentage (demo)
 
   {/* How to Advocate Legislatively - Without Ballot Initiative */}
   {!state.hasBallotInitiative && (
-    <section class="bg-nb-dark text-nb-light border-b-4 border-nb-dark py-20">
+    <section class="bg-am-dark text-am-light border-b-4 border-am-dark py-20">
       <div class="max-w-4xl mx-auto px-4">
-        <h2 class="text-4xl font-black uppercase italic mb-12">How to Advocate in {state.name}</h2>
+        <h2 class="text-4xl font-bold mb-12">How to Advocate in {state.name}</h2>
 
         <div class="grid md:grid-cols-2 gap-6">
-          <div class="border-4 border-nb-light p-6">
-            <h3 class="text-2xl font-black uppercase italic mb-4">📞 Direct Contact</h3>
+          <div class="border-4 border-am-light p-6">
+            <h3 class="text-2xl font-bold mb-4">📞 Direct Contact</h3>
             <ul class="space-y-2 font-bold">
               <li>• Call your U.S. Senators</li>
               <li>• Email your representatives</li>
@@ -294,8 +294,8 @@ const signatureProgress = 45; // Percentage (demo)
             </ul>
           </div>
 
-          <div class="border-4 border-nb-light p-6">
-            <h3 class="text-2xl font-black uppercase italic mb-4">🗣️ Make Your Case</h3>
+          <div class="border-4 border-am-light p-6">
+            <h3 class="text-2xl font-bold mb-4">🗣️ Make Your Case</h3>
             <ul class="space-y-2 font-bold">
               <li>• Share stories of wasted tax money</li>
               <li>• Explain how public code saves money</li>
@@ -304,8 +304,8 @@ const signatureProgress = 45; // Percentage (demo)
             </ul>
           </div>
 
-          <div class="border-4 border-nb-light p-6">
-            <h3 class="text-2xl font-black uppercase italic mb-4">🤝 Build Coalition</h3>
+          <div class="border-4 border-am-light p-6">
+            <h3 class="text-2xl font-bold mb-4">🤝 Build Coalition</h3>
             <ul class="space-y-2 font-bold">
               <li>• Connect with tech advocacy groups</li>
               <li>• Find like-minded citizens locally</li>
@@ -314,8 +314,8 @@ const signatureProgress = 45; // Percentage (demo)
             </ul>
           </div>
 
-          <div class="border-4 border-nb-light p-6">
-            <h3 class="text-2xl font-black uppercase italic mb-4">📰 Raise Awareness</h3>
+          <div class="border-4 border-am-light p-6">
+            <h3 class="text-2xl font-bold mb-4">📰 Raise Awareness</h3>
             <ul class="space-y-2 font-bold">
               <li>• Write op-eds about public code</li>
               <li>• Share on social media</li>
@@ -325,8 +325,8 @@ const signatureProgress = 45; // Percentage (demo)
           </div>
         </div>
 
-        <div class="mt-8 border-4 border-nb-light p-6">
-          <h3 class="text-xl font-black uppercase italic mb-4 text-center">Why Direct Advocacy?</h3>
+        <div class="mt-8 border-4 border-am-light p-6">
+          <h3 class="text-xl font-bold mb-4 text-center">Why Direct Advocacy?</h3>
           <p class="font-bold">
             Without a ballot initiative process, direct advocacy to elected officials is the most effective path to change. Your representatives need to hear from constituents like you about why public code matters for {state.name}'s future.
           </p>
@@ -336,9 +336,9 @@ const signatureProgress = 45; // Percentage (demo)
   )}
 
   {/* Share This Page */}
-  <section class="bg-nb-cyan border-b-4 border-nb-dark py-20">
+  <section class="bg-am-blue border-b-4 border-am-dark py-20">
     <div class="max-w-4xl mx-auto px-4">
-      <h2 class="text-3xl font-black uppercase italic text-nb-dark mb-6">Share This Page</h2>
+      <h2 class="text-3xl font-bold text-am-dark mb-6">Share This Page</h2>
       <ShareButtons
         client:load
         url={Astro.url.href}
@@ -349,27 +349,27 @@ const signatureProgress = 45; // Percentage (demo)
   </section>
 
   {/* CTA */}
-  <section class="bg-nb-purple text-nb-light border-b-4 border-nb-dark py-16">
+  <section class="bg-am-light-blue text-am-light border-b-4 border-am-dark py-16">
     <div class="max-w-4xl mx-auto px-4 text-center">
-      <h2 class="text-3xl md:text-4xl font-black uppercase italic mb-6">
+      <h2 class="text-3xl md:text-4xl font-bold mb-6">
         Ready to Take Action?
       </h2>
       <div class="flex flex-col sm:flex-row gap-4 justify-center">
         {state.hasBallotInitiative ? (
           <>
-            <a href="/sign" class="btn-nb btn-nb-yellow">
+            <a href="/sign" class="btn-am btn-am-white">
               Sign the Petition
             </a>
-            <a href="/organize" class="btn-nb btn-nb-yellow">
+            <a href="/organize" class="btn-am btn-am-white">
               Get Organizing Tips
             </a>
           </>
         ) : (
           <>
-            <a href="#contact-representatives" class="btn-nb btn-nb-yellow">
+            <a href="#contact-representatives" class="btn-am btn-am-white">
               Contact Your Representatives
             </a>
-            <a href="/organize" class="btn-nb btn-nb-yellow">
+            <a href="/organize" class="btn-am btn-am-white">
               Get Advocacy Tips
             </a>
           </>

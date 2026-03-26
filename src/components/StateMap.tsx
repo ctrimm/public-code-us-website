@@ -31,11 +31,11 @@ export function StateMap({ selectedState, onStateSelect }: StateMapProps) {
     if (!state) return 'bg-gray-200';
 
     if (state.campaignStatus === 'active') {
-      return 'bg-nb-pink text-nb-light border-4 border-nb-dark';
+      return 'bg-am-red text-am-light border-4 border-am-dark';
     } else if (state.campaignStatus === 'coming-soon') {
-      return 'bg-nb-yellow text-nb-dark border-2 border-nb-dark';
+      return 'bg-am-white text-am-dark border-2 border-am-dark';
     }
-    return 'bg-nb-cyan text-nb-dark border-2 border-gray-400';
+    return 'bg-am-blue text-am-dark border-2 border-gray-400';
   };
 
   const getStateStatus = (abbr: string) => {
@@ -50,20 +50,20 @@ export function StateMap({ selectedState, onStateSelect }: StateMapProps) {
     <div className="w-full">
       <div className="mb-8 flex flex-wrap justify-center gap-4 text-sm font-bold">
         <div className="flex items-center gap-2">
-          <div className="w-6 h-6 bg-nb-pink border-4 border-nb-dark"></div>
+          <div className="w-6 h-6 bg-am-red border-4 border-am-dark"></div>
           <span>Active Campaign 🚀</span>
         </div>
         <div className="flex items-center gap-2">
-          <div className="w-6 h-6 bg-nb-yellow border-2 border-nb-dark"></div>
+          <div className="w-6 h-6 bg-am-white border-2 border-am-dark"></div>
           <span>Coming Soon ⏰</span>
         </div>
         <div className="flex items-center gap-2">
-          <div className="w-6 h-6 bg-nb-cyan border-2 border-gray-400"></div>
+          <div className="w-6 h-6 bg-am-blue border-2 border-gray-400"></div>
           <span>Not Yet Active</span>
         </div>
       </div>
 
-      <div className="grid grid-cols-9 gap-1 md:gap-2 bg-nb-light p-4 border-4 border-nb-dark">
+      <div className="grid grid-cols-9 gap-1 md:gap-2 bg-am-light p-4 border-4 border-am-dark">
         {STATE_GRID.map((abbr) => {
           const state = getStateByAbbr(abbr);
           const isSelected = selectedState === state?.slug;
@@ -80,8 +80,8 @@ export function StateMap({ selectedState, onStateSelect }: StateMapProps) {
                 font-black text-xs md:text-sm uppercase
                 transition-all duration-150 cursor-pointer
                 ${getStateColor(abbr)}
-                ${isSelected ? 'ring-4 ring-nb-purple ring-offset-2' : ''}
-                ${isHovered ? 'shadow-nb-lg scale-110 z-10' : ''}
+                ${isSelected ? 'ring-4 ring-am-light-blue ring-offset-2' : ''}
+                ${isHovered ? 'shadow-am-lg scale-110 z-10' : ''}
               `}
               title={state ? `${state.name}: Click for details` : abbr}
             >
@@ -93,11 +93,11 @@ export function StateMap({ selectedState, onStateSelect }: StateMapProps) {
       </div>
 
       {hovered && getStateByAbbr(hovered) && (
-        <div className="mt-4 p-4 border-4 border-nb-dark bg-nb-cyan">
-          <p className="font-black uppercase text-nb-dark">
+        <div className="mt-4 p-4 border-4 border-am-dark bg-am-blue">
+          <p className="font-bold uppercase text-am-dark">
             {getStateByAbbr(hovered)!.name}
           </p>
-          <p className="text-sm font-bold text-nb-dark">
+          <p className="text-sm font-bold text-am-dark">
             {getStateByAbbr(hovered)!.campaignStatus === 'active'
               ? '🚀 Campaign Active'
               : getStateByAbbr(hovered)!.campaignStatus === 'coming-soon'
@@ -108,7 +108,7 @@ export function StateMap({ selectedState, onStateSelect }: StateMapProps) {
       )}
 
       <div className="mt-6 text-center">
-        <p className="text-sm font-bold text-nb-dark">
+        <p className="text-sm font-bold text-am-dark">
           Click a state to see details, contact your representatives, and get involved.
         </p>
       </div>

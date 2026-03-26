@@ -36,10 +36,11 @@ const url = Astro.url.href;
   description={description}
   image={image}
   currentPage="/blog"
+  type="article"
 >
   <article>
     {/* Hero Section */}
-    <section class="bg-nb-purple text-nb-light border-b-4 border-nb-dark py-20">
+    <section class="bg-am-light-blue text-am-light border-b-4 border-am-dark py-20">
       <div class="max-w-3xl mx-auto px-4">
         <div class="flex items-center gap-4 mb-4 font-bold text-sm">
           <span>{new Date(date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
@@ -48,24 +49,24 @@ const url = Astro.url.href;
           {author && <span>•</span>}
           {author && <span>By {author}</span>}
         </div>
-        <h1 class="text-5xl md:text-6xl font-black uppercase italic mb-6">{title}</h1>
+        <h1 class="text-5xl md:text-6xl font-bold mb-6">{title}</h1>
         <p class="text-lg font-bold">{description}</p>
       </div>
     </section>
 
     {/* Content */}
-    <section class="bg-nb-light border-b-4 border-nb-dark py-20">
+    <section class="bg-am-light border-b-4 border-am-dark py-20">
       <div class="max-w-3xl mx-auto px-4">
-        <div class="prose prose-lg max-w-none font-bold text-nb-dark">
+        <div class="prose prose-lg max-w-none font-bold text-am-dark">
           <slot />
         </div>
       </div>
     </section>
 
     {/* Share Section */}
-    <section class="bg-nb-cyan border-b-4 border-nb-dark py-20">
+    <section class="bg-am-blue border-b-4 border-am-dark py-20">
       <div class="max-w-3xl mx-auto px-4">
-        <h2 class="text-3xl font-black uppercase italic text-nb-dark mb-6">Share This Post</h2>
+        <h2 class="text-3xl font-bold text-am-dark mb-6">Share This Post</h2>
         <ShareButtons
           client:load
           url={url}
@@ -76,48 +77,57 @@ const url = Astro.url.href;
     </section>
 
     {/* CTA Section */}
-    <section class="bg-nb-pink text-nb-light border-b-4 border-nb-dark py-16">
+    <section class="bg-am-red text-am-light border-b-4 border-am-dark py-16">
       <div class="max-w-3xl mx-auto px-4 text-center">
-        <h2 class="text-3xl font-black uppercase italic mb-6">Ready to Take Action?</h2>
-        <a href="/sign" class="btn-nb btn-nb-yellow inline-block">
+        <h2 class="text-3xl font-bold mb-6">Ready to Take Action?</h2>
+        <a href="/sign" class="btn-am btn-am-white inline-block">
           Sign the Petition
         </a>
       </div>
     </section>
   </article>
 
-  <style>
+  <style is:global>
     .prose {
-      font-weight: 600;
+      font-weight: 400;
       line-height: 1.8;
+      color: #0A1128;
+    }
+
+    .prose h1 {
+      font-size: 3rem;
+      font-weight: 800;
+      margin-top: 2.5rem;
+      margin-bottom: 2rem;
+      color: #0A1128;
+      letter-spacing: -0.01em;
+      line-height: 1.2;
     }
 
     .prose h2 {
       font-size: 1.875rem;
-      font-weight: 900;
-      text-transform: uppercase;
-      font-style: italic;
-      margin-top: 2rem;
-      margin-bottom: 1rem;
-      color: #09090B;
+      font-weight: 800;
+      margin-top: 2.5rem;
+      margin-bottom: 1.5rem;
+      color: #0A1128;
+      letter-spacing: -0.01em;
     }
 
     .prose h3 {
       font-size: 1.5rem;
-      font-weight: 900;
-      text-transform: uppercase;
-      font-style: italic;
-      margin-top: 1.5rem;
-      margin-bottom: 0.75rem;
-      color: #09090B;
+      font-weight: 800;
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: #0A1128;
+      letter-spacing: -0.01em;
     }
 
     .prose p {
-      margin-bottom: 1rem;
+      margin-bottom: 2rem;
     }
 
     .prose ul, .prose ol {
-      margin-bottom: 1rem;
+      margin-bottom: 2rem;
       margin-left: 1.5rem;
     }
 
@@ -126,24 +136,26 @@ const url = Astro.url.href;
     }
 
     .prose a {
-      color: #FF4081;
+      color: #0033A0;
       text-decoration: underline;
+      font-weight: 600;
     }
 
     .prose a:hover {
       text-decoration: none;
+      color: #002880;
     }
 
     .prose strong {
-      font-weight: 900;
+      font-weight: 700;
     }
 
     .prose blockquote {
-      border-left: 4px solid #FF4081;
-      padding-left: 1rem;
+      border-left: 4px solid #0033A0;
+      padding-left: 1.5rem;
       font-style: italic;
-      color: #6b7280;
-      margin: 1rem 0;
+      color: #4B5563;
+      margin: 2rem 0;
     }
   </style>
 </Layout>

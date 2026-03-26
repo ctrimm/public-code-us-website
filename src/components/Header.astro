@@ -15,10 +15,10 @@ const navItems = [
 ];
 ---
 
-<header class="border-b-4 border-nb-dark bg-nb-cyan sticky top-0 z-50">
+<header class="border-b-4 border-am-dark bg-am-blue sticky top-0 z-50">
   <nav class="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between" aria-label="Main navigation">
     {/* Logo */}
-    <a href="/" class="text-2xl md:text-3xl font-black uppercase italic text-nb-dark no-underline" aria-label="Public Code US - Home">
+    <a href="/" class="text-2xl md:text-3xl font-bold text-am-dark no-underline" aria-label="Public Code US - Home">
       PUBLIC<br />CODE US
     </a>
 
@@ -29,11 +29,11 @@ const navItems = [
           href={item.href}
           role="listitem"
           aria-current={currentPage === item.href ? 'page' : undefined}
-          class={`px-4 py-2 border-2 border-nb-dark uppercase font-black text-sm tracking-widest transition-all no-underline focus-visible:outline-3 focus-visible:outline-nb-dark focus-visible:outline-offset-2 ${
+          class={`px-4 py-2 border-2 border-am-dark uppercase font-black text-sm tracking-widest transition-all no-underline focus-visible:outline-3 focus-visible:outline-am-dark focus-visible:outline-offset-2 ${
             item.highlight
-              ? 'bg-nb-pink text-nb-dark shadow-nb hover:shadow-nb-lg'
-              : 'bg-nb-light text-nb-dark hover:shadow-nb'
-          } ${currentPage === item.href ? 'bg-nb-purple text-nb-dark' : ''}`}
+              ? 'bg-am-red text-am-dark shadow-am hover:shadow-am-lg'
+              : 'bg-am-light text-am-dark hover:shadow-am'
+          } ${currentPage === item.href ? 'bg-am-light-blue text-am-dark' : ''}`}
         >
           {item.label}
         </a>
@@ -43,26 +43,26 @@ const navItems = [
     {/* Mobile Menu Button */}
     <button
       id="mobile-menu-btn"
-      class="md:hidden border-2 border-nb-dark p-2 bg-nb-light hover:shadow-nb focus-visible:outline-3 focus-visible:outline-nb-dark focus-visible:outline-offset-2"
+      class="md:hidden border-2 border-am-dark p-2 bg-am-light hover:shadow-am focus-visible:outline-3 focus-visible:outline-am-dark focus-visible:outline-offset-2"
       aria-expanded="false"
       aria-controls="mobile-menu"
       aria-label="Open navigation menu"
     >
-      <span class="text-nb-dark font-black" aria-hidden="true">MENU</span>
+      <span class="text-am-dark font-bold" aria-hidden="true">MENU</span>
     </button>
   </nav>
 
   {/* Mobile Navigation */}
-  <nav id="mobile-menu" class="hidden md:hidden border-t-4 border-nb-dark bg-nb-light" aria-label="Mobile navigation">
+  <nav id="mobile-menu" class="hidden md:hidden border-t-4 border-am-dark bg-am-light" aria-label="Mobile navigation">
     {navItems.map((item) => (
       <a
         href={item.href}
         aria-current={currentPage === item.href ? 'page' : undefined}
-        class={`block px-4 py-3 border-b-2 border-nb-dark uppercase font-black text-sm tracking-widest no-underline focus-visible:outline-3 focus-visible:outline-nb-dark focus-visible:outline-offset-[-3px] ${
+        class={`block px-4 py-3 border-b-2 border-am-dark uppercase font-black text-sm tracking-widest no-underline focus-visible:outline-3 focus-visible:outline-am-dark focus-visible:outline-offset-[-3px] ${
           item.highlight
-            ? 'bg-nb-pink text-nb-dark'
-            : 'bg-nb-light text-nb-dark hover:bg-nb-cyan'
-        } ${currentPage === item.href ? 'bg-nb-purple text-nb-dark' : ''}`}
+            ? 'bg-am-red text-am-dark'
+            : 'bg-am-light text-am-dark hover:bg-am-blue'
+        } ${currentPage === item.href ? 'bg-am-light-blue text-am-dark' : ''}`}
       >
         {item.label}
       </a>

@@ -1,486 +1,68 @@
-# Deployment Guide
+# Automated Deployment Guide (AWS S3 + CloudFront)
 
-This guide covers deploying your Astro + React + Tailwind CSS application to various hosting platforms.
+This repository uses **GitHub Actions** to automatically build and deploy the Astro static site to an **AWS S3 Bucket** and invalidate the **AWS CloudFront** edge cache whenever code is merged into the `main` branch.
 
-## Table of Contents
+## How the Pipeline Works
 
-- [Prerequisites](#prerequisites)
-- [Vercel](#vercel)
-- [Netlify](#netlify)
-- [Cloudflare Pages](#cloudflare-pages)
-- [GitHub Pages](#github-pages)
-- [AWS Amplify](#aws-amplify)
-- [Traditional Hosting](#traditional-hosting)
-- [Docker](#docker)
+The workflow configuration is natively defined at `.github/workflows/main-deploy.yml`. 
+Upon any commit to `main`, the workflow will:
+1. **Checkout & Build:** Establish a Node 20 environment, run `npm ci` to cleanly install dependencies, and run `npm run build` to generate the `dist/` folder.
+2. **Authenticate with AWS:** Securely load IAM credentials passed from GitHub Secrets.
+3. **Sync S3:** Run an exact replication command (`aws s3 sync dist/ s3://publiccodeus-static/ --delete`) to push the new build files and prune old orphaned files.
+4. **Invalidate Cache:** Execute a CloudFront invalidation request (`aws cloudfront create-invalidation`) so visitors instantly receive the updated files.
 
-## Prerequisites
+## Setup Instructions
 
-Before deploying, make sure to:
+To enable successful automated deployments from this repository, you must supply GitHub with your secure AWS credentials.
 
-1. Update the `site` field in `astro.config.js` with your production URL
-2. Update `robots.txt` with your production sitemap URL
-3. Configure environment variables (copy `.env.example` to `.env`)
-4. Test your build locally: `pnpm build && pnpm preview`
-5. Ensure you have **pnpm** installed globally: `npm install -g pnpm`
+### 1. Identify Your Target Resources
+Ensure you have the target S3 bucket name (e.g. `publiccodeus-static`) created and mapped properly to a CloudFront distribution inside your AWS Console. Make sure the S3 bucket name matches the one hardcoded on line 29 of `.github/workflows/main-deploy.yml`. You can change that line to match your own custom bucket name if needed.
 
----
+### 2. Configure GitHub Secrets
+1. Navigate to your repository on GitHub.
+2. Click **Settings** (the gear tab at the top).
+3. In the left sidebar, expand **Secrets and variables** -> click **Actions**.
+4. Click the green **New repository secret** button.
+5. You need to add three (3) distinct variables matching the exact names below:
 
-## Vercel
+- `AWS_ACCESS_KEY_ID`: Provide the Access Key ID of an IAM User with S3 Put/Delete permissions and Cloudfront Invalidation permissions.
+- `AWS_SECRET_ACCESS_KEY`: Provide the secret key value for that user.
+- `CLOUDFRONT_DIST_ID`: The unique Distribution ID sequence (e.g., `E1MW12345EXAMPLE`) located in your AWS Cloudfront console.
 
-### Quick Deploy
-
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/yourusername/yourrepo)
-
-### Manual Deployment
-
-1. Install Vercel CLI:
-   ```bash
-   npm install -g vercel
-   ```
-
-2. Deploy:
-   ```bash
-   vercel
-   ```
-
-3. Follow the prompts to configure your project
-
-### Configuration
-
-Vercel auto-detects Astro projects. No additional configuration needed.
-
-**Environment Variables:**
-- Add environment variables in the Vercel dashboard under Settings > Environment Variables
-- Make sure to set `SITE_URL` to your production URL
-
-**Build Settings (auto-detected):**
-- Build Command: `npm run build`
-- Output Directory: `dist`
-- Install Command: `npm install`
+### 3. Test the Deployment
+Once your secrets are plugged in, you can push a commit directly to `main` (or merge a PR). 
+Alternatively, go to the **Actions** tab on GitHub, select **Deploy to AWS S3 and CloudFront**, and click **Run workflow** to kick off a manual deployment.
 
 ---
 
-## Netlify
+---
 
-### Quick Deploy
+### 4. Configure Cloudflare DNS
 
-[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start)
+Since the domain is registered and managed in Cloudflare, you need to point DNS at your CloudFront distribution.
 
-### Manual Deployment
+1. Log in to the [Cloudflare dashboard](https://dash.cloudflare.com) and select your domain.
+2. Go to **DNS** → **Records** → **Add record**.
+3. Add a **CNAME** record for the root domain:
+   - **Type**: `CNAME`
+   - **Name**: `@`
+   - **Target**: your CloudFront domain (e.g., `d1234abcd.cloudfront.net`)
+   - **Proxy status**: **DNS only** (gray cloud) — do NOT enable Cloudflare proxying, as CloudFront manages its own CDN and SSL
+4. Optionally add a second CNAME for `www` pointing to the same CloudFront domain.
 
-1. Install Netlify CLI:
-   ```bash
-   npm install -g netlify-cli
-   ```
+> **Note:** Cloudflare supports CNAMEs at the root domain via CNAME Flattening, so `@` records work without issue.
 
-2. Build your project:
-   ```bash
-   npm run build
-   ```
+#### SSL Certificate Setup (AWS ACM)
 
-3. Deploy:
-   ```bash
-   netlify deploy --prod
-   ```
+CloudFront handles SSL, not Cloudflare. Before your domain will serve HTTPS:
 
-### Configuration
-
-Create a `netlify.toml` file in your project root:
-
-```toml
-[build]
-  command = "npm run build"
-  publish = "dist"
-
-[[redirects]]
-  from = "/*"
-  to = "/404.html"
-  status = 404
-```
-
-**Environment Variables:**
-- Add environment variables in Netlify dashboard under Site settings > Environment variables
-- Set `SITE_URL` to your production URL
+1. In the AWS Console, go to **Certificate Manager (ACM)** — must be in the **us-east-1** region (required for CloudFront).
+2. Request a public certificate for your domain (e.g., `publiccode.us` and `www.publiccode.us`).
+3. ACM will ask you to validate ownership via DNS. Add the provided CNAME validation records to Cloudflare DNS.
+4. Once issued, attach the certificate to your CloudFront distribution under **Settings** → **Alternate domain names (CNAMEs)** → **Custom SSL certificate**.
 
 ---
 
-## Cloudflare Pages
-
-### Deployment via Dashboard
-
-1. Log in to [Cloudflare Dashboard](https://dash.cloudflare.com/)
-2. Go to Pages > Create a project
-3. Connect your Git repository
-4. Configure build settings:
-   - Build command: `npm run build`
-   - Build output directory: `dist`
-   - Environment variables: Add your variables
-
-### Deployment via Wrangler CLI
-
-1. Install Wrangler:
-   ```bash
-   npm install -g wrangler
-   ```
-
-2. Build and deploy:
-   ```bash
-   npm run build
-   wrangler pages deploy dist
-   ```
-
----
-
-## GitHub Pages
-
-### Prerequisites
-
-- Repository must be public (for free plan)
-- Enable GitHub Pages in repository settings
-
-### Using GitHub Actions
-
-Create `.github/workflows/deploy.yml`:
-
-```yaml
-name: Deploy to GitHub Pages
-
-on:
-  push:
-    branches: [main]
-  workflow_dispatch:
-
-permissions:
-  contents: read
-  pages: write
-  id-token: write
-
-jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Setup Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-          cache: 'npm'
-
-      - name: Install dependencies
-        run: npm ci
-
-      - name: Build
-        run: npm run build
-
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: ./dist
-
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
-```
-
-**Update `astro.config.js`:**
-
-```javascript
-export default defineConfig({
-  site: 'https://yourusername.github.io',
-  base: '/your-repo-name', // Only if not using custom domain
-  // ... rest of config
-});
-```
-
----
-
-## AWS Amplify
-
-### Deployment via Console
-
-1. Log in to [AWS Amplify Console](https://console.aws.amazon.com/amplify/)
-2. Click "New app" > "Host web app"
-3. Connect your Git repository
-4. Configure build settings:
-
-```yaml
-version: 1
-frontend:
-  phases:
-    preBuild:
-      commands:
-        - npm ci
-    build:
-      commands:
-        - npm run build
-  artifacts:
-    baseDirectory: dist
-    files:
-      - '**/*'
-  cache:
-    paths:
-      - node_modules/**/*
-```
-
-### Environment Variables
-
-Add in Amplify Console > App settings > Environment variables:
-- `SITE_URL`: Your production URL
-- Any other custom environment variables
-
----
-
-## Traditional Hosting
-
-For traditional hosting (cPanel, shared hosting, VPS):
-
-### 1. Build the Project Locally
-
-```bash
-npm run build
-```
-
-### 2. Upload Files
-
-Upload the contents of the `dist/` directory to your web server:
-
-**Via FTP/SFTP:**
-- Upload all files from `dist/` to your `public_html` or `www` directory
-
-**Via SSH:**
-```bash
-scp -r dist/* user@yourserver.com:/path/to/webroot/
-```
-
-### 3. Configure Server
-
-**Apache (.htaccess):**
-
-Create `.htaccess` in your web root:
-
-```apache
-# Enable gzip compression
-<IfModule mod_deflate.c>
-  AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css text/javascript application/javascript application/json
-</IfModule>
-
-# Enable browser caching
-<IfModule mod_expires.c>
-  ExpiresActive On
-  ExpiresByType image/jpg "access plus 1 year"
-  ExpiresByType image/jpeg "access plus 1 year"
-  ExpiresByType image/png "access plus 1 year"
-  ExpiresByType image/svg+xml "access plus 1 year"
-  ExpiresByType text/css "access plus 1 month"
-  ExpiresByType application/javascript "access plus 1 month"
-</IfModule>
-
-# Custom 404 page
-ErrorDocument 404 /404.html
-```
-
-**Nginx:**
-
-```nginx
-server {
-    listen 80;
-    server_name yourdomain.com;
-    root /path/to/dist;
-    index index.html;
-
-    # Enable gzip
-    gzip on;
-    gzip_types text/plain text/css application/json application/javascript text/xml application/xml application/xml+rss text/javascript;
-
-    # Cache static assets
-    location ~* \.(jpg|jpeg|png|gif|ico|css|js|svg)$ {
-        expires 1y;
-        add_header Cache-Control "public, immutable";
-    }
-
-    # Custom 404
-    error_page 404 /404.html;
-
-    # Fallback to index.html for client-side routing
-    location / {
-        try_files $uri $uri/ /index.html;
-    }
-}
-```
-
----
-
-## Docker
-
-### Dockerfile
-
-Create a `Dockerfile` in your project root:
-
-```dockerfile
-# Build stage
-FROM node:20-alpine AS builder
-
-WORKDIR /app
-
-# Copy package files
-COPY package*.json ./
-
-# Install dependencies
-RUN npm ci
-
-# Copy source files
-COPY . .
-
-# Build the application
-RUN npm run build
-
-# Production stage
-FROM nginx:alpine
-
-# Copy built files
-COPY --from=builder /app/dist /usr/share/nginx/html
-
-# Copy nginx configuration
-COPY nginx.conf /etc/nginx/nginx.conf
-
-EXPOSE 80
-
-CMD ["nginx", "-g", "daemon off;"]
-```
-
-### nginx.conf
-
-Create `nginx.conf`:
-
-```nginx
-events {
-    worker_connections 1024;
-}
-
-http {
-    include /etc/nginx/mime.types;
-    default_type application/octet-stream;
-
-    server {
-        listen 80;
-        server_name localhost;
-        root /usr/share/nginx/html;
-        index index.html;
-
-        gzip on;
-        gzip_types text/plain text/css application/json application/javascript text/xml application/xml;
-
-        location / {
-            try_files $uri $uri/ /index.html;
-        }
-
-        error_page 404 /404.html;
-    }
-}
-```
-
-### Build and Run
-
-```bash
-# Build the Docker image
-docker build -t astro-app .
-
-# Run the container
-docker run -p 8080:80 astro-app
-```
-
-Visit `http://localhost:8080`
-
-### Docker Compose
-
-Create `docker-compose.yml`:
-
-```yaml
-version: '3.8'
-
-services:
-  web:
-    build: .
-    ports:
-      - "8080:80"
-    environment:
-      - SITE_URL=https://yourdomain.com
-    restart: unless-stopped
-```
-
-Run with:
-```bash
-docker-compose up -d
-```
-
----
-
-## Post-Deployment Checklist
-
-After deploying to any platform:
-
-- [ ] Verify the site loads correctly
-- [ ] Test all routes and pages
-- [ ] Check responsive design on mobile devices
-- [ ] Verify meta tags and SEO (use tools like [Meta Tags](https://metatags.io/))
-- [ ] Test performance with [Lighthouse](https://developers.google.com/web/tools/lighthouse)
-- [ ] Verify sitemap.xml is accessible at `/sitemap-index.xml`
-- [ ] Check robots.txt is accessible at `/robots.txt`
-- [ ] Test custom 404 page
-- [ ] Verify environment variables are set correctly
-- [ ] Set up analytics (if configured)
-- [ ] Configure custom domain (if applicable)
-- [ ] Enable HTTPS/SSL
-- [ ] Set up monitoring/error tracking
-
----
-
-## Troubleshooting
-
-### Build Fails
-
-1. Check Node.js version (should be 18 or higher):
-   ```bash
-   node --version
-   ```
-
-2. Clear cache and reinstall:
-   ```bash
-   rm -rf node_modules package-lock.json
-   npm install
-   ```
-
-3. Check for TypeScript errors:
-   ```bash
-   npx tsc --noEmit
-   ```
-
-### 404 Errors on Refresh
-
-This usually means the server isn't configured for client-side routing. See the server configuration sections above.
-
-### Missing Environment Variables
-
-Make sure all environment variables from `.env.example` are configured in your hosting platform's dashboard.
-
-### Styles Not Loading
-
-Check that your build output includes CSS files in the `_astro` directory and that your server is serving static assets correctly.
-
----
-
-## Need Help?
-
-- [Astro Deployment Docs](https://docs.astro.build/en/guides/deploy/)
-- [Vercel Support](https://vercel.com/support)
-- [Netlify Support](https://www.netlify.com/support/)
-- [Cloudflare Support](https://support.cloudflare.com/)
+### Troubleshooting
+- **No Access Denied or 403 Errors on S3 Sync:** Verify your IAM User actually has `s3:PutObject` and `s3:DeleteObject` permissions associated with your bucket's ARN (`arn:aws:s3:::<your-bucket-name>/*`).
+- **Cloudfront Invalidation Fails:** The IAM user must possess the `cloudfront:CreateInvalidation` permission.

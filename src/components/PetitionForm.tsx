@@ -112,16 +112,16 @@ export function PetitionForm() {
     return (
       <div className="text-center py-12 px-4" role="status" aria-live="polite">
         <div className="text-6xl mb-6" aria-hidden="true">🎉</div>
-        <h2 className="text-4xl font-black uppercase italic text-nb-pink mb-4">Thank You!</h2>
-        <p className="text-lg font-bold text-nb-dark mb-4">
+        <h2 className="text-4xl font-bold text-am-red mb-4">Thank You!</h2>
+        <p className="text-lg font-bold text-am-dark mb-4">
           Your signature has been added to the petition.
         </p>
-        <p className="text-2xl font-black text-nb-purple mb-8">
+        <p className="text-2xl font-bold text-am-light-blue mb-8">
           {successMessage.totalSignatures?.toLocaleString()} Signatures
         </p>
         <button
           onClick={() => setSuccess(false)}
-          className="btn-nb btn-nb-primary"
+          className="btn-am btn-am-primary"
         >
           Sign Again or Share
         </button>
@@ -140,7 +140,7 @@ export function PetitionForm() {
       </div>
 
       <div>
-        <label htmlFor="name" className="block font-black uppercase italic text-nb-dark text-sm mb-2">
+        <label htmlFor="name" className="block font-bold text-am-dark text-sm mb-2">
           Full Name *
         </label>
         <input
@@ -151,12 +151,12 @@ export function PetitionForm() {
           value={formData.name}
           onChange={handleChange}
           required
-          className="input-nb w-full"
+          className="input-am w-full"
         />
       </div>
 
       <div>
-        <label htmlFor="email" className="block font-black uppercase italic text-nb-dark text-sm mb-2">
+        <label htmlFor="email" className="block font-bold text-am-dark text-sm mb-2">
           Email Address *
         </label>
         <input
@@ -167,12 +167,12 @@ export function PetitionForm() {
           value={formData.email}
           onChange={handleChange}
           required
-          className="input-nb w-full"
+          className="input-am w-full"
         />
       </div>
 
       <div>
-        <label htmlFor="state" className="block font-black uppercase italic text-nb-dark text-sm mb-2">
+        <label htmlFor="state" className="block font-bold text-am-dark text-sm mb-2">
           State *
         </label>
         <select
@@ -181,7 +181,7 @@ export function PetitionForm() {
           value={formData.state}
           onChange={handleChange}
           required
-          className="input-nb w-full"
+          className="input-am w-full"
         >
           <option value="">Select Your State</option>
           {US_STATES.map((state) => (
@@ -193,7 +193,7 @@ export function PetitionForm() {
       </div>
 
       <div>
-        <label htmlFor="zip" className="block font-black uppercase italic text-nb-dark text-sm mb-2">
+        <label htmlFor="zip" className="block font-bold text-am-dark text-sm mb-2">
           ZIP Code (Optional)
         </label>
         <input
@@ -203,12 +203,12 @@ export function PetitionForm() {
           placeholder="12345"
           value={formData.zip}
           onChange={handleChange}
-          className="input-nb w-full"
+          className="input-am w-full"
         />
       </div>
 
       <div>
-        <label htmlFor="message" className="block font-black uppercase italic text-nb-dark text-sm mb-2">
+        <label htmlFor="message" className="block font-bold text-am-dark text-sm mb-2">
           Your Message (Optional)
         </label>
         <textarea
@@ -218,7 +218,7 @@ export function PetitionForm() {
           value={formData.message}
           onChange={handleChange}
           rows={4}
-          className="input-nb w-full"
+          className="input-am w-full"
         />
       </div>
 
@@ -229,9 +229,9 @@ export function PetitionForm() {
           type="checkbox"
           checked={formData.wantsUpdates}
           onChange={handleChange}
-          className="w-5 h-5 border-2 border-nb-dark cursor-pointer"
+          className="w-5 h-5 border-2 border-am-dark cursor-pointer"
         />
-        <label htmlFor="updates" className="font-bold text-nb-dark cursor-pointer">
+        <label htmlFor="updates" className="font-bold text-am-dark cursor-pointer">
           Send me updates about this campaign
         </label>
       </div>
@@ -244,7 +244,7 @@ export function PetitionForm() {
       <button
         type="submit"
         disabled={loading}
-        className="btn-nb btn-nb-primary w-full text-center font-black uppercase"
+        className="btn-am btn-am-primary w-full text-center font-bold uppercase"
       >
         {loading ? '⏳ Submitting...' : '✊ Sign the Petition'}
       </button>

@@ -6,7 +6,7 @@ import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
-  site: process.env.SITE_URL || 'https://publiccodeus.org',
+  site: process.env.SITE_URL || 'https://publiccode.us',
   output: 'static',
   vite: {
     plugins: [tailwindcss()],

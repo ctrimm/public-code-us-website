@@ -46,11 +46,11 @@ export function NewsletterSignup({
 
   if (variant === 'card') {
     return (
-      <div className="border-4 border-nb-dark bg-nb-cyan p-8 rounded-none">
-        <h3 className="text-2xl font-black uppercase italic text-nb-dark mb-4">
+      <div className="border-4 border-am-dark bg-am-blue p-8 rounded-none">
+        <h3 className="text-2xl font-bold text-am-dark mb-4">
           Stay Updated
         </h3>
-        <p className="font-bold text-nb-dark mb-6">
+        <p className="font-bold text-am-dark mb-6">
           Get campaign updates, organizing tips, and ballot news straight to your inbox.
         </p>
         <form onSubmit={handleSubmit} className="space-y-3" aria-label="Newsletter signup">
@@ -78,7 +78,7 @@ export function NewsletterSignup({
               placeholder="Your name (optional)"
               value={name}
               onChange={(e) => setName(e.target.value)}
-              className="input-nb w-full"
+              className="input-am w-full"
               autoComplete="name"
             />
           </div>
@@ -92,7 +92,7 @@ export function NewsletterSignup({
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
-              className="input-nb w-full"
+              className="input-am w-full"
               autoComplete="email"
               aria-required="true"
             />
@@ -102,7 +102,7 @@ export function NewsletterSignup({
             type="submit"
             disabled={loading}
             aria-disabled={loading}
-            className="btn-nb btn-nb-primary w-full font-black uppercase"
+            className="btn-am btn-am-primary w-full font-bold uppercase"
           >
             {loading ? 'Subscribing...' : 'Subscribe'}
           </button>
@@ -126,7 +126,7 @@ export function NewsletterSignup({
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           required
-          className="input-nb w-full"
+          className="input-am w-full"
           autoComplete="email"
           aria-required="true"
         />
@@ -136,7 +136,7 @@ export function NewsletterSignup({
         type="submit"
         disabled={loading}
         aria-disabled={loading}
-        className="btn-nb btn-nb-primary whitespace-nowrap"
+        className="btn-am btn-am-primary whitespace-nowrap"
       >
         {loading ? 'Subscribing...' : 'Subscribe'}
       </button>
