@@ -33,7 +33,29 @@ export const POST: APIRoute = async ({ request }) => {
       );
     }
 
-    const apiKey = process.env.RESEND_API_KEY;
+    // Input length validation
+    if (body.email.length > 254) {
+      return new Response(
+        JSON.stringify({ success: false, error: 'Field email exceeds maximum length' }),
+        { status: 400, headers: { 'Content-Type': 'application/json' } }
+      );
+    }
+
+    if (body.name && body.name.length > 100) {
+      return new Response(
+        JSON.stringify({ success: false, error: 'Field name exceeds maximum length' }),
+        { status: 400, headers: { 'Content-Type': 'application/json' } }
+      );
+    }
+
+    if (body.source && body.source.length > 50) {
+      return new Response(
+        JSON.stringify({ success: false, error: 'Field source exceeds maximum length' }),
+        { status: 400, headers: { 'Content-Type': 'application/json' } }
+      );
+    }
+
+    const apiKey = import.meta.env.RESEND_API_KEY;
     if (!apiKey) {
       console.warn('RESEND_API_KEY not configured. Demo mode.');
       // Demo mode - just return success without actually subscribing
@@ -96,6 +118,8 @@ export const POST: APIRoute = async ({ request }) => {
             <p><a href="https://publiccode.us">Visit our website</a></p>
             <p>Together, we'll demand publicly funded software be publicly owned.</p>
             <p>— The Public Code US Team</p>
+            <hr style="margin: 24px 0; border: none; border-top: 1px solid #eee;">
+            <p style="color: #666; font-size: 12px;">You received this email because you subscribed at publiccode.us. <a href="https://publiccode.us/unsubscribe">Unsubscribe</a></p>
           `
         })
       });
@@ -127,7 +151,7 @@ export const OPTIONS: APIRoute = async () => {
   return new Response(null, {
     status: 200,
     headers: {
-      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Origin': 'https://publiccode.us',
       'Access-Control-Allow-Methods': 'POST, OPTIONS',
       'Access-Control-Allow-Headers': 'Content-Type',
     },
