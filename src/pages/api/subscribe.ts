@@ -10,7 +10,7 @@ export const POST: APIRoute = async ({ request }) => {
   if (request.method !== 'POST') {
     return new Response(
       JSON.stringify({ success: false, error: 'Method not allowed' }),
-      { status: 405, headers: { 'Content-Type': 'application/json' } }
+      { status: 405, headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': 'https://publiccode.us' } }
     );
   }
 
@@ -21,7 +21,7 @@ export const POST: APIRoute = async ({ request }) => {
     if (!body.email?.trim()) {
       return new Response(
         JSON.stringify({ success: false, error: 'Email is required' }),
-        { status: 400, headers: { 'Content-Type': 'application/json' } }
+        { status: 400, headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': 'https://publiccode.us' } }
       );
     }
 
@@ -29,7 +29,7 @@ export const POST: APIRoute = async ({ request }) => {
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(body.email)) {
       return new Response(
         JSON.stringify({ success: false, error: 'Invalid email format' }),
-        { status: 400, headers: { 'Content-Type': 'application/json' } }
+        { status: 400, headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': 'https://publiccode.us' } }
       );
     }
 
@@ -37,21 +37,21 @@ export const POST: APIRoute = async ({ request }) => {
     if (body.email.length > 254) {
       return new Response(
         JSON.stringify({ success: false, error: 'Field email exceeds maximum length' }),
-        { status: 400, headers: { 'Content-Type': 'application/json' } }
+        { status: 400, headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': 'https://publiccode.us' } }
       );
     }
 
     if (body.name && body.name.length > 100) {
       return new Response(
         JSON.stringify({ success: false, error: 'Field name exceeds maximum length' }),
-        { status: 400, headers: { 'Content-Type': 'application/json' } }
+        { status: 400, headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': 'https://publiccode.us' } }
       );
     }
 
     if (body.source && body.source.length > 50) {
       return new Response(
         JSON.stringify({ success: false, error: 'Field source exceeds maximum length' }),
-        { status: 400, headers: { 'Content-Type': 'application/json' } }
+        { status: 400, headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': 'https://publiccode.us' } }
       );
     }
 
@@ -64,7 +64,7 @@ export const POST: APIRoute = async ({ request }) => {
           success: true,
           message: 'Successfully subscribed to updates!'
         }),
-        { status: 200, headers: { 'Content-Type': 'application/json' } }
+        { status: 200, headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': 'https://publiccode.us' } }
       );
     }
 
@@ -133,7 +133,7 @@ export const POST: APIRoute = async ({ request }) => {
         success: true,
         message: 'Successfully subscribed to updates!'
       }),
-      { status: 200, headers: { 'Content-Type': 'application/json' } }
+      { status: 200, headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': 'https://publiccode.us' } }
     );
   } catch (error) {
     console.error('Subscribe error:', error);
@@ -142,7 +142,7 @@ export const POST: APIRoute = async ({ request }) => {
         success: false,
         error: 'Failed to subscribe. Please try again.'
       }),
-      { status: 500, headers: { 'Content-Type': 'application/json' } }
+      { status: 500, headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': 'https://publiccode.us' } }
     );
   }
 };
