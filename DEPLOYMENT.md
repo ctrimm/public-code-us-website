@@ -63,6 +63,30 @@ CloudFront handles SSL, not Cloudflare. Before your domain will serve HTTPS:
 
 ---
 
+### 5. Security Headers (CloudFront Response Headers Policy)
+
+Security headers for `publiccode.us` are managed via a **CloudFront Response Headers Policy** and are already configured — no manual action is required for new deployments.
+
+**Policy name:** `publiccode-us-security-headers`
+**Policy ID:** `43095f64-292f-4f11-8364-b850022ca165`
+**Associated distribution:** `E33D2XQ66KR55X`
+
+The policy enforces the following HTTP response headers on every CloudFront response:
+
+| Header | Value |
+|---|---|
+| `X-XSS-Protection` | `1; mode=block` |
+| `X-Frame-Options` | `DENY` |
+| `Referrer-Policy` | `strict-origin-when-cross-origin` |
+| `X-Content-Type-Options` | `nosniff` |
+| `Strict-Transport-Security` | `max-age=63072000; includeSubDomains; preload` |
+| `Content-Security-Policy` | `default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' https://api.resend.com; frame-ancestors 'none';` |
+| `Permissions-Policy` | `camera=(), microphone=(), geolocation=()` |
+
+To inspect or modify the policy, go to the AWS Console → **CloudFront** → **Policies** → **Response headers** and search for `publiccode-us-security-headers`.
+
+---
+
 ### Troubleshooting
 - **No Access Denied or 403 Errors on S3 Sync:** Verify your IAM User actually has `s3:PutObject` and `s3:DeleteObject` permissions associated with your bucket's ARN (`arn:aws:s3:::<your-bucket-name>/*`).
 - **Cloudfront Invalidation Fails:** The IAM user must possess the `cloudfront:CreateInvalidation` permission.
