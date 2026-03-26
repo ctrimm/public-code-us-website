@@ -7,6 +7,10 @@ import sitemap from '@astrojs/sitemap';
 // https://astro.build/config
 export default defineConfig({
   site: process.env.SITE_URL || 'https://publiccode.us',
+  // NOTE: 'static' output disables all src/pages/api/* routes at build time.
+  // To enable the petition/subscribe APIs, switch to output: 'server' or 'hybrid'
+  // and add an SSR adapter. Also ensure rate limiting and WAF rules are in place
+  // before exposing the API routes to public traffic.
   output: 'static',
   vite: {
     plugins: [tailwindcss()],
@@ -20,7 +24,6 @@ export default defineConfig({
     sitemap({
       changefreq: 'weekly',
       priority: 0.7,
-      lastmod: new Date(),
       filter: (page) => !page.includes('/admin')
     })
   ]
