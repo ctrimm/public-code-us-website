@@ -22,6 +22,16 @@ if (!state) {
 }
 
 const signatureProgress = 45; // Percentage (demo)
+
+function isSafeCongressDomain(website: string | undefined): boolean {
+  if (!website) return false;
+  try {
+    const hostname = new URL(`https://${website}`).hostname;
+    return hostname.endsWith('.senate.gov') || hostname.endsWith('.house.gov');
+  } catch {
+    return false;
+  }
+}
 ---
 
 <Layout
@@ -170,14 +180,20 @@ const signatureProgress = 45; // Percentage (demo)
             📞 {state.seniorSenator.phone}<br />
             🌐 {state.seniorSenator.website}
           </p>
-          <a
-            href={`https://${state.seniorSenator.website}/contact`}
-            target="_blank"
-            rel="noopener noreferrer"
-            class="btn-am btn-am-primary inline-block text-sm"
-          >
-            Contact →<span class="sr-only"> (opens in new tab)</span>
-          </a>
+          {isSafeCongressDomain(state.seniorSenator.website) ? (
+            <a
+              href={`https://${state.seniorSenator.website}/contact`}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn-am btn-am-primary inline-block text-sm"
+            >
+              Contact →<span class="sr-only"> (opens in new tab)</span>
+            </a>
+          ) : (
+            <span class="btn-am btn-am-primary inline-block text-sm opacity-50">
+              Contact
+            </span>
+          )}
         </div>
 
         {/* Junior Senator */}
@@ -193,14 +209,20 @@ const signatureProgress = 45; // Percentage (demo)
             📞 {state.juniorSenator.phone}<br />
             🌐 {state.juniorSenator.website}
           </p>
-          <a
-            href={`https://${state.juniorSenator.website}/contact`}
-            target="_blank"
-            rel="noopener noreferrer"
-            class="btn-am btn-am-primary inline-block text-sm"
-          >
-            Contact →<span class="sr-only"> (opens in new tab)</span>
-          </a>
+          {isSafeCongressDomain(state.juniorSenator.website) ? (
+            <a
+              href={`https://${state.juniorSenator.website}/contact`}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn-am btn-am-primary inline-block text-sm"
+            >
+              Contact →<span class="sr-only"> (opens in new tab)</span>
+            </a>
+          ) : (
+            <span class="btn-am btn-am-primary inline-block text-sm opacity-50">
+              Contact
+            </span>
+          )}
         </div>
       </div>
 
