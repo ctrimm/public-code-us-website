@@ -1,6 +1,7 @@
 ---
 import Layout from '../../layouts/main.astro';
 import { ShareButtons } from '../../components/ShareButtons';
+import { MessageCopy } from '../../components/MessageCopy';
 import { STATES, getStateBySlug } from '../../lib/states';
 
 export function getStaticPaths() {
@@ -32,6 +33,7 @@ function isSafeCongressDomain(website: string | undefined): boolean {
     return false;
   }
 }
+
 ---
 
 <Layout
@@ -180,20 +182,20 @@ function isSafeCongressDomain(website: string | undefined): boolean {
             📞 {state.seniorSenator.phone}<br />
             🌐 {state.seniorSenator.website}
           </p>
-          {isSafeCongressDomain(state.seniorSenator.website) ? (
-            <a
-              href={`https://${state.seniorSenator.website}/contact`}
-              target="_blank"
-              rel="noopener noreferrer"
-              class="btn-am btn-am-primary inline-block text-sm"
-            >
-              Contact →<span class="sr-only"> (opens in new tab)</span>
-            </a>
-          ) : (
-            <span class="btn-am btn-am-primary inline-block text-sm opacity-50">
-              Contact
-            </span>
-          )}
+            {isSafeCongressDomain(state.seniorSenator.website) ? (
+              <a
+                href={`https://${state.seniorSenator.website}/contact`}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="btn-am btn-am-primary inline-block text-sm"
+              >
+                Contact →<span class="sr-only"> (opens in new tab)</span>
+              </a>
+            ) : (
+              <span class="btn-am btn-am-primary inline-block text-sm opacity-50">
+                Contact
+              </span>
+            )}
         </div>
 
         {/* Junior Senator */}
@@ -209,24 +211,93 @@ function isSafeCongressDomain(website: string | undefined): boolean {
             📞 {state.juniorSenator.phone}<br />
             🌐 {state.juniorSenator.website}
           </p>
-          {isSafeCongressDomain(state.juniorSenator.website) ? (
-            <a
-              href={`https://${state.juniorSenator.website}/contact`}
-              target="_blank"
-              rel="noopener noreferrer"
-              class="btn-am btn-am-primary inline-block text-sm"
-            >
-              Contact →<span class="sr-only"> (opens in new tab)</span>
-            </a>
-          ) : (
-            <span class="btn-am btn-am-primary inline-block text-sm opacity-50">
-              Contact
-            </span>
-          )}
+            {isSafeCongressDomain(state.juniorSenator.website) ? (
+              <a
+                href={`https://${state.juniorSenator.website}/contact`}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="btn-am btn-am-primary inline-block text-sm"
+              >
+                Contact →<span class="sr-only"> (opens in new tab)</span>
+              </a>
+            ) : (
+              <span class="btn-am btn-am-primary inline-block text-sm opacity-50">
+                Contact
+              </span>
+            )}
         </div>
       </div>
 
-      <div class="mt-8 border-4 border-am-dark bg-am-light p-6">
+      <div class="mt-12">
+        <h3 class="text-3xl font-bold text-am-dark mb-8">
+          Advocacy Messages for Senators
+        </h3>
+        <div class="grid md:grid-cols-2 gap-8">
+          <MessageCopy 
+            client:load 
+            representativeName={state.seniorSenator.name} 
+            stateName={state.name} 
+            role="Senator"
+          />
+          <MessageCopy 
+            client:load 
+            representativeName={state.juniorSenator.name} 
+            stateName={state.name} 
+            role="Senator"
+          />
+        </div>
+      </div>
+
+      {state.representatives && state.representatives.length > 0 && (
+        <div class="mt-16">
+          <h2 class="text-4xl font-bold text-am-dark mb-8">U.S. House Representatives</h2>
+          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {state.representatives.map((rep) => (
+              <div class="flex flex-col">
+                <div class="card-am border-4 border-am-dark bg-am-light h-full flex flex-col">
+                  <p class="text-sm font-bold uppercase tracking-widest text-am-dark mb-2">
+                    U.S. House District {rep.district === 0 ? 'At-Large' : rep.district}
+                  </p>
+                  <h3 class="text-2xl font-bold text-am-dark mb-2">
+                    {rep.name}
+                  </h3>
+                  <p class="text-sm font-bold text-am-dark mb-4">
+                    Party: <strong>{rep.party === 'D' ? 'Democratic' : rep.party === 'I' ? 'Independent' : rep.party === 'R' ? 'Republican' : 'N/A'}</strong>
+                  </p>
+                  <p class="font-bold text-am-dark mb-4 flex-grow">
+                    📞 {rep.phone}<br />
+                    🌐 {rep.website}
+                  </p>
+                  <div class="mt-auto">
+                    {rep.website && isSafeCongressDomain(rep.website) ? (
+                      <a
+                        href={`https://${rep.website}/contact`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="btn-am btn-am-primary inline-block text-sm"
+                      >
+                        Contact Representative →<span class="sr-only"> (opens in new tab)</span>
+                      </a>
+                    ) : (
+                      <span class="btn-am btn-am-primary inline-block text-sm opacity-50">
+                        Contact
+                      </span>
+                    )}
+                  </div>
+                </div>
+                <MessageCopy 
+                  client:load 
+                  representativeName={rep.name} 
+                  stateName={state.name} 
+                  role="Representative"
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
+      <div class="mt-12 border-4 border-am-dark bg-am-light p-6">
         <p class="font-bold text-am-dark mb-4">
           💡 <strong>Tip:</strong> Tell your representatives why public code matters to {state.name}.
         </p>
