@@ -37,8 +37,10 @@ function isSafeCongressDomain(website: string | undefined): boolean {
 ---
 
 <Layout
-  title={`Public Code in ${state.name} - Signature Drive`}
-  description={`Join the Public Code initiative in ${state.name}. ${state.signatureTarget} signatures needed for the ballot.`}
+  title={`Public Code in ${state.name}`}
+  description={state.hasBallotInitiative 
+    ? `Join the Public Code initiative in ${state.name}. ${state.signatureTarget} signatures needed for the ballot.`
+    : `Advocate for Public Code in ${state.name}. Contact your representatives and support open source policy.`}
   currentPage={`/states/${slug}`}
 >
   {/* Hero */}
@@ -46,15 +48,25 @@ function isSafeCongressDomain(website: string | undefined): boolean {
     <div class="max-w-4xl mx-auto px-4">
       <h1 class="text-6xl md:text-7xl font-bold mb-4">{state.name}</h1>
       <p class="text-xl font-bold mb-6">
-        {state.campaignStatus === 'active'
-          ? '🚀 Campaign Active - Help us reach our goal!'
-          : state.campaignStatus === 'coming-soon'
-          ? '⏰ Coming Soon - Stay tuned for launch'
-          : 'Not yet launched - Contact us to organize'}
+        {state.hasBallotInitiative ? (
+          state.campaignStatus === 'active'
+            ? '🚀 Campaign Active - Help us reach our goal!'
+            : state.campaignStatus === 'coming-soon'
+            ? '⏰ Coming Soon - Stay tuned for launch'
+            : 'Not yet launched - Contact us to organize'
+        ) : (
+          '📢 Advocacy Drive - Contact your representatives to push for change'
+        )}
       </p>
-      <a href="/sign" class="btn-am btn-am-white inline-block">
-        Sign the Petition
-      </a>
+      {state.hasBallotInitiative ? (
+        <a href="/sign" class="btn-am btn-am-white inline-block">
+          Sign the Petition
+        </a>
+      ) : (
+        <a href="#contact-representatives" class="btn-am btn-am-white inline-block">
+          Contact Representatives
+        </a>
+      )}
     </div>
   </section>
 
@@ -436,7 +448,9 @@ function isSafeCongressDomain(website: string | undefined): boolean {
         client:load
         url={Astro.url.href}
         title={`Help Public Code in ${state.name}`}
-        description={`We need ${state.signatureTarget.toLocaleString()} signatures to bring a public code initiative to the ballot in ${state.name}.`}
+        description={state.hasBallotInitiative 
+          ? `We need ${state.signatureTarget.toLocaleString()} signatures to bring a public code initiative to the ballot in ${state.name}.`
+          : `Join the advocacy drive for public code in ${state.name}. Contact your representatives and support open source policy.`}
       />
     </div>
   </section>
