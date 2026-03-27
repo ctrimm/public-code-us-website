@@ -45,7 +45,7 @@ const schema = type === 'article' ? {
     "name": "Public Code US",
     "logo": {
       "@type": "ImageObject",
-      "url": "https://publiccode.us/favicon.svg"
+      "url": "https://publiccode.us/apple-touch-icon.png"
     }
   }
 } : {
@@ -53,7 +53,7 @@ const schema = type === 'article' ? {
   "@type": "Organization",
   "name": "Public Code US",
   "url": "https://publiccode.us/",
-  "logo": "https://publiccode.us/favicon.svg",
+  "logo": "https://publiccode.us/apple-touch-icon.png",
   "description": "A movement to require publicly funded software to be publicly owned.",
   "sameAs": [
     "https://twitter.com/publiccodeus",
@@ -84,6 +84,11 @@ const schema = type === 'article' ? {
 <meta property="twitter:title" content={title} />
 <meta property="twitter:description" content={description} />
 <meta property="twitter:image" content={imageUrl} />
+<meta name="twitter:site" content="@publiccodeus" />
+<meta name="twitter:creator" content="@publiccodeus" />
+
+<!-- Add Theme Color -->
+<meta name="theme-color" content="#0A1128" />
 
 <!-- Additional Meta Tags -->
 <meta name="generator" content={Astro.generator} />
