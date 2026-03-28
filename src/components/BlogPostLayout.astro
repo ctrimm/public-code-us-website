@@ -8,6 +8,8 @@ export interface Props {
   date?: string;
   author?: string;
   image?: string;
+  featuredImage?: string;
+  featuredImageAlt?: string;
   readTime?: string;
   frontmatter?: {
     title: string;
@@ -15,6 +17,8 @@ export interface Props {
     date: string;
     author?: string;
     image?: string;
+    featuredImage?: string;
+    featuredImageAlt?: string;
     readTime?: string;
   };
 }
@@ -27,6 +31,8 @@ const description = frontmatter.description || '';
 const date = frontmatter.date || new Date().toISOString();
 const author = frontmatter.author || 'Public Code US Team';
 const image = frontmatter.image;
+const featuredImage = frontmatter.featuredImage;
+const featuredImageAlt = frontmatter.featuredImageAlt || title;
 const readTime = frontmatter.readTime;
 const url = Astro.url.href;
 ---
@@ -55,6 +61,18 @@ const url = Astro.url.href;
         <p class="text-lg font-bold">{description}</p>
       </div>
     </section>
+
+    {/* Featured Image */}
+    {featuredImage && (
+      <div class="border-b-4 border-am-dark">
+        <img
+          src={featuredImage}
+          alt={featuredImageAlt}
+          class="w-full block"
+          loading="eager"
+        />
+      </div>
+    )}
 
     {/* Content */}
     <section class="bg-am-light border-b-4 border-am-dark py-20">
