@@ -1,5 +1,52 @@
 ---
 import Layout from '../layouts/main.astro';
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Won't open source make government software insecure?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No — actually the opposite. Open-source code gets reviewed by thousands of independent security experts. Closed proprietary code only gets reviewed by the vendor's small team. Open is more secure."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What about intellectual property and patents?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Open-source licenses protect IP while allowing free use. Developers retain credit and attribution. Companies can still contribute and profit by offering services and support around the code."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Which states can have ballot initiatives?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "24 U.S. states allow ballot initiatives: Alaska, Arizona, Arkansas, California, Colorado, Florida, Idaho, Illinois, Maine, Massachusetts, Michigan, Missouri, Montana, Nebraska, Nevada, New Mexico, North Dakota, Ohio, Oklahoma, Oregon, South Dakota, Utah, Washington, and Wyoming. Requirements vary significantly by state."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How much does government software cost taxpayers?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Billions annually. The U.S. government spends over $100 billion per year on IT, with roughly 80% going to maintaining legacy proprietary systems. Studies show public code could save 20–40% through reuse and competition — potentially $15–40 billion per year."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I get involved with Public Code US?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sign the petition at publiccode.us/sign. Share with friends and family. Contact your state and federal representatives using the tools at publiccode.us/states. Volunteer for the campaign in your state. Donate to support ballot initiative efforts."
+      }
+    }
+  ]
+};
 ---
 
 <Layout
@@ -7,6 +54,7 @@ import Layout from '../layouts/main.astro';
 	description="Understand public code, ballot initiatives, and why open source software matters for government. Complete educational guide."
 	currentPage="/learn"
 >
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
 	{/* Hero */}
 	<section class="bg-am-light-blue text-am-light border-b-4 border-am-dark py-20">
 		<div class="max-w-4xl mx-auto px-4">

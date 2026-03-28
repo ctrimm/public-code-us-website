@@ -13,6 +13,8 @@ export interface Props {
   noindex?: boolean;
   nofollow?: boolean;
   currentPage?: string;
+  date?: string;
+  author?: string;
 }
 
 const {
@@ -24,6 +26,8 @@ const {
   noindex,
   nofollow,
   currentPage,
+  date,
+  author,
 } = Astro.props;
 ---
 
@@ -34,6 +38,7 @@ const {
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link rel="icon" type="image/png" href="/favicon.png" />
 		<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+		<link rel="llms" type="text/plain" href="/llms.txt" title="LLMs.txt — AI-readable site overview" />
 
 		<SEO
 			title={title}
@@ -43,7 +48,10 @@ const {
 			type={type}
 			noindex={noindex}
 			nofollow={nofollow}
+			date={date}
+			author={author}
 		/>
+		<slot name="head" />
 	</head>
 	<body>
 		<a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:top-0 focus:left-0 focus:z-[100] focus:bg-am-white focus:text-am-dark focus:px-6 focus:py-3 focus:font-bold focus:uppercase focus:border-4 focus:border-am-dark">

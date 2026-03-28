@@ -1,9 +1,10 @@
-# Allow all crawlers
+# Allow all crawlers including AI/LLM agents
 User-agent: *
 Allow: /
 
-# Sitemap location
+# Sitemap
 Sitemap: https://publiccode.us/sitemap-index.xml
 
-# Crawl-delay (optional, uncomment if needed)
-# Crawl-delay: 10
+# LLMs.txt — structured site overview for AI agents and language models
+# https://publiccode.us/llms.txt       (concise)
+# https://publiccode.us/llms-full.txt  (comprehensive)

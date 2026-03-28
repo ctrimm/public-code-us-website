@@ -7,6 +7,8 @@ export interface Props {
   type?: 'website' | 'article';
   noindex?: boolean;
   nofollow?: boolean;
+  date?: string;
+  author?: string;
 }
 
 const {
@@ -17,16 +19,34 @@ const {
   type = 'website',
   noindex = false,
   nofollow = false,
+  date,
+  author,
 } = Astro.props;
 
 const siteUrl = import.meta.env.SITE_URL || Astro.site || 'http://localhost:4321';
 const canonicalURL = canonical || new URL(Astro.url.pathname, siteUrl).toString();
 const imageUrl = new URL(image, siteUrl).toString();
+const dateISO = date ? new Date(date).toISOString() : undefined;
 
 const robotsContent = [
   noindex && 'noindex',
   nofollow && 'nofollow',
 ].filter(Boolean).join(', ') || 'index, follow';
+
+const org = {
+  "@type": "Organization",
+  "name": "Public Code US",
+  "url": "https://publiccode.us/",
+  "logo": {
+    "@type": "ImageObject",
+    "url": "https://publiccode.us/apple-touch-icon.png"
+  },
+  "description": "A grassroots campaign to require that software built with public tax dollars be released as Free and Open Source Software.",
+  "sameAs": [
+    "https://twitter.com/publiccodeus",
+    "https://github.com/public-code-us"
+  ]
+};
 
 const schema = type === 'article' ? {
   "@context": "https://schema.org",
@@ -35,29 +55,32 @@ const schema = type === 'article' ? {
   "image": imageUrl,
   "url": canonicalURL,
   "description": description,
-  "author": {
-    "@type": "Organization",
-    "name": "Public Code US",
-    "url": "https://publiccode.us/"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "Public Code US",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "https://publiccode.us/apple-touch-icon.png"
-    }
-  }
+  ...(dateISO && { "datePublished": dateISO, "dateModified": dateISO }),
+  "author": author
+    ? { "@type": "Person", "name": author, "worksFor": org }
+    : org,
+  "publisher": org
 } : {
   "@context": "https://schema.org",
-  "@type": "Organization",
-  "name": "Public Code US",
-  "url": "https://publiccode.us/",
-  "logo": "https://publiccode.us/apple-touch-icon.png",
-  "description": "A movement to require publicly funded software to be publicly owned.",
-  "sameAs": [
-    "https://twitter.com/publiccodeus",
-    "https://github.com/public-code-us"
+  "@graph": [
+    {
+      ...org,
+      "@type": "Organization"
+    },
+    {
+      "@type": "WebSite",
+      "name": "Public Code US",
+      "url": "https://publiccode.us/",
+      "description": "A grassroots campaign to require that software built with public tax dollars be released as Free and Open Source Software.",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "https://publiccode.us/states/{search_term_string}"
+        },
+        "query-input": "required name=search_term_string"
+      }
+    }
   ]
 };
 ---
@@ -71,27 +94,34 @@ const schema = type === 'article' ? {
 <!-- Canonical URL -->
 <link rel="canonical" href={canonicalURL} />
 
-<!-- Open Graph / Facebook -->
+<!-- Open Graph -->
 <meta property="og:type" content={type} />
 <meta property="og:url" content={canonicalURL} />
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
 <meta property="og:image" content={imageUrl} />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:locale" content="en_US" />
+<meta property="og:site_name" content="Public Code US" />
+{type === 'article' && dateISO && <meta property="article:published_time" content={dateISO} />}
+{type === 'article' && dateISO && <meta property="article:modified_time" content={dateISO} />}
+{type === 'article' && <meta property="article:author" content={author ?? 'Public Code US Team'} />}
 
 <!-- Twitter -->
-<meta property="twitter:card" content="summary_large_image" />
-<meta property="twitter:url" content={canonicalURL} />
-<meta property="twitter:title" content={title} />
-<meta property="twitter:description" content={description} />
-<meta property="twitter:image" content={imageUrl} />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:url" content={canonicalURL} />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={imageUrl} />
 <meta name="twitter:site" content="@publiccodeus" />
 <meta name="twitter:creator" content="@publiccodeus" />
 
-<!-- Add Theme Color -->
+<!-- Theme Color -->
 <meta name="theme-color" content="#0A1128" />
 
-<!-- Additional Meta Tags -->
+<!-- Generator -->
 <meta name="generator" content={Astro.generator} />
 
-<!-- JSON-LD Structured Data for AEO -->
+<!-- JSON-LD Structured Data -->
 <script type="application/ld+json" set:html={JSON.stringify(schema)} />

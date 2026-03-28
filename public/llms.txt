@@ -1,0 +1,63 @@
+# Public Code US
+
+> A grassroots campaign to pass ballot initiatives and legislation requiring that software developed with public tax dollars be released as Free and Open Source Software (FOSS). When public money funds the code, the public should own it.
+
+Public Code US is organizing across all 50 states to demand transparency, accountability, and efficiency in government software. We run ballot initiatives in states that allow citizen-initiated measures, and pursue direct legislative advocacy everywhere else. Every state page provides direct contact information for U.S. senators and representatives, along with a pre-written advocacy message citizens can copy and send.
+
+## Core Pages
+
+- [Home](https://publiccode.us/): Campaign overview, the problem with proprietary government software, key statistics, and calls to action.
+- [Learn](https://publiccode.us/learn): Educational content explaining what public code is, why it matters, how it works, and the global movement behind it.
+- [Campaign](https://publiccode.us/campaign): Interactive map and grid showing ballot initiative status across all 50 states and D.C. — active campaigns, coming-soon states, and states without ballot initiative processes.
+- [Sign the Petition](https://publiccode.us/sign): Collect your signature to support public code legislation in your state.
+- [Organize](https://publiccode.us/organize): Grassroots organizing guide — how to volunteer, collect signatures, run local events, and build the movement in your community.
+- [Resources](https://publiccode.us/resources): Downloadable PDFs and PPTX materials (one-pager, complete guide, cost savings analysis, FAQ, state ballot guide, presentation deck) plus a social media toolkit with 12 branded graphics.
+- [Blog](https://publiccode.us/blog): Campaign updates, stories, and insights from the Public Code US team.
+- [About](https://publiccode.us/about): Mission, values, team, and why this campaign exists.
+
+## State Pages
+
+Each U.S. state and D.C. has a dedicated page at `/states/{state-slug}` (e.g., `/states/california`, `/states/texas`, `/states/new-york`). Each page includes:
+- State-specific ballot initiative status and signature targets
+- Senior and junior U.S. Senator contact info (name, party, phone, website, contact form link)
+- U.S. House Representatives for that state (name, district, party, phone, website, contact form link)
+- A pre-written advocacy message citizens can copy and paste into official contact forms
+- Local organizing information
+
+## Blog Posts
+
+- [Welcome to Public Code US](https://publiccode.us/blog/welcome-to-public-code-us): Why we're fighting for public code and why you should care. Covers the $640M unemployment system duplication problem, the democratic stakes, and how to get involved.
+- [We Made It Easy to Contact Your Senator or Representative](https://publiccode.us/blog/contact-your-representative): How the built-in contact tools on every state page work, why direct constituent contact matters, and a step-by-step guide.
+
+## Downloadable Resources
+
+All files are free to use and share. PDFs use the site's brand colors and contain substantive content.
+
+- [One-Page Guide](https://publiccode.us/downloads/public-code-one-pager.pdf): Quick overview — the problem, solution, proof, and what to do today.
+- [Complete Guide](https://publiccode.us/downloads/public-code-complete-guide.pdf): Full history, cost breakdown, case studies (Barcelona's Decidim, Estonia's X-Road), and implementation principles.
+- [Cost Savings Analysis](https://publiccode.us/downloads/cost-savings-analysis.pdf): Federal IT spending data, per-system duplication costs across states, lock-in premiums, and estimated savings of $5–40B+/year.
+- [FAQ](https://publiccode.us/downloads/faq.pdf): Eight Q&As covering what public code is, security concerns, vendor impacts, ballot initiative mechanics, and how to help.
+- [State Ballot Guide](https://publiccode.us/downloads/state-ballot-guide.pdf): Which 24 states allow citizen initiatives, typical signature thresholds, geographic requirements, and step-by-step qualification process.
+- [Presentation Deck](https://publiccode.us/downloads/presentation.pptx): Six-slide branded PowerPoint — title, problem stats, solution pillars, international proof, how-it-works, call to action.
+
+## Key Facts & Claims
+
+- U.S. federal IT budget: ~$100B/year, ~80% spent on legacy proprietary system maintenance
+- California, Illinois, and New York each independently built unemployment systems in 2020 at a combined cost of ~$640M
+- Approximately 24 U.S. states allow citizen-initiated ballot measures
+- Germany, France, Italy, Spain, and the EU have enacted public money / public code laws
+- Barcelona's Decidim platform: ~€1M invested, ~€30M in delivered value, adopted by 50+ cities
+- Estonia's X-Road: shared openly with Finland and dozens of nations, saving billions
+- Conservative estimate of avoidable annual duplication in the U.S.: $15–40B
+
+## Legal & Policy
+
+- [Privacy Policy](https://publiccode.us/privacy)
+- [Terms of Service](https://publiccode.us/terms)
+
+## Optional: Additional Context
+
+- Sitemap: https://publiccode.us/sitemap-index.xml
+- The site is statically generated with Astro and deployed on AWS S3 + CloudFront.
+- All content is open for sharing under the spirit of the public code movement.
+- Contact and petition API endpoints exist at `/api/sign` (POST) and `/api/subscribe` (POST) but are disabled in static output mode.
