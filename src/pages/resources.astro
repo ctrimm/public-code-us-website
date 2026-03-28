@@ -93,46 +93,90 @@ import Layout from '../layouts/main.astro';
 
 	{/* Social Toolkit */}
 	<section class="bg-am-blue border-b-4 border-am-dark py-20">
-		<div class="max-w-4xl mx-auto px-4">
-			<h2 class="text-4xl font-bold text-am-dark mb-12">Social Media Toolkit</h2>
-			<p class="text-lg font-bold text-am-dark mb-8">
-				Share on social media. All images are open for use under CC-BY-SA.
+		<div class="max-w-6xl mx-auto px-4">
+			<h2 class="text-4xl font-bold text-am-dark mb-4">Social Media Toolkit</h2>
+			<p class="text-lg font-bold text-am-dark mb-12">
+				Pick your favorite design, download, and share. All images are free to use under CC-BY-SA.
+				Scroll each row to see all options.
 			</p>
-			<div class="grid md:grid-cols-2 gap-6">
-				<div class="border-4 border-am-dark bg-am-light p-4">
-					<div class="bg-gradient-to-br from-am-red to-am-light-blue text-am-light p-8 font-bold text-center mb-3">
-						PUBLIC<br />CODE
-					</div>
-					<a href="/downloads/social-1.png" download class="btn-am w-full text-center">
-						📥 Download 1:1 Square
-					</a>
-				</div>
 
-				<div class="border-4 border-am-dark bg-am-light p-4">
-					<div class="bg-am-white text-am-dark p-12 font-bold text-center text-2xl mb-3">
-						PUBLIC<br />CODE<br />NOW
-					</div>
-					<a href="/downloads/social-2.png" download class="btn-am w-full text-center">
-						📥 Download 16:9 Banner
-					</a>
+			{/* 1:1 Square */}
+			<div class="mb-12">
+				<h3 class="text-2xl font-bold text-am-dark mb-2">1:1 Square <span class="text-sm font-bold text-am-dark opacity-60">— Instagram / Facebook post</span></h3>
+				<div class="flex gap-4 overflow-x-auto pb-4" style="scrollbar-width: thin;">
+					{[
+						{ file: "social-1a.png", label: "Option A — Dark" },
+						{ file: "social-1b.png", label: "Option B — White" },
+						{ file: "social-1c.png", label: "Option C — Blue" },
+					].map(({ file, label }) => (
+						<div class="flex-none w-72 border-4 border-am-dark bg-am-light p-3">
+							<img src={`/downloads/${file}`} alt={label} class="w-full mb-3 block" loading="lazy" />
+							<p class="font-bold text-am-dark text-sm mb-2">{label}</p>
+							<a href={`/downloads/${file}`} download class="btn-am w-full text-center block text-sm">
+								📥 Download
+							</a>
+						</div>
+					))}
 				</div>
+			</div>
 
-				<div class="border-4 border-am-dark bg-am-light p-4">
-					<div class="bg-am-dark text-am-light p-8 font-bold text-center mb-3">
-						Your Tax<br />Dollars.<br />Your Code.
-					</div>
-					<a href="/downloads/social-3.png" download class="btn-am w-full text-center">
-						📥 Download Quote
-					</a>
+			{/* 16:9 Banner */}
+			<div class="mb-12">
+				<h3 class="text-2xl font-bold text-am-dark mb-2">16:9 Banner <span class="text-sm font-bold text-am-dark opacity-60">— Twitter/X header / Facebook cover</span></h3>
+				<div class="flex gap-4 overflow-x-auto pb-4" style="scrollbar-width: thin;">
+					{[
+						{ file: "social-2a.png", label: "Option A — Split" },
+						{ file: "social-2b.png", label: "Option B — Centered" },
+						{ file: "social-2c.png", label: "Option C — Stat" },
+					].map(({ file, label }) => (
+						<div class="flex-none w-96 border-4 border-am-dark bg-am-light p-3">
+							<img src={`/downloads/${file}`} alt={label} class="w-full mb-3 block" loading="lazy" />
+							<p class="font-bold text-am-dark text-sm mb-2">{label}</p>
+							<a href={`/downloads/${file}`} download class="btn-am w-full text-center block text-sm">
+								📥 Download
+							</a>
+						</div>
+					))}
 				</div>
+			</div>
 
-				<div class="border-4 border-am-dark bg-am-light p-4">
-					<div class="bg-gradient-to-r from-am-light-blue via-am-red to-am-blue p-8 font-bold text-center mb-3">
-						SIGN THE<br />PETITION
-					</div>
-					<a href="/downloads/social-4.png" download class="btn-am w-full text-center">
-						📥 Download CTA
-					</a>
+			{/* Quote */}
+			<div class="mb-12">
+				<h3 class="text-2xl font-bold text-am-dark mb-2">Quote Cards <span class="text-sm font-bold text-am-dark opacity-60">— shareable quote images</span></h3>
+				<div class="flex gap-4 overflow-x-auto pb-4" style="scrollbar-width: thin;">
+					{[
+						{ file: "social-3a.png", label: "Option A — Dark" },
+						{ file: "social-3b.png", label: "Option B — Red" },
+						{ file: "social-3c.png", label: "Option C — Light" },
+					].map(({ file, label }) => (
+						<div class="flex-none w-72 border-4 border-am-dark bg-am-light p-3">
+							<img src={`/downloads/${file}`} alt={label} class="w-full mb-3 block" loading="lazy" />
+							<p class="font-bold text-am-dark text-sm mb-2">{label}</p>
+							<a href={`/downloads/${file}`} download class="btn-am w-full text-center block text-sm">
+								📥 Download
+							</a>
+						</div>
+					))}
+				</div>
+			</div>
+
+			{/* CTA */}
+			<div class="mb-4">
+				<h3 class="text-2xl font-bold text-am-dark mb-2">Call to Action <span class="text-sm font-bold text-am-dark opacity-60">— petition drive graphics</span></h3>
+				<div class="flex gap-4 overflow-x-auto pb-4" style="scrollbar-width: thin;">
+					{[
+						{ file: "social-4a.png", label: "Option A — Dark" },
+						{ file: "social-4b.png", label: "Option B — White" },
+						{ file: "social-4c.png", label: "Option C — Blue" },
+					].map(({ file, label }) => (
+						<div class="flex-none w-72 border-4 border-am-dark bg-am-light p-3">
+							<img src={`/downloads/${file}`} alt={label} class="w-full mb-3 block" loading="lazy" />
+							<p class="font-bold text-am-dark text-sm mb-2">{label}</p>
+							<a href={`/downloads/${file}`} download class="btn-am w-full text-center block text-sm">
+								📥 Download
+							</a>
+						</div>
+					))}
 				</div>
 			</div>
 		</div>
