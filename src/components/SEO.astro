@@ -28,6 +28,21 @@ const robotsContent = [
   nofollow && 'nofollow',
 ].filter(Boolean).join(', ') || 'index, follow';
 
+const org = {
+  "@type": "Organization",
+  "name": "Public Code US",
+  "url": "https://publiccode.us/",
+  "logo": {
+    "@type": "ImageObject",
+    "url": "https://publiccode.us/apple-touch-icon.png"
+  },
+  "description": "A grassroots campaign to require that software built with public tax dollars be released as Free and Open Source Software.",
+  "sameAs": [
+    "https://twitter.com/publiccodeus",
+    "https://github.com/public-code-us"
+  ]
+};
+
 const schema = type === 'article' ? {
   "@context": "https://schema.org",
   "@type": "Article",
@@ -35,29 +50,29 @@ const schema = type === 'article' ? {
   "image": imageUrl,
   "url": canonicalURL,
   "description": description,
-  "author": {
-    "@type": "Organization",
-    "name": "Public Code US",
-    "url": "https://publiccode.us/"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "Public Code US",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "https://publiccode.us/apple-touch-icon.png"
-    }
-  }
+  "author": org,
+  "publisher": org
 } : {
   "@context": "https://schema.org",
-  "@type": "Organization",
-  "name": "Public Code US",
-  "url": "https://publiccode.us/",
-  "logo": "https://publiccode.us/apple-touch-icon.png",
-  "description": "A movement to require publicly funded software to be publicly owned.",
-  "sameAs": [
-    "https://twitter.com/publiccodeus",
-    "https://github.com/public-code-us"
+  "@graph": [
+    {
+      ...org,
+      "@type": "Organization"
+    },
+    {
+      "@type": "WebSite",
+      "name": "Public Code US",
+      "url": "https://publiccode.us/",
+      "description": "A grassroots campaign to require that software built with public tax dollars be released as Free and Open Source Software.",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "https://publiccode.us/states/{search_term_string}"
+        },
+        "query-input": "required name=search_term_string"
+      }
+    }
   ]
 };
 ---

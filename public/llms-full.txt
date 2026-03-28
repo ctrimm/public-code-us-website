@@ -1,0 +1,250 @@
+# Public Code US — Full Content Reference
+
+> Complete content reference for AI agents, LLMs, and automated tools. For a concise overview see /llms.txt.
+
+---
+
+## About This Site
+
+Public Code US is a U.S. grassroots advocacy campaign with one goal: pass laws requiring that software built with public tax dollars be released as Free and Open Source Software (FOSS).
+
+**Core principle:** If public money funds the development of software, that software should be owned by the public — transparent, auditable, reusable, and free from vendor lock-in.
+
+**Website:** https://publiccode.us
+**Sitemap:** https://publiccode.us/sitemap-index.xml
+**llms.txt:** https://publiccode.us/llms.txt
+
+---
+
+## The Problem
+
+Every year, U.S. federal and state governments spend over $100 billion on software. Approximately 80% of that goes to maintaining legacy proprietary systems. The code is owned by vendors, not the public that paid for it.
+
+**The duplication crisis:**
+- In 2020, California ($260M), Illinois ($230M), and New York ($150M) each independently built unemployment insurance systems from scratch — the same problem solved three times for $640M total.
+- This pattern repeats for every major government function: tax systems, Medicaid eligibility, voter registration, criminal justice databases.
+- Conservative estimate of avoidable duplication: $15–40 billion per year.
+
+**Vendor lock-in:**
+- Agencies cannot switch vendors without losing their data and code.
+- Renewal rates run 20–60% above market when no alternatives exist.
+- Vendors resist security audits, slowing vulnerability fixes.
+- Migration costs: $50–500M per system to switch vendors.
+
+**Democratic accountability:**
+- Government software determines who gets benefits, who votes, whose immigration case gets approved.
+- These systems are black boxes. Citizens cannot audit them.
+- Security through obscurity hides vulnerabilities instead of fixing them.
+
+---
+
+## The Solution: Public Code
+
+Public code requires that software developed with public funds be released as Free and Open Source Software.
+
+**Benefits:**
+- **Transparent:** The code is public. Anyone can read, understand, and audit it.
+- **Secure:** Independent security researchers can review the code. Bugs found and fixed faster.
+- **Efficient:** Code built in one state or agency can be reused by all 50 states and every agency.
+- **Innovative:** Open platforms attract developers and create local tech ecosystems.
+- **Accountable:** Government software serves the public — not the vendors.
+- **Democratic:** Citizens deserve to know how the software governing their lives works.
+
+---
+
+## International Proof
+
+- **Germany:** Coalition agreement includes 'public money, public code' clause. Estimated €1.7B saved in 5 years.
+- **France:** Digital Republic law requires open source for public sector software.
+- **Italy & Spain:** Both have enacted public code legislation.
+- **European Union:** Requires open source for EU-funded projects. FOSS generated €1 return per €1 invested plus €4 in spillover economic benefits.
+- **Barcelona (Decidim):** Open-source civic platform. ~€1M invested, ~€30M delivered, adopted by 50+ cities in 7 countries at near-zero marginal cost.
+- **Estonia (X-Road):** Open-source government data exchange layer. Shared with Finland and dozens of nations. Savings estimated in the billions.
+
+---
+
+## How the Campaign Works
+
+### Ballot Initiatives (24 states + D.C.)
+In approximately 24 states, citizens can place proposed laws directly on the election ballot by collecting verified voter signatures. If a majority votes yes, it becomes law without needing the legislature.
+
+**States with citizen initiative processes:**
+Alaska, Arizona, Arkansas, California, Colorado, Florida, Idaho, Illinois, Maine, Massachusetts, Michigan, Missouri, Montana, Nebraska, Nevada, New Mexico, North Dakota, Ohio, Oklahoma, Oregon, South Dakota, Utah, Washington, Wyoming
+
+**Typical requirements:**
+- Signature threshold: 3–10% of votes cast in the last gubernatorial election
+- Geographic distribution: signatures required from multiple counties/districts
+- Deadline: 3–12 months before the election
+- Notarized petition forms approved by Secretary of State
+
+### Direct Legislative Advocacy (26 states)
+In states without ballot initiatives, the path is through state and federal legislators.
+
+**States requiring legislative action:**
+Alabama, Connecticut, Delaware, Georgia, Hawaii, Indiana, Iowa, Kansas, Kentucky, Louisiana, Maryland, Minnesota, Mississippi, New Hampshire, New Jersey, New York, North Carolina, Pennsylvania, Rhode Island, South Carolina, Tennessee, Texas, Vermont, Virginia, West Virginia, Wisconsin
+
+Every state page on the site provides direct contact information for all U.S. senators and representatives, with a pre-written advocacy message citizens can copy and submit.
+
+---
+
+## State Pages
+
+URL pattern: `https://publiccode.us/states/{slug}` where slug is the lowercase state name with hyphens (e.g., `california`, `new-york`, `north-dakota`).
+
+Slugs for all 50 states + D.C.:
+alabama, alaska, arizona, arkansas, california, colorado, connecticut, delaware, florida, georgia, hawaii, idaho, illinois, indiana, iowa, kansas, kentucky, louisiana, maine, maryland, massachusetts, michigan, minnesota, mississippi, missouri, montana, nebraska, nevada, new-hampshire, new-jersey, new-mexico, new-york, north-carolina, north-dakota, ohio, oklahoma, oregon, pennsylvania, rhode-island, south-carolina, south-dakota, tennessee, texas, utah, vermont, virginia, washington, west-virginia, wisconsin, wyoming, washington-dc
+
+**Each state page includes:**
+- Campaign status (active / coming-soon / not-yet)
+- Signature target and current count (for ballot initiative states)
+- Senior U.S. Senator: name, party, phone number, senate.gov website, contact form URL
+- Junior U.S. Senator: name, party, phone number, senate.gov website, contact form URL
+- U.S. House Representatives: name, district number or "At-Large", party, phone, house.gov website, contact form URL
+- Pre-written advocacy message (copy-to-clipboard)
+- Local organizer contact info (where available)
+
+---
+
+## Pre-Written Advocacy Message (Template)
+
+The following message is available on every state page for citizens to copy and submit to their representatives:
+
+---
+Dear [Senator/Representative] [Name],
+
+I am a resident of [State] and I'm writing to urge your support for "Public Code" policies.
+
+When tax money is used to build software, that software should be open source and freely available to the public. This isn't a radical idea — it's common sense accountability.
+
+Currently, governments at every level spend billions of dollars developing software that is then locked up behind proprietary agreements. The same systems are rebuilt from scratch by every agency and state, wasting taxpayer money on duplicate solutions. The code that determines who gets benefits, who votes, and how public services work is hidden from the very citizens it affects.
+
+I urge you to support legislation requiring that publicly funded software be released as Free and Open Source Software. This will:
+- Save taxpayer money through reuse and competition
+- Improve security through transparent code review
+- Restore democratic accountability to government technology
+- Create local tech jobs and ecosystems
+
+Thank you for your service and your consideration.
+
+A constituent of [State]
+---
+
+---
+
+## Blog
+
+### Post 1: Welcome to Public Code US
+URL: https://publiccode.us/blog/welcome-to-public-code-us
+Date: March 16, 2026
+Summary: Introduces the movement. Explains the $640M duplication problem, the democratic stakes of opaque government software, the public code solution, international proof from Europe, and how citizens can get involved (sign, share, organize, donate, learn).
+
+### Post 2: We Made It Easy to Contact Your Senator or Representative
+URL: https://publiccode.us/blog/contact-your-representative
+Date: March 27, 2026
+Summary: Explains the built-in contact tools on every state page. Covers why direct constituent contact works, a 5-step how-to guide, the importance of phone calls, and why legislative pressure matters even in states running ballot initiatives.
+
+---
+
+## Downloadable Materials
+
+Base URL: https://publiccode.us/downloads/
+
+| File | Description |
+|------|-------------|
+| public-code-one-pager.pdf | Single-page summary of the problem, solution, proof, and calls to action. Designed for sharing with policymakers. |
+| public-code-complete-guide.pdf | Full guide: history (2017–2026), cost analysis, case studies (Decidim, X-Road, EU), implementation principles. |
+| cost-savings-analysis.pdf | Data tables: federal IT spending breakdown, per-system duplication costs by state, vendor lock-in premiums, $5–40B+ annual savings estimates, international evidence. |
+| faq.pdf | 8 Q&As: definition, open source relationship, security, vendor impacts, retroactive requirements, ballot initiative explainer, legislative states, how to help. |
+| state-ballot-guide.pdf | State-by-state tables of initiative vs. non-initiative states, typical signature requirements, geographic rules, step-by-step qualification process. |
+| presentation.pptx | 6-slide branded deck: Title → Problem stats → Solution pillars → International proof → How it works → CTA. |
+
+### Social Media Images (CC-BY-SA)
+
+| File | Dimensions | Style |
+|------|-----------|-------|
+| social-1a.png | 1080×1080 | Dark background, red accent |
+| social-1b.png | 1080×1080 | White background, dark border |
+| social-1c.png | 1080×1080 | Blue gradient |
+| social-2a.png | 1920×1080 | Split layout (red/dark) |
+| social-2b.png | 1920×1080 | Dark, centered text |
+| social-2c.png | 1920×1080 | White, $640M statistic |
+| social-3a.png | 1080×1080 | Dark quote card |
+| social-3b.png | 1080×1080 | Red quote card |
+| social-3c.png | 1080×1080 | Light quote card |
+| social-4a.png | 1080×1080 | Dark CTA |
+| social-4b.png | 1080×1080 | White CTA |
+| social-4c.png | 1080×1080 | Blue CTA |
+
+---
+
+## API Endpoints
+
+Note: The site is currently deployed as a static build. API endpoints below are defined in source but disabled in static output. They will be enabled when the site moves to server-side rendering.
+
+### POST /api/sign
+Sign the petition.
+
+**Request body (JSON):**
+```json
+{
+  "name": "string (required, max 100 chars)",
+  "email": "string (required, valid email, max 254 chars)",
+  "state": "string (required, max 50 chars)",
+  "zip": "string (optional, max 10 chars)",
+  "message": "string (optional, max 1000 chars)",
+  "wantsUpdates": "boolean"
+}
+```
+
+**Success response (200):**
+```json
+{
+  "success": true,
+  "message": "Thank you for signing the petition!",
+  "signatureId": "sig_...",
+  "totalSignatures": 0,
+  "timestamp": "ISO8601"
+}
+```
+
+**Error responses:** 400 (validation), 405 (wrong method), 409 (duplicate within 24h), 500 (server error)
+
+### POST /api/subscribe
+Subscribe to campaign updates.
+
+**Request body (JSON):**
+```json
+{
+  "email": "string (required, valid email, max 254 chars)",
+  "name": "string (optional, max 100 chars)",
+  "source": "string (optional, max 50 chars — page where subscription originated)"
+}
+```
+
+**Success response (200):**
+```json
+{
+  "success": true,
+  "message": "Successfully subscribed to updates!"
+}
+```
+
+---
+
+## Technical Stack
+
+- **Framework:** Astro 6 (static output)
+- **UI components:** React 19, Tailwind CSS 4
+- **Content:** MDX for blog posts
+- **Sitemap:** Auto-generated via @astrojs/sitemap
+- **Hosting:** AWS S3 + CloudFront
+- **Email:** Resend API (newsletter subscriptions)
+- **Data:** Representative contact info sourced from official senate.gov and house.gov records
+
+---
+
+## Contact & Legal
+
+- Privacy Policy: https://publiccode.us/privacy
+- Terms of Service: https://publiccode.us/terms
+- Contact: Via the About page at https://publiccode.us/about
