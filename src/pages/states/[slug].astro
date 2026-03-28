@@ -24,6 +24,16 @@ if (!state) {
 
 const signatureProgress = 45; // Percentage (demo)
 
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home",     "item": "https://publiccode.us/" },
+    { "@type": "ListItem", "position": 2, "name": "Campaign", "item": "https://publiccode.us/campaign" },
+    { "@type": "ListItem", "position": 3, "name": state.name, "item": `https://publiccode.us/states/${state.slug}` }
+  ]
+};
+
 function isSafeCongressDomain(website: string | undefined): boolean {
   if (!website) return false;
   try {
@@ -38,11 +48,12 @@ function isSafeCongressDomain(website: string | undefined): boolean {
 
 <Layout
   title={`Public Code in ${state.name}`}
-  description={state.hasBallotInitiative 
+  description={state.hasBallotInitiative
     ? `Join the Public Code initiative in ${state.name}. ${state.signatureTarget} signatures needed for the ballot.`
     : `Advocate for Public Code in ${state.name}. Contact your representatives and support open source policy.`}
   currentPage={`/states/${slug}`}
 >
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
   {/* Hero */}
   <section class="bg-am-red text-am-light border-b-4 border-am-dark py-20">
     <div class="max-w-4xl mx-auto px-4">
