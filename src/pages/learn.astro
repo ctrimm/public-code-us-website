@@ -233,13 +233,40 @@ const faqSchema = {
 		</div>
 	</section>
 
+	{/* Resources Cross-link */}
+	<section class="bg-am-dark text-am-light border-b-4 border-am-dark py-16">
+		<div class="max-w-4xl mx-auto px-4">
+			<h2 class="text-3xl font-bold mb-4">Take the Knowledge Further</h2>
+			<p class="font-bold opacity-80 mb-8">Download our free materials to share with friends, policymakers, and community members.</p>
+			<div class="grid md:grid-cols-3 gap-4">
+				<a href="/resources" class="border-4 border-am-light p-5 block hover:bg-am-blue hover:border-am-blue transition-all">
+					<h3 class="font-bold text-lg mb-2">📄 One-Page Guide</h3>
+					<p class="font-bold opacity-80 text-sm">The whole case for public code on a single page. Perfect for sharing.</p>
+				</a>
+				<a href="/resources" class="border-4 border-am-light p-5 block hover:bg-am-blue hover:border-am-blue transition-all">
+					<h3 class="font-bold text-lg mb-2">📊 Cost Savings Analysis</h3>
+					<p class="font-bold opacity-80 text-sm">The data behind the duplication problem and what public code would save.</p>
+				</a>
+				<a href="/blog" class="border-4 border-am-light p-5 block hover:bg-am-blue hover:border-am-blue transition-all">
+					<h3 class="font-bold text-lg mb-2">📰 Campaign Blog</h3>
+					<p class="font-bold opacity-80 text-sm">Stories, updates, and guides from the movement.</p>
+				</a>
+			</div>
+		</div>
+	</section>
+
 	{/* CTA */}
 	<section class="bg-am-red text-am-light border-b-4 border-am-dark py-16">
 		<div class="max-w-4xl mx-auto px-4 text-center">
 			<h2 class="text-3xl md:text-4xl font-bold mb-6">Ready to Take Action?</h2>
-			<a href="/sign" class="btn-am btn-am-white inline-block">
-				Sign the Petition
-			</a>
+			<div class="flex flex-col sm:flex-row gap-4 justify-center">
+				<a href="/sign" class="btn-am btn-am-white inline-block">
+					Sign the Petition
+				</a>
+				<a href="/campaign" class="btn-am btn-am-white inline-block">
+					Find Your State
+				</a>
+			</div>
 		</div>
 	</section>
 </Layout>
