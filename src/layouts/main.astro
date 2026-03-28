@@ -13,6 +13,8 @@ export interface Props {
   noindex?: boolean;
   nofollow?: boolean;
   currentPage?: string;
+  date?: string;
+  author?: string;
 }
 
 const {
@@ -24,6 +26,8 @@ const {
   noindex,
   nofollow,
   currentPage,
+  date,
+  author,
 } = Astro.props;
 ---
 
@@ -44,6 +48,8 @@ const {
 			type={type}
 			noindex={noindex}
 			nofollow={nofollow}
+			date={date}
+			author={author}
 		/>
 	</head>
 	<body>
