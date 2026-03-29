@@ -10,7 +10,9 @@ const posts = [
     description: 'Why we\'re fighting for public code, and why you should care',
     date: '2026-03-16',
     author: 'The Public Code US Team',
-    readTime: '5 min read'
+    readTime: '5 min read',
+    featuredImage: '/feature-welcome.png',
+    featuredImageAlt: 'The $640 million duplication problem visualized'
   },
   {
     slug: 'contact-your-representative',
@@ -18,7 +20,9 @@ const posts = [
     description: 'You shouldn\'t need a lobbyist to talk to your elected officials. Here\'s how Public Code US puts direct democracy back in your hands.',
     date: '2026-03-27',
     author: 'The Public Code US Team',
-    readTime: '4 min read'
+    readTime: '4 min read',
+    featuredImage: '/feature-contact-rep.png',
+    featuredImageAlt: 'Four steps to contact your representative directly'
   }
 ];
 
@@ -46,26 +50,34 @@ const sortedPosts = posts.sort((a, b) => new Date(b.date).getTime() - new Date(a
     <div class="max-w-4xl mx-auto px-4">
       <div class="space-y-8">
         {sortedPosts.map((post) => (
-          <article class="border-4 border-am-dark p-8 hover:shadow-am-lg transition-all">
-            <div class="mb-4">
-              <p class="text-sm font-bold uppercase tracking-widest text-am-dark mb-2">
-                {new Date(post.date).toLocaleDateString('en-US', {
-                  year: 'numeric',
-                  month: 'long',
-                  day: 'numeric'
-                })} • {post.readTime} • By {post.author}
-              </p>
-              <h2 class="text-3xl font-bold text-am-dark mb-2">
-                {post.title}
-              </h2>
-              <p class="font-bold text-am-dark text-lg mb-4">{post.description}</p>
-              <a
-                href={`/blog/${post.slug}`}
-                class="btn-am btn-am-primary inline-block"
-              >
-                Read More →
-              </a>
-            </div>
+          <article>
+            <a
+              href={`/blog/${post.slug}`}
+              class="border-4 border-am-dark block hover:shadow-am-lg hover:border-am-red transition-all group"
+            >
+              {post.featuredImage && (
+                <img
+                  src={post.featuredImage}
+                  alt={post.featuredImageAlt}
+                  class="w-full block border-b-4 border-am-dark"
+                  loading="lazy"
+                />
+              )}
+              <div class="p-8">
+                <p class="text-sm font-bold uppercase tracking-widest text-am-dark mb-2">
+                  {new Date(post.date).toLocaleDateString('en-US', {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric'
+                  })} • {post.readTime} • By {post.author}
+                </p>
+                <h2 class="text-3xl font-bold text-am-dark mb-3 group-hover:text-am-red transition-colors">
+                  {post.title}
+                </h2>
+                <p class="font-bold text-am-dark text-lg mb-4">{post.description}</p>
+                <span class="btn-am btn-am-primary inline-block">Read More →</span>
+              </div>
+            </a>
           </article>
         ))}
       </div>
@@ -95,26 +107,23 @@ const sortedPosts = posts.sort((a, b) => new Date(b.date).getTime() - new Date(a
     <section class="bg-am-white border-b-4 border-am-dark py-20">
       <div class="max-w-4xl mx-auto px-4">
         <h2 class="text-3xl font-bold text-am-dark mb-8">Latest Update</h2>
-        <div class="card-am bg-am-light">
-          <h3 class="text-2xl font-bold text-am-dark mb-4">
-            {sortedPosts[0].title}
-          </h3>
-          <p class="font-bold text-am-dark mb-6">{sortedPosts[0].description}</p>
-          <div class="flex flex-wrap gap-4">
-            <a
-              href={`/blog/${sortedPosts[0].slug}`}
-              class="btn-am btn-am-primary"
-            >
-              Read Full Post
-            </a>
-            <a
-              href="/blog"
-              class="btn-am"
-            >
-              All Posts
-            </a>
+        <a href={`/blog/${sortedPosts[0].slug}`} class="border-4 border-am-dark block hover:shadow-am-lg hover:border-am-red transition-all group">
+          {sortedPosts[0].featuredImage && (
+            <img
+              src={sortedPosts[0].featuredImage}
+              alt={sortedPosts[0].featuredImageAlt}
+              class="w-full block border-b-4 border-am-dark"
+              loading="lazy"
+            />
+          )}
+          <div class="p-8 bg-am-light">
+            <h3 class="text-2xl font-bold text-am-dark mb-4 group-hover:text-am-red transition-colors">
+              {sortedPosts[0].title}
+            </h3>
+            <p class="font-bold text-am-dark mb-6">{sortedPosts[0].description}</p>
+            <span class="btn-am btn-am-primary inline-block">Read Full Post →</span>
           </div>
-        </div>
+        </a>
       </div>
     </section>
   )}
