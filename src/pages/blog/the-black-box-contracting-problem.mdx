@@ -1,0 +1,105 @@
+---
+layout: ../../components/BlogPostLayout.astro
+title: "The $755 Billion Black Box: Why You Can't Know What Deloitte Built With Your Money"
+description: "Federal agencies spend $755 billion a year on contracts — and more than a trillion dollars in spending can't be traced. Here's the sunlight problem at the heart of government IT."
+date: "2026-04-03"
+author: "The Public Code US Team"
+readTime: "7 min read"
+image: "/og-blog-black-box.png"
+featuredImage: "/feature-black-box.png"
+featuredImageAlt: "A padlock over the US Capitol dome surrounded by dollar signs representing opaque government contracts"
+---
+
+# The $755 Billion Black Box
+
+In fiscal year 2024, federal agencies reported **$755 billion in procurement obligations**. That's more than the entire GDP of Switzerland, spent in a single year, on contracts for goods and services your government buys on your behalf.
+
+You cannot meaningfully audit most of it.
+
+Not because the information is classified. Not because it doesn't exist. But because the systems designed to make it transparent are riddled with gaps, the contracting vehicles are structured to obscure true costs, and the agencies responsible for reporting it simply... don't.
+
+This is the contracting transparency crisis. And if you care about where your tax dollars go — and about whether the software those dollars bought actually works — you need to understand it.
+
+## The Databases That Were Supposed to Fix This
+
+Congress passed the Federal Funding Accountability and Transparency Act in 2006. The DATA Act in 2014 tightened the screws further. The idea: require every federal agency to report its spending to a public database. USASpending.gov would be the window into the federal budget. Anyone could look.
+
+Here's what actually happened.
+
+A September 2025 GAO audit examined that transparency promise and found it largely broken:
+
+- **25 executive branch agencies** did not report spending data to USASpending.gov at all in FY 2022.
+- More than **12 million records totaling over $1.3 trillion** in spending could not link financial data to award data — meaning there's no way for the public to see what was actually purchased.
+- Of 70 federal agencies required to report procurement data, only **36 confirmed they completed data quality reports**. Nineteen agencies missed the deadline entirely.
+
+To be clear: this isn't a rounding error. **$1.3 trillion in untraced spending** is not a technical glitch. It's a systemic failure of the accountability infrastructure that Congress built specifically to prevent it.
+
+## Enter the IDIQ: The Contracting Vehicle Designed to Stay Opaque
+
+Even when contracts are reported, the most common types are deliberately structured to hide true costs.
+
+Roughly **56–63% of all federal contract dollars** flow through "Indefinite Delivery, Indefinite Quantity" contracts — IDIQs. These are umbrella agreements that announce a maximum ceiling but don't commit to any actual spending. An agency might announce a $2 billion IDIQ contract with Deloitte. That number gets reported publicly. What doesn't get reported clearly: which specific task orders were placed against it, what work was actually performed, or whether the government got anything resembling $2 billion in value.
+
+In FY 2024, **$74.8 billion** was awarded through Government-Wide Acquisition Contracts and IDIQs — over 9.5% of all federal contracts. That spending is nominally "disclosed," but in a form that makes meaningful scrutiny nearly impossible.
+
+This is how a government can be simultaneously "transparent" and completely illegible.
+
+## What We Know About the Big Consulting Firms
+
+Firms like Deloitte, Booz Allen Hamilton, Accenture, KPMG, and McKinsey have built enormous federal practices on exactly these contracting vehicles. And because the transparency failures run deep, the public has almost no way to evaluate whether what they built is worth what was paid.
+
+What we do know is revealing:
+
+**Booz Allen Hamilton** derives approximately **98% of its revenue from government contracts** — roughly 70% tied to intelligence and defense agencies. Much of that work happens under classified or redacted contract vehicles that are either withheld from public databases or partially blacked out. Booz Allen lost a **$2.5 billion NSA contract** in 2023, but the work under that contract had never received meaningful public scrutiny. We only learned about it because of the contracting dispute.
+
+**Deloitte** is the federal government's single largest professional services firm. In 2025, DOGE identified and cancelled at least **124 Deloitte contracts worth over $1.16 billion**. The cancellations weren't based on published performance data or public audits. They came from an internal review that most Americans never had access to — which means those contracts had been running, at scale, without public accountability.
+
+**McKinsey** provides an instructive international comparison. Canada's Auditor General reviewed 97 McKinsey federal contracts worth **$209 million** and found that only 28 were awarded competitively. Of 33 contracts examined closely, **19 were sole-source** — meaning no competitive bidding, no public pricing benchmark, no way for citizens to know if they paid a fair price. The procurement watchdog found "a strong perception of favoritism." The U.S. has no equivalent systematic review of McKinsey's American federal work.
+
+**Other Transaction Agreements (OTAs)** — a fast-growing contracting vehicle used heavily in defense and IT — operate almost entirely outside normal procurement transparency rules. Over **$40 billion in OTA spending** was either unreported or underreported in federal databases. More than **$10 billion of that was COVID-related** spending that simply never appeared in the public record.
+
+## What "Savings" Claims Actually Tell Us
+
+The 2025 DOGE contracting review inadvertently exposed just how opaque the system had become — and how hard it is to tell truth from fiction even when someone is trying to audit it.
+
+DOGE claimed over **$140 billion in savings** from cancelled contracts. Bank of America analysts found the figure was significantly overstated — because the team was counting unexercised contract ceilings as "savings," conflating announced contract values with actual obligations, and not accounting for replacement contracts that would be awarded for the same work.
+
+GSA said it identified **$65 billion in unexercised contract ceilings**. A separate vendor analysis found **$94 billion** — a $29 billion discrepancy that illustrates how even basic accounting of government contracts is contested.
+
+This is the state of federal contracting transparency in 2026. We don't know what we're spending. We can't verify what was built. And when someone tries to audit it, the numbers don't agree.
+
+## The State-Level Picture Is Worse
+
+Federal transparency failures are at least nominally constrained by statutory requirements and GAO oversight. At the state level, it varies enormously — and the floor is low.
+
+Most states have public records laws that theoretically require government contracts to be available on request. In practice, the burden falls entirely on citizens to find, request, and interpret records that agencies have no obligation to proactively publish. Contract amendments — which can double or triple the scope and cost of an original award — are rarely indexed alongside the original contract. IT modernization projects that run for years, with costs that bear no relationship to the original award, often exist in a documentation black hole.
+
+Hawaii's Grassroot Institute highlighted in early 2026 what advocacy organizations across the country have been arguing: sunshine laws need to be **extended to the contractors themselves**, not just the agencies. Right now, a vendor can receive public money to build public infrastructure and face zero obligation to publish what they built, what it cost to maintain, or what the public actually received.
+
+## The Connection to Public Code
+
+Here's what makes this more than a procurement policy problem.
+
+When a government agency spends $260 million with a proprietary vendor to build an unemployment insurance system — as California did during the pandemic — there are two failures happening simultaneously. The first is the contract transparency failure: the public can't see the contract terms, can't audit the deliverables, can't verify the system is worth what was paid.
+
+The second failure is worse: even if the contract were fully transparent, **the code itself remains hidden**. The vendor owns it. The state can't modify it. Other states can't reuse it. Security researchers can't audit it. And the next state that faces the same problem pays the same price for the same wheel, reinvented.
+
+Public code doesn't just make government software cheaper. It creates a form of accountability that no transparency database can replicate: **you can read the actual code**. You can see what was built. You can verify it does what it claims. You can identify security vulnerabilities before they become crises.
+
+The $755 billion contracting black box isn't just a fiscal problem. It's a democratic one. And the solution isn't just better reporting requirements — it's changing what government buys.
+
+## What You Can Do
+
+The public code movement is building the political will to change this. Here's how to be part of it:
+
+1. **[Sign the petition.](/sign)** Show legislators that contract transparency and public code have real constituency support.
+
+2. **[Contact your representatives.](/campaign)** Ask them where they stand on requiring publicly funded software to be publicly available. We've made it [a five-minute task](/campaign).
+
+3. **Share this.** Most people don't know this problem exists. Forward this post. Post the numbers. Start the conversation.
+
+The sunlight laws we have aren't working. It's time to demand ones that do — and to start requiring that the software your tax dollars fund belongs to you.
+
+---
+
+*New to the public code movement? Start with [Welcome to Public Code US](/blog/welcome-to-public-code-us) or visit our [Learn page](/learn). Ready to act? [Find your state and contact your representatives.](/campaign)*
