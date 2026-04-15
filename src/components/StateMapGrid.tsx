@@ -165,12 +165,14 @@ export function StateMapGrid({ onStateSelect }: StateMapGridProps) {
                     onClick={() => handleStateClick(abbr)}
                     onMouseEnter={() => setHoveredState(abbr)}
                     onMouseLeave={() => setHoveredState(null)}
+                    onFocus={() => setHoveredState(abbr)}
+                    onBlur={() => setHoveredState(null)}
                     className={`
                       flex-1 aspect-square m-[1px]
                       flex items-center justify-center
                       border-2 border-am-dark
                       font-black text-[10px] sm:text-xs md:text-sm
-                      uppercase cursor-pointer
+                      uppercase cursor-pointer focus-visible:outline-4 focus-visible:outline-am-dark focus-visible:outline-offset-2
                       transition-all duration-100
                       ${getStateColor(abbr)}
                       ${isSelected ? 'ring-2 ring-am-light-blue ring-offset-1 shadow-am z-10' : ''}
