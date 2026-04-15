@@ -75,10 +75,12 @@ export function StateMap({ selectedState, onStateSelect }: StateMapProps) {
               onClick={() => handleStateClick(abbr)}
               onMouseEnter={() => setHovered(abbr)}
               onMouseLeave={() => setHovered(null)}
+              onFocus={() => setHovered(abbr)}
+              onBlur={() => setHovered(null)}
               className={`
                 aspect-square flex items-center justify-center
                 font-black text-xs md:text-sm uppercase
-                transition-all duration-150 cursor-pointer
+                transition-all duration-150 cursor-pointer focus-visible:outline-4 focus-visible:outline-am-dark focus-visible:outline-offset-2
                 ${getStateColor(abbr)}
                 ${isSelected ? 'ring-4 ring-am-light-blue ring-offset-2' : ''}
                 ${isHovered ? 'shadow-am-lg scale-110 z-10' : ''}

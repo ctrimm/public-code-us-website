@@ -54,6 +54,9 @@ Sincerely,
             </>
           )}
         </button>
+        <div aria-live="polite" className="sr-only">
+          {copied && <span>Message copied to clipboard</span>}
+        </div>
       </div>
       <p className="text-xs font-bold text-am-dark mt-4 uppercase tracking-wider">
         💡 Tip: Paste this into the official contact form
