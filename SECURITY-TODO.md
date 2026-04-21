@@ -15,3 +15,20 @@ The petition (`/api/sign`) and newsletter (`/api/subscribe`) API routes are curr
 - **CAPTCHA** on both forms (e.g., Cloudflare Turnstile or hCaptcha) to prevent automated submissions
 - **DynamoDB** to replace the in-memory `signatures` Map in `api/sign.ts` — the current implementation loses all data on restart and deduplication breaks across restarts
 - **Unsubscribe page** — the welcome email links to `https://publiccode.us/unsubscribe` but that route does not yet exist
+
+## Security Headers (before going live)
+
+This is a static site (`output: 'static'`), so security headers **cannot** be set via Astro middleware — they must be configured at the CDN layer. See **Step 8b** in `AWS-DEPLOYMENT.md` for the full CloudFront response headers policy command.
+
+Headers to add via CloudFront response headers policy:
+
+| Header | Value |
+|--------|-------|
+| `Strict-Transport-Security` | `max-age=63072000; includeSubDomains; preload` |
+| `X-Frame-Options` | `DENY` |
+| `X-Content-Type-Options` | `nosniff` |
+| `Referrer-Policy` | `strict-origin-when-cross-origin` |
+| `Content-Security-Policy` | `default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; connect-src 'self' https://api.resend.com; frame-ancestors 'none';` |
+| `Permissions-Policy` | `camera=(), microphone=(), geolocation=()` |
+
+> The `unsafe-inline` CSP allowances are required by Astro's inline hydration scripts. This can be hardened with a nonce-based CSP if SSR is enabled in the future.

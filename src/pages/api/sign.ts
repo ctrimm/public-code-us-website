@@ -52,6 +52,14 @@ export const POST: APIRoute = async ({ request }) => {
       );
     }
 
+    // Length check must precede regex to prevent ReDoS on pathological inputs
+    if (body.email.length > 254) {
+      return new Response(
+        JSON.stringify({ success: false, error: 'Field email exceeds maximum length' }),
+        { status: 400, headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': 'https://publiccode.us' } }
+      );
+    }
+
     if (!validateEmail(body.email)) {
       return new Response(
         JSON.stringify({ success: false, error: 'Invalid email format' }),
@@ -70,13 +78,6 @@ export const POST: APIRoute = async ({ request }) => {
     if (body.name.length > 100) {
       return new Response(
         JSON.stringify({ success: false, error: 'Field name exceeds maximum length' }),
-        { status: 400, headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': 'https://publiccode.us' } }
-      );
-    }
-
-    if (body.email.length > 254) {
-      return new Response(
-        JSON.stringify({ success: false, error: 'Field email exceeds maximum length' }),
         { status: 400, headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': 'https://publiccode.us' } }
       );
     }
