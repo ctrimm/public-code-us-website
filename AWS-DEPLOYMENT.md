@@ -150,7 +150,7 @@ function validateEmail(email) {
 function getResponseHeaders() {
   return {
     'Content-Type': 'application/json',
-    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Origin': 'https://publiccode.us',
     'Access-Control-Allow-Methods': 'POST, OPTIONS',
     'Access-Control-Allow-Headers': 'Content-Type'
   };
@@ -560,10 +560,68 @@ aws dynamodb scan \
 5. **Set DynamoDB TTL** - Auto-delete signatures older than 90 days
 6. **Use Lambda reserved concurrency** - Optional, for predictable costs
 
+## Step 8b: Add CloudFront Security Response Headers Policy
+
+CloudFront response headers policies are the correct place to set security headers for this static site (Astro middleware cannot run on `output: 'static'`).
+
+```bash
+# Create a managed response headers policy with security headers
+aws cloudfront create-response-headers-policy \
+  --response-headers-policy-config '{
+    "Name": "publiccode-security-headers",
+    "Comment": "Security headers for publiccode.us",
+    "SecurityHeadersConfig": {
+      "XSSProtection": {
+        "Override": true,
+        "Protection": true,
+        "ModeBlock": true
+      },
+      "FrameOptions": {
+        "Override": true,
+        "FrameOption": "DENY"
+      },
+      "ReferrerPolicy": {
+        "Override": true,
+        "ReferrerPolicy": "strict-origin-when-cross-origin"
+      },
+      "ContentTypeOptions": {
+        "Override": true
+      },
+      "StrictTransportSecurity": {
+        "Override": true,
+        "AccessControlMaxAgeSec": 63072000,
+        "IncludeSubdomains": true,
+        "Preload": true
+      }
+    },
+    "CustomHeadersConfig": {
+      "Items": [
+        {
+          "Header": "Content-Security-Policy",
+          "Value": "default-src '\''self'\''; script-src '\''self'\'' '\''unsafe-inline'\''; style-src '\''self'\'' '\''unsafe-inline'\''; img-src '\''self'\'' data: https:; font-src '\''self'\''; connect-src '\''self'\'' https://api.resend.com; frame-ancestors '\''none'\'';",
+          "Override": true
+        },
+        {
+          "Header": "Permissions-Policy",
+          "Value": "camera=(), microphone=(), geolocation=()",
+          "Override": true
+        }
+      ],
+      "Quantity": 2
+    }
+  }' \
+  --region us-east-1
+```
+
+Attach the returned policy ID to your CloudFront distribution's default cache behavior and `/api/*` behavior by updating `ResponseHeadersPolicyId` in the distribution config.
+
+> **Note on CSP**: The `unsafe-inline` allowances cover Astro's inline styles and hydration scripts. Tighten these once the site moves to a nonce-based CSP if SSR is ever enabled.
+
 ## Security Checklist
 
 - [ ] Enable CloudFront logging
 - [ ] Setup AWS WAF rules to block malicious requests
+- [ ] Add CloudFront response headers policy (see Step 8b)
 - [ ] Enable DynamoDB point-in-time recovery
 - [ ] Encrypt data in transit (HTTPS only)
 - [ ] Encrypt data at rest in DynamoDB

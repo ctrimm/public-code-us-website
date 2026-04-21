@@ -1,0 +1,127 @@
+---
+layout: ../../components/BlogPostLayout.astro
+title: "The Code That Decides Your Life Runs on Trade Secrets"
+description: "Government software denies your benefits, sets your bail, flags your taxes, and scores your immigration case. You can't read it. You can't challenge it. You don't even know what it says about you."
+date: "2026-04-21"
+author: "The Public Code US Team"
+readTime: "7 min read"
+image: "/og-blog-civil-liberties.png"
+featuredImage: "/feature-civil-liberties.png"
+featuredImageAlt: "A person standing before a courtroom screen displaying an algorithm score with no explanation — 'RISK: HIGH. REASON: PROPRIETARY.'"
+---
+
+# The Code That Decides Your Life Runs on Trade Secrets
+
+There is software running right now that will decide whether you get disability benefits, whether you're held in jail while awaiting trial, whether your tax return gets flagged for audit, whether your immigration case moves forward or sits in a queue for another three years.
+
+You didn't vote on it. You can't read it. You can't challenge it. In most cases, you don't even know it exists.
+
+And when it's wrong — when it cuts your medical care in half, when it scores you as "high risk" before you've been convicted of anything, when it denies your claim without explanation — **the vendor calls it a trade secret.**
+
+This is the civil-liberties case for public code. And it's the argument that doesn't get made enough.
+
+## The Idaho Lawsuit
+
+In 2012, the state of Idaho began using an automated system to calculate how many hours of in-home care Medicaid recipients were entitled to each week. The system was built by a private vendor. Its methodology was proprietary.
+
+Without warning, thousands of disabled and elderly Idahoans saw their care hours slashed — sometimes by half. People who had been receiving 56 hours of care a week suddenly received 28. Some could no longer bathe themselves. Some could no longer eat safely. None of them could get a straight answer about why.
+
+When they sued, the state of Idaho could not explain how the algorithm worked. The vendor claimed the formula was a trade secret. A federal court ultimately ruled that Idaho had violated residents' constitutional right to due process — because you cannot appeal a decision when you are not allowed to know the basis for it.
+
+The court was right. But the case took years. The harm was already done. And the same type of system is still running in states across the country.
+
+**If that code had been open source, a researcher, an advocate, or a journalist could have found the flaw before it cut anyone's care. Instead, it was hidden until a federal lawsuit forced the issue.**
+
+## COMPAS and the Courtroom Black Box
+
+In 2016, ProPublica published an investigation into a tool called COMPAS — Correctional Offender Management Profiling for Alternative Sanctions. Judges in Wisconsin, Florida, and other states were using it to inform bail and sentencing decisions. It assigned defendants a "risk score" from 1 to 10.
+
+ProPublica's analysis found that **Black defendants were nearly twice as likely as white defendants to be falsely flagged as high risk**. White defendants were more likely to be incorrectly marked low risk and go on to commit new crimes.
+
+When defendants challenged their scores in court, they were told the algorithm was proprietary. The company — Northpointe, now Equivant — refused to disclose its methodology. One Wisconsin defendant argued that being sentenced based on a secret formula violated his constitutional rights. The Wisconsin Supreme Court disagreed, ruling that as long as defendants were given a chance to "respond" to the score, due process was satisfied.
+
+Think about that. You can respond to a number. You cannot respond to a formula you are not allowed to see.
+
+The source code for COMPAS has never been made fully public. Researchers have had to reverse-engineer its behavior from outcomes — the same way you'd diagnose a disease by studying symptoms when you're not allowed to examine the patient.
+
+**This is not an edge case. Risk assessment tools are used in courts across America. Virtually none of them are open source.**
+
+## Benefits Denied by Algorithm
+
+The Idaho case was not unique. It was a preview.
+
+The Social Security Administration uses automated systems to process disability claims. State agencies use algorithmic tools to determine Medicaid eligibility, SNAP benefits, and housing assistance. Federal agencies use software to decide whose tax return gets audited, whose visa application gets expedited, whose student loan forgiveness application qualifies.
+
+Almost all of it is proprietary.
+
+In 2023, a coalition of disability rights advocates sued Arkansas over its Medicaid home care algorithm — the same category of system as Idaho's, a different state, a decade later, the same outcome: unexplained cuts, appeals denied, a vendor claiming trade secrets. A federal judge found that Arkansas had violated due process.
+
+Two states. Two lawsuits. Two constitutional violations. **The same underlying problem: government using secret code to make consequential decisions about people's lives, with no mechanism for accountability.**
+
+The pattern repeats in smaller ways every day, at every level of government, in decisions that never make the news. The family that loses rental assistance. The veteran whose benefits claim is denied by a system flagging keywords. The immigrant whose application sits in an automated queue no one can explain.
+
+You are not going to hear about most of these cases. The people they affect often lack the resources to sue. The decisions are made quietly, at scale, by software that no one outside the vendor has ever examined.
+
+## What "Trade Secret" Actually Means Here
+
+When a private company calls its algorithm a trade secret, it is invoking a legal protection designed for genuine intellectual property — formulas, processes, methods that represent real competitive value.
+
+When a government contractor calls its algorithm a trade secret to avoid accountability to the citizens that system governs, something has gone badly wrong.
+
+Laws and regulations are public. They have to be — you cannot be bound by a rule you cannot read. Courts publish their reasoning. Agencies publish their rulemaking. Democratic accountability requires that the exercise of government power be legible to the people it is exercised upon.
+
+**But the code implementing that power? Proprietary. Secret. Owned by the vendor.**
+
+The vendor can change it. The vendor can introduce errors. The vendor can write it in ways that discriminate against protected classes, not out of malice, but because of biased training data or flawed assumptions that no one outside the company can see. And as long as government agencies use proprietary software to make consequential decisions, there is no meaningful external check on any of that.
+
+This is not a technical problem. It is a democratic one.
+
+## The Transparency That Open Source Provides
+
+When code is open source, none of this disappears automatically. Open source is not a magic shield against bias or bad design. It is something more modest and more powerful: **it makes scrutiny possible.**
+
+If the Idaho Medicaid algorithm had been public code, a researcher at a disability rights organization could have read it before it was deployed. A journalist could have published an explanation of why it was cutting care hours. A legislative staffer could have flagged the flaw. A court could have actually examined what the system was doing instead of accepting a vendor's assurance that it worked.
+
+If COMPAS had been open source, ProPublica's investigation could have started with the source code instead of working backwards from outcomes. The racial disparity might have been identified before it was used to sentence thousands of people.
+
+Open source doesn't guarantee good government software. But it makes bad government software findable, fixable, and — critically — contestable. **You cannot appeal what you cannot see.**
+
+This is what we mean when we say public code is a democratic issue. It is not just about saving money — though it saves money. It is not just about efficiency — though it improves efficiency. It is about whether the people governed by software have any meaningful recourse when that software is wrong.
+
+Right now, they mostly don't.
+
+## The Fix
+
+The fix is not complicated.
+
+Government software that makes decisions affecting the rights or benefits of individuals should be open source. Full stop. Not optional. Not subject to vendor veto. Not negotiable on the grounds of trade secrecy — because no vendor's intellectual property interest outweighs a citizen's right to understand a decision made about them by their government.
+
+Some agencies are moving in this direction. The federal government's [Source Code Policy](https://digital.gov/resources/requirements-for-achieving-efficiency-transparency-and-innovation-through-reusable-and-open-source-software) requires that at least 20% of newly commissioned custom code be made public. But **80% can still be hidden** — including, in practice, the most consequential systems. And policy guidance is not law.
+
+This movement is building the political will to change that. Ballot initiatives. Legislative campaigns. Direct pressure on the representatives who fund these systems and accept the vendor relationships that keep them secret.
+
+The Idaho families didn't get to vote on the algorithm that cut their care. The Wisconsin defendant didn't get to examine the code that informed his sentence. The benefits applicants whose claims are denied every day by automated systems they cannot see don't get to audit the logic.
+
+They should. We should. **This is our software. We paid for it. We are governed by it.**
+
+It should not be a trade secret.
+
+## What You Can Do
+
+This is the work. Help us do it.
+
+1. **[Sign the petition.](/sign)** Every signature is a citizen saying: the software that governs my life should be visible to me.
+
+2. **[Contact your representatives.](/campaign)** Tell them that algorithmic accountability is not a technical issue — it's a democratic one. We've made it [a five-minute task](/campaign).
+
+3. **[Learn more.](/learn)** The [full case for public code](/learn) covers the transparency, security, and economic arguments together. Share it with someone who doesn't know this problem exists.
+
+4. **[Get organized in your state.](/organize)** The ballot initiative campaign is how we create the legal mandate that vendor contracts can't override.
+
+The code is running. It is making decisions right now. The question is whether the people those decisions affect will ever get to see it.
+
+We think they should. Join us.
+
+---
+
+*Further reading: [The $755 Billion Black Box](/blog/the-black-box-contracting-problem) on federal contracting opacity. [Open Source Is Worth $8.8 Trillion](/blog/open-source-is-worth-8-trillion) on the economic case. New to the movement? [Start here.](/blog/welcome-to-public-code-us)*

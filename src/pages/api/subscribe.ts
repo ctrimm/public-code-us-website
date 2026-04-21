@@ -25,18 +25,18 @@ export const POST: APIRoute = async ({ request }) => {
       );
     }
 
-    // Basic email validation
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(body.email)) {
+    // Length check must precede regex to prevent ReDoS on pathological inputs
+    if (body.email.length > 254) {
       return new Response(
-        JSON.stringify({ success: false, error: 'Invalid email format' }),
+        JSON.stringify({ success: false, error: 'Field email exceeds maximum length' }),
         { status: 400, headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': 'https://publiccode.us' } }
       );
     }
 
-    // Input length validation
-    if (body.email.length > 254) {
+    // Basic email validation
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(body.email)) {
       return new Response(
-        JSON.stringify({ success: false, error: 'Field email exceeds maximum length' }),
+        JSON.stringify({ success: false, error: 'Invalid email format' }),
         { status: 400, headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': 'https://publiccode.us' } }
       );
     }
