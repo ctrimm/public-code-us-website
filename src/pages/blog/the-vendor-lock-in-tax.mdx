@@ -1,0 +1,131 @@
+---
+layout: ../../components/BlogPostLayout.astro
+title: "You're Paying the Vendor Lock-In Tax. Every Single Year."
+description: "Microsoft, Oracle, and SAP have turned government software into a permanent subscription. The Netherlands is fighting back. Denmark quit Office 365. America is still writing the checks."
+date: "2026-05-04"
+author: "The Public Code US Team"
+readTime: "8 min read"
+image: "/og-blog-lock-in.png"
+featuredImage: "/feature-lock-in.png"
+featuredImageAlt: "A padlock on a government building door labeled: Microsoft Enterprise Agreement — Renew or lose access to Azure"
+---
+
+# You're Paying the Vendor Lock-In Tax. Every Single Year.
+
+There is a pattern so routine in government IT that it barely registers as a scandal anymore.
+
+An agency signs a contract with Microsoft. Or Oracle. Or SAP. The software gets woven into everything — email, documents, databases, identity systems, payroll. Employees are trained on it. Workflows are built around it. Data accumulates in proprietary formats. APIs connect to proprietary endpoints.
+
+And then, when the contract comes up for renewal, the vendor raises the price.
+
+The agency pays. It has to. Getting out would cost more than staying in. The vendor knows this. It was the plan all along.
+
+This is vendor lock-in. The federal government pays **$17.5 billion a year** on cloud computing alone — and a large fraction of that isn't the price of services delivered. It's the premium extracted from customers who have nowhere else to go.
+
+## The VA's $1.6 Billion Lesson
+
+In March 2022, the Department of Veterans Affairs awarded a **$1.6 billion, three-year contract** to renew its Microsoft enterprise licenses.
+
+The justification was remarkable in its candor. The VA's own documentation explained that it could not consider alternatives because it needed to "continue to utilize the [existing Microsoft license model] to sustain and expand its tenancy" — and that switching away could cause it to **lose access to Azure cloud services** it was already running.
+
+Read that again. The VA was locked into Microsoft because it was locked into Microsoft. The existing dependency was the justification for deepening the dependency.
+
+This is not an anomaly. A GAO review of 24 federal agencies found Microsoft appearing **36 times** across the agencies, accounting for approximately **$2.4 billion in spending** — the majority of it through negotiation processes that lacked meaningful competitive pressure. The same GAO report found that four separate vendors had required agencies to **repurchase software licenses they already owned** in order to use that software in the cloud. Not new licenses. Not upgraded features. The same software. Repurchased.
+
+The VA's situation became a case study in a landmark November 2024 GAO report: *Cloud Computing: Selected Agencies Need to Implement Updated Guidance for Managing Restrictive Licenses.* The findings were blunt. Vendors were charging extra fees to run their software on competing cloud infrastructure. Vendors were requiring "conversion fees" to migrate licenses. Vendors were explicitly structured their offerings to steer agencies toward the **same vendor's own cloud platform** — deepening the dependency with every renewal cycle.
+
+A separate GAO report found the VA still could not accurately inventory how many licenses it held for its top five vendors. It spends **$985 million a year on software** and lacks the basic data to negotiate effectively.
+
+## The Oracle Audit Trap
+
+Oracle's approach to lock-in is more aggressive. It runs what the industry calls a License Management Services operation — a dedicated team that audits customers for license compliance and then presents them with a bill.
+
+The threat alone changes behavior. A documented case: NASA **preemptively purchased $15 million in Oracle licenses it didn't need** — specifically because it feared failing an audit. The agency spent $15 million on software it wasn't using to avoid a penalty it might not have even owed.
+
+This is the business model. The audit is the product. Retroactive compliance penalties run at **20–22% of license cost per year of violation** — and they compound. An agency that discovers it's out of compliance doesn't just owe the current year. It owes back payments for every year it was out of compliance, plus interest.
+
+Oracle has also restructured its licensing to penalize customers who want to run Oracle software on AWS, Azure, or Google Cloud rather than on Oracle Cloud Infrastructure. The message is clear: use our cloud, or pay extra. Every time an agency moves workloads to OCI to escape the surcharge, it deepens its Oracle dependency.
+
+When NASA tried to run Oracle software on AWS, Oracle informed it that this constituted unlicensed use. The choice: pay Oracle again for cloud usage rights, or move to Oracle's own cloud and pay Oracle there instead.
+
+## How They Build the Trap
+
+The mechanisms are consistent across vendors:
+
+**Proprietary data formats.** Data stored in Microsoft's ecosystem lives in formats optimized for Microsoft tools. Exporting it to work cleanly elsewhere requires expensive transformation. The longer an agency runs on a vendor's platform, the more transformation it would need — and the more expensive departure becomes.
+
+**Exclusive APIs.** Applications built to talk to Microsoft Graph, Azure-specific services, or Oracle-specific endpoints don't work anywhere else. Migrating those applications means rewriting them, not moving them. For agencies with hundreds of integrated systems, this is effectively impossible without a multi-year, nine-figure project.
+
+**License portability restrictions.** Until very recently, Microsoft explicitly prohibited customers from using newer on-premise licenses on competing cloud infrastructure. If you bought Windows Server licenses and wanted to run them on AWS, you had to buy them again for AWS. The license you bought wasn't portable. The EU Data Act, which took force in September 2025, has forced Microsoft to ease some of these restrictions for European customers — but no equivalent protection exists for American government agencies.
+
+**Bundled services.** Microsoft 365 bundles Teams, SharePoint, OneDrive, Exchange, and Azure Active Directory into a single package. Using any one of them creates integrations that make all the others harder to remove. Every tool added deepens the surface area of lock-in.
+
+The result: agencies sign one contract and find themselves bound by every contract that follows.
+
+## The Price Hikes
+
+And then the prices go up. Because they can.
+
+- **March 2025**: Office 365 government plans increased 5%
+- **April 2025**: Microsoft Teams Phone Standard rose 25% — from $8 to $10 per user per month
+- **November 2025**: Microsoft eliminated automatic volume-based Enterprise Agreement discounts, with analysts estimating IT budgets could increase by **up to 12%**
+
+These are not price increases you can negotiate around. An agency that has built its entire operation on Microsoft 365, Azure, and Teams has no credible exit threat. Microsoft knows it. The pricing reflects it.
+
+An independent analysis of government software procurement found that Microsoft and Oracle together received 25–30% of all government software spending over the prior decade through processes that lacked fully competitive bidding. The same analysis estimated that even a 5% improvement in competitive pricing outcomes could save taxpayers **$750 million annually**. Every year, without a contract change, without a new line of code.
+
+## What the Rest of the World Is Doing
+
+Other governments have decided this is unacceptable. The responses are instructive.
+
+**The Netherlands** made its position explicit in March 2025, when the Dutch Parliament passed motions directing the government to develop a national cloud under "full Dutch management," stop migrating tax returns and medical records to American cloud services, and give European firms preferential treatment in public tenders. The official framing: American cloud dependency is "a threat to Dutch cyber security." By July 2025, the Netherlands was formally asking the EU to help governments break their US cloud relationships.
+
+**Denmark** went further. The Ministry of Digital Affairs committed in mid-2025 to replacing Microsoft Office 365 with LibreOffice for government employees — an acknowledgment that the lock-in was expensive enough, and the political risk of US data sovereignty exposure large enough, that a migration was worth it. The country's two largest cities, Copenhagen and Aarhus, had already made the same call.
+
+**Germany** has built a parallel infrastructure. Deutsche Telekom launched T Cloud as a sovereign alternative to US hyperscalers and is co-developing what it calls the "Deutschland-Stack" with SAP — government-grade cloud infrastructure that doesn't run through American data centers or answer to American law. The state of Schleswig-Holstein [we've written about before](/blog/germany-saved-17-million-america-should-too): 30,000 civil servants, off Microsoft Office, saving €15 million a year.
+
+**Singapore** took a different approach: rather than try to build an alternative cloud from scratch, GovTech built a centrally governed security layer — the Government on Commercial Cloud — that wraps AWS, Azure, and Google Cloud in a single framework, deliberately spreading workloads across all three to prevent any single vendor from achieving the leverage that produces the VA situation. Over 80% of eligible Singapore government systems are already migrated to this multi-cloud architecture. Singapore's Open Government Products unit publishes its tools as open source; its voucher management platform alone has processed **over $204 million in transactions**.
+
+**The EU** has codified anti-lock-in requirements into law. The EU Data Act, applicable from September 2025, requires cloud vendors operating in Europe to eliminate switching fees entirely by January 2027, enable data portability through open interfaces, and stop charging penalties for leaving. It also requires providers to challenge access requests from non-EU governments — a direct response to the US CLOUD Act, which allows American law enforcement to demand data from American companies regardless of where that data is physically stored.
+
+Europe is spending **$6.9 billion on sovereign cloud infrastructure in 2025**. Gartner projects that figure will **nearly double to $12.6 billion in 2026**, and reach **$23.1 billion by 2027**. Globally, sovereign cloud spending will hit **$80 billion in 2026**. The world is paying an enormous bill to undo lock-in it should never have allowed.
+
+## What Failed — and What That Tells Us
+
+Not every European effort has worked. GAIA-X — the 2020 Franco-German initiative to build a federated European cloud rival to AWS and Azure — is widely considered a failure. Its founding members quit. US hyperscalers joined its board and critics accused them of slowing the development of any genuine alternative. By 2024 it was described, by one of its own founders, as a "paper monster" that had "produced countless documents but few tangible results."
+
+The lesson from GAIA-X's failure isn't that breaking free from vendor lock-in is impossible. It's that you can't do it by committee, and you can't do it by building a new proprietary ecosystem to replace the old one. GAIA-X tried to create a European cloud by asking vendors to agree on standards. They didn't agree, because agreeing would have cost them money.
+
+The actual answer — the answer that works, that Denmark and Germany and Singapore are implementing — is **open source software running on open standards**. Software that any government can run. Software where the format of your data belongs to you and the interface to your data is public. Software where the exit cost is engineering time, not licensing penalties.
+
+That's the core of what public code means. Not just saving money on the initial contract. Not just avoiding the reinvention tax. **Owning your own infrastructure permanently, so no vendor can ever tell you to renew or lose access to what you built.**
+
+## The American Situation
+
+The Pentagon learned something when JEDI — its original $10 billion, single-vendor cloud contract — collapsed under years of legal challenges and was cancelled in 2021. Its replacement, the Joint Warfighting Cloud Capability, is explicitly multi-vendor: AWS, Microsoft, Google, and Oracle all hold contracts, and individual program offices compete task orders across them.
+
+Multi-cloud is a partial answer. It reduces the leverage of any single vendor. It doesn't eliminate proprietary dependencies, doesn't eliminate license lock-in, doesn't make your data portable, and doesn't protect you from the Microsoft-restricts-your-AWS-licenses problem. But it's a recognition that single-vendor relationships are dangerous.
+
+The federal agencies that aren't the Pentagon mostly haven't learned this lesson. The VA is still spending nearly a billion dollars a year on software it can't fully inventory, at prices it can't meaningfully negotiate. The agencies GAO reviewed are still being required to repurchase licenses they already own. The government is still signing the checks.
+
+OMB's 2024 guidance memo acknowledged the problem. GSA is working on governmentwide Microsoft negotiating terms. The GAO has made recommendations. Progress exists.
+
+But policy guidance is not law. Negotiating terms are not open source. And the vendors are not waiting.
+
+## What You Can Do
+
+This is solvable. It requires political will to make it law, not just guidance.
+
+1. **[Sign the petition.](/sign)** Demand that government software policy prioritize open standards and open code — the structural solution to vendor lock-in.
+
+2. **[Contact your representatives.](/campaign)** The GAO has documented this problem in detail. Ask your representatives why they haven't acted on it.
+
+3. **Share this.** Denmark quit Microsoft Office. Germany is building its own stack. The Netherlands told American cloud companies to stop handling its tax returns. Most Americans don't know any of this is happening — or that their government has a choice.
+
+4. **[Learn more.](/learn)** The economic, security, and civil-liberties cases for public code all flow from the same source: when you don't own your software, someone else controls it. The [vendor lock-in problem](/blog/the-black-box-contracting-problem) is where the cost is most visible. The [algorithmic accountability problem](/blog/the-code-that-decides-your-life) is where the stakes are highest. They're the same problem.
+
+You're paying the vendor lock-in tax right now. You'll pay it again next year. The only way to stop is to own the software.
+
+---
+
+*Related: [Germany Is Saving $17 Million a Year](/blog/germany-saved-17-million-america-should-too) — what breaking free from proprietary software looks like in practice. [Open Source Is Worth $8.8 Trillion](/blog/open-source-is-worth-8-trillion) — the economic case for the alternative. New here? [Start with the basics.](/blog/welcome-to-public-code-us)*
