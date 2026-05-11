@@ -1,0 +1,128 @@
+---
+layout: ../../components/BlogPostLayout.astro
+title: "A Country of 1.3 Million People Solved Digital Government. On Open Source. Twenty Years Ago."
+description: "Estonia files taxes in five minutes, votes online, and lets citizens see exactly who accessed their records. The secret isn't money or technology. It's a choice about who owns the infrastructure."
+date: "2026-05-11"
+author: "The Public Code US Team"
+readTime: "7 min read"
+image: "/og-blog-estonia.png"
+featuredImage: "/feature-estonia.png"
+featuredImageAlt: "Estonia's X-Road open source data exchange layer connecting government databases versus the US patchwork of siloed proprietary systems"
+---
+
+# A Country of 1.3 Million People Solved Digital Government. On Open Source. Twenty Years Ago.
+
+Estonia has about the population of San Antonio, Texas.
+
+In 2005, it became the first country in the world to hold a legally binding national election over the internet. Its residents file their taxes in under five minutes, with returns pre-populated from data the government already has. They can see their complete medical history online — and see exactly which doctor looked at which record, and when. They register a business in twenty minutes. They sign legally binding contracts with a chip in their national ID card, recognized across the European Union.
+
+Almost none of this required a proprietary vendor. Almost all of it is open source.
+
+The United States — with 260 times Estonia's population, the world's largest economy, and the most advanced technology industry in human history — cannot do most of these things. The IRS only launched a free direct-filing pilot in 2024. Federal agencies still fax documents to each other. The government has been trying to build a unified digital identity system since 2017 and still hasn't gotten there. A GAO audit recently found that federal agencies running their own separate identity systems — Treasury, VA, SSA, and dozens more — remain incompatible with each other.
+
+The difference is not money. It is not technology. It is architecture. And the architecture was a deliberate choice.
+
+## The Founding Decision
+
+When Estonia regained independence from the Soviet Union in 1991, it faced a problem and an opportunity simultaneously.
+
+The problem: it inherited almost nothing. No functioning state bureaucracy built on legacy systems. No entrenched vendors. No century of paper processes encoded in proprietary software. The opportunity: exactly the same thing.
+
+Starting in the late 1990s and accelerating through the early 2000s, Estonian leaders made a strategic decision that was straightforward in description and radical in practice: government software would be treated as **public infrastructure**. The same way roads, electrical grids, and water systems are public — owned collectively, maintained publicly, open to inspection — the digital systems running the state would be built as a public good. Not as a procurement category. Not as a contract vehicle. Not as a service to be licensed from a foreign corporation.
+
+The technical centerpiece of that decision is called **X-Road**.
+
+## X-Road: The Open Source Spine of a Nation
+
+X-Road is a data exchange layer — a system that lets different government databases talk to each other securely, without creating a single centralized honeypot of all citizen data.
+
+Medical records live with health providers. Tax records live with the tax authority. Criminal records live with the courts. X-Road lets those systems share the specific information they need to share, when they need to share it, with a complete audit trail that every citizen can read.
+
+**It is open source.** The source code is on GitHub. Any government, any organization, any researcher can inspect exactly how it works. There is no trade secret. There is no vendor claiming intellectual property over the infrastructure running a nation.
+
+Finland adopted X-Road as the backbone of its own digital government. Iceland, the Faroe Islands, Japan, Namibia, and others have deployed it. The Nordic Institute for Interoperability Solutions — a joint Estonian-Finnish entity — maintains it as a shared public good, continuously improved by a community of governments and developers who have every incentive to make it better and no financial incentive to keep it opaque.
+
+This is what public code infrastructure looks like at national scale: built once, shared freely, improved collectively, owned by no one. No vendor can raise the renewal price. No contractor can declare it a trade secret and walk out the door with it.
+
+## What Estonians Can Do That You Can't
+
+The gap is not abstract. Here is what it looks like in practice.
+
+**File taxes in five minutes.** Because X-Road connects the tax authority to employer records, bank records, and property records, most residents log in and find their return pre-filled. The average filing takes three to five minutes. The United States has spent decades fighting a different battle: Intuit and H&R Block lobbied aggressively against any free government filing system, and the IRS only launched a pilot for direct filing in 2024 — for a limited set of states and tax situations. Estonia solved this in the early 2000s.
+
+**Vote from anywhere in the world.** Estonia has held internet voting in every major election since 2005. Voters authenticate with their digital ID, cast a ballot, and can change their vote until the polls close — a feature designed specifically to prevent coercion. Turnout has increased. The system has been independently audited. The source code for the voting system is public. When security researchers found concerns, they published them, Estonia responded publicly, and the code was updated. That is how open source security works.
+
+**See who looked at your records.** Every time a government official accesses an Estonian citizen's data — any database, any agency — that access is logged. Citizens can see the log. If a bureaucrat looks up your file out of curiosity, you can see it and report it. The system creates accountability not just for citizens toward government, but for government toward citizens. In the United States, you generally cannot find out who has accessed your government records or why.
+
+**Access your full medical history, anywhere.** Estonian health records are fully interoperable across the entire healthcare system. A doctor seeing you for the first time can access your complete history — with your consent, with the access logged, and with you able to see what was accessed and when. American health records remain fragmented across hundreds of incompatible proprietary systems. The VA alone has been spending over a decade and billions of dollars trying to modernize a health record system — the original of which, VistA, was itself open source.
+
+## The "Once Only" Principle
+
+Underlying all of this is a concept Estonia calls the **"once only" principle**: you never give the government the same information twice.
+
+When you change your address in Estonia, it propagates. Your voter registration updates. Your tax records update. Your driver's license record updates. You fill out one form. The infrastructure does the rest.
+
+In the United States, moving requires notifying the USPS, the DMV, voter registration (separately, in most states), the IRS, the SSA, and any number of other agencies — each maintaining its own siloed record with no reliable connection to the others. A 2024 GAO study found that federal agencies are unable to share basic identity and address data across departments without manual processes that take days or weeks.
+
+This isn't because America hasn't tried to build something better. It's because every system was built separately, at different times, by different vendors, on proprietary platforms that don't interoperate — often structurally, because interoperability would reduce dependency on any single vendor. The "once only" principle requires exactly the kind of shared, open infrastructure that proprietary contracting makes economically irrational to build.
+
+## What the United States Has Done Instead
+
+The federal government spends over **$100 billion a year on IT contracts**. It has not produced anything like X-Road.
+
+**Login.gov** — the federal digital identity system meant to be the single login for all government services — has been in development since 2017. As of 2025, dozens of agencies use it for some services, but it is far from universal. The IRS, SSA, and VA all maintain separate identity systems. A GAO audit found Login.gov had fallen short of its planned capabilities while costs mounted, and recommended significant reforms. After nearly a decade of effort, the federal government still does not have a common identity layer.
+
+**VistA** — the VA's health record system, which was built internally by VA engineers over decades and released as open source — was replaced starting in 2018 with a contract for a commercial EHR system that started at around $10 billion and has since seen cost estimates climb significantly. The rollout has been plagued by patient safety incidents, scheduling failures, and Congressional hearings. The VA has paused and restarted deployments multiple times. The open source system it replaced, for all its age, worked.
+
+The pattern repeats. When the U.S. government treats software as a public good — builds it internally, releases the code, makes it reusable — it tends to get durable, functional infrastructure. When it treats software as a procurement category to be awarded to the lowest bidder and locked behind trade secrets, it tends to get expensive failures and perpetual reruns.
+
+## What Made Estonia Different — And What Didn't
+
+Estonia had real advantages. **Small size** meant that national digital infrastructure didn't require negotiating across 50 state governments and dozens of federal agencies. **A clean slate** meant no incumbent vendors with decade-old contracts to protect. And the **political leadership** that made these decisions in the early 2000s was unusually coherent about the long-term vision.
+
+None of that is perfectly replicable in the United States.
+
+But here's what is replicable: **the principle**.
+
+Estonia's government software works not because Estonia is small, or because it had a clean slate, or because it got lucky. It works because its architects decided — consciously, explicitly, as policy — that software running government is public infrastructure. It gets built to be owned publicly, auditable publicly, improvable by anyone. Not vendor-owned, not trade-secret-protected, not rebuilt from scratch every contract cycle.
+
+That principle is not Estonian. It is not European. It is the same principle that the American open source community has understood for thirty years and applied to build the infrastructure the internet runs on.
+
+The question is whether we can apply it to the software that government runs on.
+
+Germany is saving $17 million a year because it did. Finland adopted X-Road because Estonia showed it works. America has 335 million people, the world's largest tech sector, and a federal IT budget that dwarfs the GDP of Estonia.
+
+What we're missing is the decision.
+
+## What You Can Do
+
+The political will to make this a legal requirement — not a policy suggestion, not a procurement preference, but a mandate — is what the public code movement is building.
+
+1. **[Sign the petition.](/sign)** Demand that publicly funded software be publicly owned — the same principle Estonia built its entire digital government on.
+
+2. **[Contact your representatives.](/campaign)** Estonia solved this in 2001. Ask your senators and representatives why the United States is still paying proprietary vendors to rebuild the same broken systems every decade.
+
+3. **[Learn more.](/learn)** The full case for public code — economic, security, and democratic — is on our learn page. Estonia is the proof that it works at national scale.
+
+4. **Share this post.** X-Road is a public good that any government in the world can use for free. Most Americans don't know it exists. They should.
+
+The infrastructure Estonia built belongs to the world. The choice to build it that way belonged to Estonia's leaders in 2001. The choice to do the same — here, at scale, for a country of 335 million — belongs to us now.
+
+---
+
+*Related: [Germany Is Saving $17 Million a Year by Ditching Microsoft](/blog/germany-saved-17-million-america-should-too) — what open source government looks like in practice. [Open Source Is Worth $8.8 Trillion](/blog/open-source-is-worth-8-trillion) — the economic case for public infrastructure. [The $755 Billion Black Box](/blog/the-black-box-contracting-problem) — why the current US system makes this so hard.*
+
+---
+
+## Sources
+
+- **X-Road — Estonia's open source data exchange layer** — [GitHub: nordic-institute/X-Road](https://github.com/nordic-institute/X-Road) | [Nordic Institute for Interoperability Solutions (NIIS)](https://niis.org) | [e-Estonia overview](https://e-estonia.com/solutions/interoperability-services/x-road/)
+- **Estonian e-government overview and services** — [e-Estonia.com](https://e-estonia.com) | [Estonian Information System Authority (RIA)](https://ria.ee/en)
+- **i-Voting — internet voting since 2005** — [Estonian National Electoral Committee](https://www.valimised.ee/en/internet-voting/internet-voting-estonia) | [IVXV source code on GitHub](https://github.com/vvk-ehk/ivxv)
+- **"Once only" principle** — [European Commission Digital Strategy](https://digital-strategy.ec.europa.eu/en/policies/once-only-principle)
+- **Login.gov development history and GAO findings** — [GAO: Federal Digital Identity: OMB and Agencies Need to Strengthen Governance (GAO-24-106219)](https://www.gao.gov/products/gao-24-106219) | [FedScoop Login.gov coverage](https://fedscoop.com/tag/login-gov/)
+- **IRS Direct File pilot (2024)** — [IRS Direct File overview](https://www.irs.gov/filing/direct-file) | [ProPublica: history of industry lobbying against free filing](https://www.propublica.org/article/inside-turbotax-20-year-fight-to-stop-americans-from-filing-their-taxes-for-free)
+- **VA EHR modernization — Oracle Cerner contract, patient safety incidents, cost growth** — [GAO High-Risk: VA Acquisition Management](https://www.gao.gov/products/gao-25-107852) | [Federal News Network: VA EHR patient safety](https://federalnewsnetwork.com/veterans-affairs/2023/01/va-ehr-modernization-patient-safety-events/) | [Congressional Research Service: VA EHR modernization](https://www.congress.gov/crs-product/IF11455)
+- **VistA — VA's open source electronic health record** — [VA VistA information](https://www.va.gov/health/clinicalinformatics/vista.asp) | [WorldVistA open source project](https://worldvista.org/)
+- **Federal IT spending ($100B+ annually)** — [OMB IT Dashboard](https://itdashboard.gov/) | [GAO High-Risk: IT Acquisition and Management](https://www.gao.gov/products/gao-25-107852)
+- **Finland's adoption of X-Road** — [Finnish Digital Agency (DVV): Suomi.fi data exchange](https://dvv.fi/en/suomi.fi-data-exchange-layer) | [NIIS: X-Road member countries](https://niis.org/community/)
