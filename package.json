@@ -13,7 +13,7 @@
     "onlyBuiltDependencies": ["esbuild", "sharp"]
   },
   "dependencies": {
-    "@astrojs/mdx": "^5.0.3",
+    "@astrojs/mdx": "^5.0.6",
     "@astrojs/react": "^5.0.3",
     "@astrojs/sitemap": "^3.7.2",
     "@radix-ui/react-slot": "^1.2.4",
