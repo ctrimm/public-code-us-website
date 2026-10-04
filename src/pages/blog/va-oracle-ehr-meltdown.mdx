@@ -1,0 +1,80 @@
+---
+layout: ../../components/BlogPostLayout.astro
+title: "From $10 Billion to $27 Billion: The VA's Oracle Disaster Is the Case for Public Code"
+description: "On August 20, the VA added $17 billion to its Oracle health records contract. Seventeen of 170 hospitals are live. GAO says 12 priority fixes are unimplemented. This is what closed, proprietary, single-vendor government IT produces."
+date: "2026-08-28"
+author: "The Public Code US Team"
+readTime: "7 min read"
+image: "/og-blog-va-oracle-ehr-meltdown.png"
+featuredImage: "/feature-va-oracle.png"
+featuredImageAlt: "A VA hospital beside a burning pile of contract papers with the figures $10B to $27B and 17 of 170 sites live"
+---
+
+# From $10 Billion to $27 Billion: The VA's Oracle Disaster Is the Case for Public Code
+
+On August 20, 2026, the Department of Veterans Affairs posted a contract modification on SAM.gov. It added roughly **$17 billion** to the Oracle electronic health record modernization contract — taking the ceiling from just under $10 billion to about **$27 billion** ($26.94 billion, per TelecareAware), with three new one-year option periods extending performance through May 2031.
+
+Read that again: a single contract modification, adding nearly twice the original contract's value. For a system that, six years in, is live at **17 of 170** VA medical centers.
+
+This is the most expensive argument for public code ever written. And the taxpayers funded every word of it.
+
+## How We Got Here
+
+The original deal was signed in **2018**: a 10-year, ~$10 billion, **no-bid** contract with Cerner to replace the VA's homegrown VistA health record system. Oracle acquired Cerner in June 2022 and inherited the contract; it was renegotiated in 2023.
+
+Here's the delivery record, as of August 2026:
+
+- **17 medical centers** out of 170 have deployed the new system since 2020 — six by 2020, eleven more during 2026. The VA's own goal was 13 sites in 2026, with all sites by 2031.
+- The Government Accountability Office reports the VA has fully implemented **4 of its 18** EHR modernization recommendations — leaving 14 unimplemented, **including 12 the GAO designated priority**, as of August.
+- GAO's most recent lifecycle cost estimate: **$49.8 billion** — $32.7 billion for implementation plus $17.1 billion for sustainment. And GAO's standing complaint is that the VA still hasn't provided an updated estimate of its own.
+
+So: the price tripled before the system reached a tenth of its users, the government's own auditors say the department can't account for the total cost, and a dozen priority fixes sit undone.
+
+Then came the hearing. Ranking Member Takano invited Oracle to testify on August 20 — the same day the $17 billion modification posted. Oracle **accepted on August 26 and withdrew on August 27**, confirming its refusal in an August 31 letter. The vendor that just got $17 billion more of taxpayer money would not sit at the table and answer questions about it.
+
+## The Pattern, Not the Exception
+
+It would be comforting to call this an outlier. It isn't. It's the predictable output of a procurement model with three features:
+
+1. **Closed code.** The system is proprietary. No independent researcher, no competing vendor, no congressional staffer can audit what $27 billion bought. When the code is a trade secret, "trust us" is the only oversight mechanism — and the vendor just demonstrated what that trust is worth.
+
+2. **Single-vendor lock-in.** The 2018 contract was no-bid. Once Cerner — then Oracle — owned the implementation, the VA's negotiating position decayed every year. A $17 billion ceiling increase isn't a negotiation; it's a ransom note with better stationery. There is no competitive pressure because there is no exit: the data, the workflows, and the institutional knowledge are all Oracle-shaped now.
+
+3. **No public asset.** After $27 billion, the American public owns nothing it can reuse. Not the code, not the data models, not the lessons. If another agency — or another country — wants a modern health record system, it starts from zero and pays the same vendors again. The [duplication problem](/blog/welcome-to-public-code-us) isn't a bug in this model. It's the business model.
+
+Compare: [Schleswig-Holstein is saving €15 million a year](/blog/schleswig-holstein-80-percent) by *leaving* this exact trap. The VA is demonstrating what happens when you walk deeper into it.
+
+## What $17 Billion Could Have Bought
+
+The modification alone — just the *increase* — is roughly 1,100 times Schleswig-Holstein's annual open source savings. It's more than the entire EU Open Source Strategy's seven-year budget several times over.
+
+Imagine an alternative history: the VA's $10 billion builds an open source health record system, owned by the public, auditable by anyone, reusable by every hospital system in America. The $17 billion "modification" never happens because competitive, open development doesn't produce $17 billion surprises. Other agencies fork the code instead of signing their own Cerner deals.
+
+That's not utopian. It's how the [VA's own VistA system](https://en.wikipedia.org/wiki/VistA) — the open, homegrown record system this contract was supposed to replace — worked for decades: developed in-house, shared freely, adapted by hospitals worldwide. The VA had public code. It paid $27 billion to lose it.
+
+## The Ask
+
+Nobody is coming to save the VA's EHR program from inside the procurement system that created it. The contracting officers did what the rules allow. The auditors wrote what the rules require. The vendor did what the contract permits.
+
+The rules are the problem. And rules change when voters demand it:
+
+1. **[Sign the petition.](/sign)** $27 billion for 17 hospitals is the best argument we've ever had. Help us make it.
+
+2. **[Contact your representatives.](/campaign)** Ask them where the $17 billion went. Ask them what the public owns for it. Watch what happens.
+
+3. **[Get organized in your state.](/organize)** States buy health IT too. Ballot initiatives can require open code before the next Cerner signs.
+
+4. **Share this post.** $10 billion to $27 billion. Seventeen of 170. Everybody should know these numbers.
+
+---
+
+*Read more: [The $755 Billion Black Box: Why You Can't Know What Deloitte Built With Your Money](/blog/the-black-box-contracting-problem) · [You're Paying the Vendor Lock-In Tax. Every Single Year.](/blog/the-vendor-lock-in-tax) · [Schleswig-Holstein Hit 80%. The Migration Paid for Itself in Eight Months.](/blog/schleswig-holstein-80-percent)*
+
+---
+
+## Sources
+
+- **VA adds ~$17B to Oracle EHR contract (Aug 20, 2026); ceiling ~$26.94B; three one-year options through May 2031** — [Nextgov, August 20, 2026](https://www.nextgov.com/modernization/2026/08/va-boosts-ehr-modernization-contract-oracle-17b/415548/)
+- **17 of 170 medical centers deployed since 2020; 2018 no-bid $10B Cerner deal; Oracle acquired Cerner June 2022** — [Nextgov, August 20, 2026](https://www.nextgov.com/modernization/2026/08/va-boosts-ehr-modernization-contract-oracle-17b/415548/)
+- **GAO: 4 of 18 recommendations implemented, 12 priority unimplemented as of August; $49.8B lifecycle estimate** — [GAO-25-106874, via Military Times, September 2026](https://www.militarytimes.com/veterans/2026/09/28/congress-presses-oracle-for-answers-on-vas-17-billion-ehr-increase/)
+- **Takano invitation Aug 20; Oracle accepted Aug 26, withdrew Aug 27, confirmed refusal Aug 31** — [Terry Hale, September 2026](https://www.linkedin.com/pulse/oracle-promised-finish-vas-health-record-its-own-expense-terry-hale-eqwec)

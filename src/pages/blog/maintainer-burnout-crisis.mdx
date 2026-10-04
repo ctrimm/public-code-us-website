@@ -1,0 +1,88 @@
+---
+layout: ../../components/BlogPostLayout.astro
+title: "The Maintainers Are Quitting. Who Keeps the Lights On?"
+description: "Jellyfin's project leader just stepped down from burnout. curl ended its bug bounty over AI slop. Kubernetes retired Ingress NGINX for lack of maintainers. The commons that governments want to depend on is maintained by exhausted volunteers — and 60% of them aren't paid."
+date: "2026-07-20"
+author: "The Public Code US Team"
+readTime: "6 min read"
+image: "/og-blog-maintainer-burnout-crisis.png"
+featuredImage: "/feature-burnout.png"
+featuredImageAlt: "An exhausted maintainer at a desk under a dim lamp with the words the maintainers are quitting and 60 percent unpaid"
+---
+
+# The Maintainers Are Quitting. Who Keeps the Lights On?
+
+On July 20, 2026, Joshua Boniface posted to the Jellyfin forum. Effective the day before, he wrote, he and a core team member were departing the project — himself as project leader, a role he'd held since the late-2018 fork from Emby.
+
+His reason, in his own words:
+
+> "I simply could no longer provide the effort (mental or time-wise) that the role demanded, and thus I was not performing my duties to an acceptable degree, facing severe burnout, and risks to my mental health. It was time to step aside."
+
+Two other core contributors left the same week. Jellyfin — the open source media server used by millions, maintained by volunteers — lost its leadership in days.
+
+Boniface isn't an outlier. He's a data point in the worst year the open source commons has ever had.
+
+## The Pattern
+
+**January 2026 — curl ends its bug bounty.** Daniel Stenberg shut down the program that had run since April 2019, and his explanation should be read by everyone who thinks "the community" is an infinite resource:
+
+> "The never-ending slop submissions take a serious mental toll to manage and sometimes also a long time to debunk. Time and energy that is completely wasted while also hampering our will to live."
+
+The cause: AI-generated vulnerability reports. The validity rate collapsed from roughly 1 in 6 in early 2025 to 1 in 20 or 30 by late 2025 — under 5% legitimate. Maintainers now spend their limited hours debunking machine-generated noise instead of fixing real bugs. Stenberg called it an "AI DDoS on open source."
+
+**November 2025 — Kubernetes retires Ingress NGINX.** The official reason, from the Kubernetes security response committee: not enough active maintainers. One or two people were carrying one of the most widely deployed ingress controllers in cloud computing. Best-effort maintenance through March 2026, then the repo was archived.
+
+**February 2026 — "AI Slopageddon."** RedMonk analyst Kate Holterhoff gave the phenomenon its name: "AI slop is ripping up the social contract between maintainers and contributors essential to open source development." Projects are responding with the nuclear option: **Ghostty** adopted a zero-tolerance AI policy in January — bad AI-generated submissions earn a permanent ban. **tldraw**'s founder announced the project would begin automatically closing pull requests from external contributors, citing AI-generated contributions with "incomplete or misleading context, misunderstanding of the codebase, and little to no follow-up engagement."
+
+And the structural numbers, from Tidelift's maintainer survey: **60% of open source maintainers are not paid for their work.** Meanwhile, analysis of the npm ecosystem finds that **354 billion out of 460 billion monthly package downloads** come from single-maintainer repositories. The digital infrastructure of the entire economy — the code inside your bank, your hospital, your government's benefits portal — rests on individuals, most of them unpaid, now drowning in machine-generated noise.
+
+## Why This Is a Public-Code Problem
+
+Here's the connection the industry keeps missing: every proposal to make government depend on open source — including ours — assumes the commons will be there. Maintained. Secure. Alive.
+
+That assumption is failing. The maintainers are quitting, the bounty programs are closing, and the slop is accelerating. A public-code mandate that doesn't fund the commons is a mandate to depend on a burning building.
+
+This is also why the "just use open source, it's free" framing is wrong and always was. Open source isn't free. It's *unpaid*. Somebody pays for it — currently, in burnout and mental health crises. The question is whether the public, which benefits enormously, starts paying its share.
+
+## The Working Model Exists
+
+Germany already solved this. The **Sovereign Tech Agency** — the rebranded Sovereign Tech Fund — pays open source maintainers directly, no equity, no corporate capture: over €37 million across 108 projects covering systemd, Python, PHP, FreeBSD, FFmpeg, and more. In 2026 it granted €1.28 million to KDE and launched a pilot paying maintainers €4,800–5,200 a month to do open-standards work.
+
+That's the template: **public money sustaining public code**, as a line item, not a lottery. It works. It's audited. The maintainers get paid and the commons gets maintained.
+
+Now imagine the American version: a fraction of the $100+ billion in annual federal IT spending directed to the maintainers of the critical open source the government itself depends on. Not grants with strings. Not corporate sponsorships that buy influence. Direct public funding for public infrastructure — the same way we fund roads.
+
+## What Has to Happen
+
+1. **Fund the commons.** Every public-code mandate must be paired with maintainer funding. Code the public depends on should be maintained by people the public pays.
+
+2. **Procurement must count maintenance.** When governments buy software built on open source, the contract should fund upstream maintenance — not just the vendor's integration layer.
+
+3. **Defend the social contract.** The AI slop crisis is a tragedy-of-the-commons problem that individual projects can't solve alone. Platform-level and policy-level responses — rate limits with teeth, provenance requirements, funded triage — are public goods problems. They need public action.
+
+Boniface closed his post with grace: it was time to step aside. He shouldn't have had to. Nobody should have to burn out to keep the lights on for the rest of us — least of all while the companies and governments built on their work report record earnings.
+
+The maintainers are quitting. The question is whether we fund the replacements or just watch the lights go out.
+
+1. **[Sign the petition.](/sign)** Public money should sustain public code — including the people who write it.
+
+2. **[Contact your representatives.](/campaign)** Ask them to fund open source maintenance the way Germany does. The model exists.
+
+3. **[Get organized in your state.](/organize)** States depend on the same commons. They can fund it too.
+
+4. **Share this post.** 60% unpaid. 354 billion downloads from single maintainers. The numbers are the argument.
+
+---
+
+*Read more: [400 Packages Poisoned in a Day: The npm Worm Wave](/blog/npm-supply-chain-worm-wave) · [Open Source Is Worth $8.8 Trillion — And We're Leaving Most of It on the Table](/blog/open-source-is-worth-8-trillion) · [Europe Just Bet €2 Billion on Public Code. America Is Still Writing Blank Checks.](/blog/eu-2bn-open-source-strategy)*
+
+---
+
+## Sources
+
+- **Jellyfin leadership departure (announced July 20, 2026; effective July 19); Boniface burnout quotes** — [Jellyfin Forum, July 20, 2026](https://forum.jellyfin.org/t-project-leadership-changes) · [Linuxiac, July 2026](https://linuxiac.com/jellyfin-loses-project-leader-and-core-team-member-in-major-shake-up/)
+- **curl bug bounty ends January 31, 2026; Stenberg "hampering our will to live" quote; AI slop validity collapse** — [Daniel Stenberg's blog, January 26, 2026](https://daniel.haxx.se/blog/2026/01/26/the-end-of-the-curl-bug-bounty/) · [LWN, January 2026](https://lwn.net/Articles/1055996/)
+- **Kubernetes Ingress NGINX retirement (announced Nov 11, 2025; archived Mar 24, 2026)** — [Kubernetes Blog, November 11, 2025](https://kubernetes.io/blog/2025/11/11/ingress-nginx-retirement/)
+- **"AI Slopageddon" (RedMonk, Feb 3, 2026); Ghostty zero-tolerance AI policy (Jan 2026); tldraw auto-closing external PRs (Jan 15, 2026)** — [RedMonk, February 3, 2026](https://redmonk.com/kholterhoff/2026/02/03/ai-slopageddon-and-the-oss-maintainers/) · [Ghostty PR #10412](https://github.com/ghostty-org/ghostty/pull/10412) · [tldraw issue #7695](https://github.com/tldraw/tldraw/issues/7695)
+- **60% of maintainers unpaid (Tidelift 2024); 354B of 460B monthly npm downloads from single-maintainer repos** — [The Register, September 2024](https://www.theregister.com/software/2024/09/18/open-source-maintainers-underpaid-and-going-gray/) · [inspect.software via dev.to, August 2026](https://dev.to/nayjest/354-billion-out-of-460-billion-monthly-package-downloads-come-from-single-maintainer-repos-1ppb)
+- **Sovereign Tech Agency: €37.3M across 108 projects; €1.28M KDE grant; standards pilot** — [GamingOnLinux, May 2026](https://www.gamingonlinux.com/2026/05/kde-gets-over-1-million-in-funding-from-the-sovereign-tech-fund/)

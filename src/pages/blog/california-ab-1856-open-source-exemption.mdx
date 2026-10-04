@@ -1,0 +1,79 @@
+---
+layout: ../../components/BlogPostLayout.astro
+title: "California Just Declared Open Source a Different Kind of Software. Unanimously."
+description: "AB 1856 passed the California Senate 39-0 and the Assembly 69-0, exempting GPL, MIT, BSD, and Apache software from age-verification mandates. Colorado did it too. Legislatures are learning what public-code advocates have always known: open source isn't just software, it's a different legal category."
+date: "2026-08-29"
+author: "The Public Code US Team"
+readTime: "6 min read"
+image: "/og-blog-california-ab-1856-open-source-exemption.png"
+featuredImage: "/feature-ab-1856.png"
+featuredImageAlt: "The California bear flag beside a giant 39-0 vote tally and the words open source is different"
+---
+
+# California Just Declared Open Source a Different Kind of Software. Unanimously.
+
+On August 26, 2026, the California Senate voted **39-0**. On August 27, the Assembly concurred **69-0**. The bill: AB 1856, which exempts open source software from the state's age-verification mandates.
+
+Not a single no vote. In California. In 2026. For open source.
+
+If you've spent any time in tech policy, you know how remarkable that is. Now here's why it matters for public code: **a legislature just wrote into law the principle that open source software is legally distinct from proprietary software** — and that one-size-fits-all tech regulation breaks against the volunteer-maintained commons.
+
+## What the Bill Does
+
+AB 1856 amends California's Digital Age Assurance Act (AB 1043, signed by Governor Newsom in October 2025, effective January 1, 2027). The original act would have required "operating system providers" to build age-verification infrastructure — a mandate that makes a certain kind of sense for Apple and Google and zero sense for Debian.
+
+The amendment redefines "operating system provider" to **exclude any entity distributing software under license terms that permit a recipient to copy, redistribute, and modify it** — naming the GPL, MIT, BSD, and Apache licenses explicitly. That covers Debian, Fedora, Ubuntu, Arch, and the BSDs.
+
+It goes further, with unusual technical literacy for a legislature:
+
+- **Package managers are out.** Non-standalone app-store components — libraries and dependencies installed via apt, pacman, and friends — are removed from the law's definition of "Application."
+- **Browser-extension storefronts are excluded.**
+- **The broken "user" definition is fixed.** The original act defined "user" as "a child that is the primary user of a device" — which, read literally, classified every device owner as a child. Gone.
+- **An age-signal ban** prohibits requesting age signals unless required by law, with a good-faith safe harbor for good actors.
+
+As of this writing, the bill has been sent to Engrossing and Enrolling — the final prep stage before it reaches Governor Newsom's desk.
+
+## How We Got Here
+
+Credit where it's due: Assemblymember Buffy Wicks wrote both the original act and the amendment. She introduced the open source exemption in **February 2026**, after a backlash from Linux developers and the EFF made the problem impossible to ignore.
+
+The backdrop was genuinely alarming. EFF warned about the identity-tracking infrastructure the mandate would create. Developers threatened noncompliance. One BSD variant went so far as to **exclude California users from its license** rather than build surveillance tooling into a volunteer project. A law meant to protect children was about to either deputize or destroy the commons — and the people who maintain it had no compliance department, no lobbyists, and no revenue to pay for either.
+
+Wicks listened. The exemption passed both chambers without a single dissenting vote.
+
+## Colorado Did It Too
+
+California isn't alone. **Colorado's SB26-051** — the state's age-attestation bill — got its open source exemption through an amendment after System76 founder Carl Richell engaged directly with lawmakers. The language covers software distributed under terms permitting copying, redistribution, and modification, and exempts code repositories and containerized distribution from the "covered application store" definition. It passed both chambers in **May 2026**, was sent to the governor, and takes effect in July 2028.
+
+Two states, same conclusion, same year: you cannot regulate volunteer-maintained public infrastructure as if it were a trillion-dollar platform company.
+
+## Why This Is a Public-Code Precedent
+
+Here's the part that belongs on this site. AB 1856 does something public-code advocates have needed for years: **it establishes, in statute, that open source software is a distinct legal category deserving distinct legal treatment.**
+
+Every public-code mandate — "software funded with public money must be published as open source" — requires legislatures to make exactly this move: to recognize that openness isn't a feature of software, it's a *jurisdictional fact* about it. Code the public can copy, redistribute, and modify behaves differently in the world. It has different economics (no vendor to squeeze for compliance costs), different governance (no CEO to subpoena), and different risks (auditable by anyone, including the regulators).
+
+California and Colorado just proved that legislatures can understand this — unanimously, under pressure, with technically literate drafting. The next step is to take the same legal recognition and aim it at procurement: if open source is distinct enough to exempt from regulation, it's distinct enough to *prefer* in public buying.
+
+The ballot initiatives we're running do exactly that. California just showed the votes exist.
+
+1. **[Sign the petition.](/sign)** 39-0 and 69-0. The consensus is there. Make it law for procurement too.
+
+2. **[Contact your representatives.](/campaign)** Ask them to co-sponsor public-code requirements. Point at AB 1856: your state already agrees open source is different.
+
+3. **[Get organized in your state.](/organize)** Colorado got its exemption because one founder showed up and engaged. Imagine what an organized movement does.
+
+4. **Share this post.** Unanimous votes for open source don't happen often. People should see this one.
+
+---
+
+*Read more: [Washington Ordered Its AI Open. The Inventory Says Almost Nobody Listened.](/blog/omb-ai-open-weights-mandate) · [Open Weights Are Not Open Source. The AI Industry Hopes You Won't Notice.](/blog/open-weights-are-not-open-source) · [Welcome to Public Code US](/blog/welcome-to-public-code-us)*
+
+---
+
+## Sources
+
+- **AB 1856: Senate 39-0 (Aug 26, 2026); Assembly 69-0 concurrence (Aug 27); GPL/MIT/BSD/Apache exemption; redefinition of "operating system provider"** — [Tom's Hardware, August 2026](https://www.tomshardware.com/software/linux/california-lawmakers-unanimously-pass-linux-exemption-from-age-verification-law-software-distributed-under-the-gpl-mit-bsd-and-apache-licenses-are-exempt)
+- **Bill status: Engrossing and Enrolling; AB 1043 signed October 2025, effective January 1, 2027** — [Linuxiac, August 2026](https://linuxiac.com/californias-age-verification-bill-passes-with-linux-exemption-intact/)
+- **Wicks authored both bills; exemption introduced February 2026 after developer/EFF backlash** — [AI Weekly, August 2026](https://aiweekly.co/alerts/california-passes-ab-1856-exempting-linux-distros-from-age-law)
+- **Colorado SB26-051 open source exemption; passed May 2026; effective July 2028** — [Linuxiac, May 2026](https://linuxiac.com/colorado-adds-open-source-exemption-to-age-attestation-bill/) · [OSTechnix](https://ostechnix.com/colorado-california-age-verification-law-open-source-exempt/)

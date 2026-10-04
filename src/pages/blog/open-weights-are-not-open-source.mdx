@@ -1,0 +1,81 @@
+---
+layout: ../../components/BlogPostLayout.astro
+title: "Open Weights Are Not Open Source. The AI Industry Hopes You Won't Notice."
+description: "In September 2026, the fight over what counts as 'open' AI reached a boiling point. The stakes: whether governments buying AI get something they can audit — or just something they can download."
+date: "2026-09-15"
+author: "The Public Code US Team"
+readTime: "6 min read"
+image: "/og-blog-open-weights.png"
+featuredImage: "/feature-open-weights.png"
+featuredImageAlt: "Split comparison: downloadable model weights labeled open distribution versus fully open source AI with open code, data, and weights"
+---
+
+# Open Weights Are Not Open Source. The AI Industry Hopes You Won't Notice.
+
+Download the weights. Run the model on your own machine. Keep it out of someone else's data pipeline. That is real progress — and it is not open source.
+
+That distinction, argued for years by open source advocates, finally broke into the open in September 2026, when [The Register's Steven J. Vaughan-Nichols](https://www.theregister.com/columnists/2026/09/15/open-weights-are-not-open-source-why-ais-favorite-label-is-under-dispute/5295436) crystallized the industry's favorite sleight of hand: companies releasing downloadable model weights, calling them "open source," and keeping everything that would let you actually understand, verify, or improve the model firmly locked away.
+
+James Landay, director of Stanford's Human-Centered AI institute, put it bluntly:
+
+> "Open weights are progress. You can download the model, run it on your own machine, keep it out of someone else's data pipeline. But you still can't see how the thing was built, what it was trained on, or why it behaves the way it does. That's not an open model. That's open distribution."
+
+And then the line every procurement officer in America should memorize:
+
+> "Open weights answer 'Can I run this?' Open source answers 'Can I trust this, improve it, and build the next thing on top of it?'"
+
+## What "Open Source AI" Actually Requires
+
+The Open Source Initiative published its [Open Source AI Definition](https://opensource.org/osd) (OSAID 1.0) in October 2024. It requires model parameters — including weights — to be made available under OSI-approved terms. That's the floor, not the ceiling: real openness also means the training data picture, the code, and the freedom to use, study, modify, and share the system for any purpose.
+
+Almost none of the famous "open" models clear that bar. And the industry knows it — which is why the label keeps getting stretched.
+
+Bruce Perens, who co-founded the Open Source Initiative, didn't mince words: "It's not Open Source! … It's unfortunate that the Open Source Initiative itself is now involved in Openwashing."
+
+The fight has gotten so heated that Software Freedom Conservancy's Bradley Kuhn and Red Hat's Richard Fontana have called for OSAID's repeal, arguing "the OSI acted too quickly to impose an overly ambitious policy compromise on the community." Even former OSI executive director Stefano Maffulli is firing at the process, saying of the Linux Foundation's OpenMDW license review: "I continue getting the impression that the OpenMDW review is tainted by an ideological bias: Because we don't like big tech and AI now is big tech, then we don't like AI; therefore, we'll do anything to block it."
+
+When the people who wrote the definition of open source are accusing each other of open-washing, you know the label has become valuable enough to steal.
+
+## Why This Matters for Government
+
+Here's why a definitional debate among AI nerds belongs on a campaign site about public code: **governments are about to buy a lot of "open" AI.**
+
+OMB Memorandum M-25-21 already requires federal agencies to release custom AI code — *including model weights* — as open source in public repositories. The EU's new open source strategy makes "open source first" official procurement policy for cloud and AI. Billions of public dollars will flow through procurement rules that say the word "open."
+
+If those rules accept "open weights" as "open source," here's what taxpayers get: a vendor hands the government a giant file of numbers, keeps the training data secret, keeps the training code secret, keeps the right to revoke your license or geo-fence your country (ask Meta's Llama team about that one), and still collects the "open" checkbox on the procurement form.
+
+You can download it. You can't audit how it was built. You can't see what it was trained on. You can't verify why it behaves the way it does. And when it denies someone's benefits or flags someone's immigration case, "trust us, the weights are open" is not an answer a democracy can accept.
+
+We wrote about this pattern before: [the code that decides your life runs on trade secrets](/blog/the-code-that-decides-your-life). AI just gives the black box a shinier name.
+
+## The Test
+
+Landay gave us the test. Don't ask vendors "is it open?" Ask:
+
+1. **Can I see how it was built?** Training data, training code, evaluation methods.
+2. **Can I use it for any purpose?** No field-of-use restrictions, no revocation for suing, no geo-fencing.
+3. **Can I improve it and share the improvement?** Real copyleft-style freedoms, not "you may fine-tune but never compete with us."
+
+If the answer to any of those is no, it's open distribution. Useful, maybe. Open source, no. And it has no business being sold to the public as the accountable option.
+
+Public money should fund AI the public can actually inspect, understand, and own. Anything less is a procurement label, not a principle.
+
+1. **[Sign the petition.](/sign)** Make "open" mean something in law, not just in marketing.
+
+2. **[Contact your representatives.](/campaign)** Ask them what definition of "open source AI" their procurement rules use. If they can't answer, that's the problem.
+
+3. **[Get organized in your state.](/organize)** Ballot initiatives can write the strict definition into law where federal guidance stays vague.
+
+4. **Share this post.** Every time a vendor says "open source AI," someone should ask: open *what*, exactly?
+
+---
+
+*Read more: [Meta's Llama Isn't Open Source. Llama 4 Won't Even Run in Europe.](/blog/llama-is-not-open-source) · ['Open Source' Theater: Musk Released Grok's Weights and Kept the Keys](/blog/grok-open-washing) · [Washington Ordered Its AI Open. The Inventory Says Almost Nobody Listened.](/blog/omb-ai-open-weights-mandate)*
+
+---
+
+## Sources
+
+- **"Open weights are not open source" debate, Landay/Perens/Kuhn/Fontana/Maffulli quotes** — [The Register, September 15, 2026](https://www.theregister.com/columnists/2026/09/15/open-weights-are-not-open-source-why-ais-favorite-label-is-under-dispute/5295436)
+- **Open Source AI Definition 1.0** — [Open Source Initiative, October 2024](https://opensource.org/osd)
+- **OMB M-25-21 AI code and model weight sharing requirement** — [The White House, April 3, 2025](https://www.whitehouse.gov/wp-content/uploads/2025/02/M-25-21-Accelerating-Federal-Use-of-AI-through-Innovation-Governance-and-Public-Trust.pdf)
