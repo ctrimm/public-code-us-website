@@ -11,7 +11,7 @@ const posts = [
     date: '2026-08-29',
     author: 'The Public Code US Team',
     readTime: '6 min read',
-    featuredImage: '/feature-ab-1856.png',
+    featuredImage: '/feature-ab-1856.jpg',
     featuredImageAlt: 'The California bear flag beside a giant 39-0 vote tally and the words open source is different'
   },
   {
@@ -21,7 +21,7 @@ const posts = [
     date: '2026-08-28',
     author: 'The Public Code US Team',
     readTime: '7 min read',
-    featuredImage: '/feature-va-oracle.png',
+    featuredImage: '/feature-va-oracle.jpg',
     featuredImageAlt: 'A VA hospital beside a burning pile of contract papers with the figures $10B to $27B and 17 of 170 sites live'
   },
   {
@@ -31,7 +31,7 @@ const posts = [
     date: '2026-08-05',
     author: 'The Public Code US Team',
     readTime: '7 min read',
-    featuredImage: '/feature-npm-worms.png',
+    featuredImage: '/feature-npm-worms.jpg',
     featuredImageAlt: 'A worm eating through a stack of package boxes with the words 400 packages poisoned and trusted signatures did not stop it'
   },
   {
@@ -41,7 +41,7 @@ const posts = [
     date: '2026-07-20',
     author: 'The Public Code US Team',
     readTime: '6 min read',
-    featuredImage: '/feature-burnout.png',
+    featuredImage: '/feature-burnout.jpg',
     featuredImageAlt: 'An exhausted maintainer at a desk under a dim lamp with the words the maintainers are quitting and 60 percent unpaid'
   },
   {
@@ -51,7 +51,7 @@ const posts = [
     date: '2026-09-15',
     author: 'The Public Code US Team',
     readTime: '6 min read',
-    featuredImage: '/feature-open-weights.png',
+    featuredImage: '/feature-open-weights.jpg',
     featuredImageAlt: 'Split comparison: downloadable model weights labeled open distribution versus fully open source AI with open code, data, and weights'
   },
   {
@@ -61,7 +61,7 @@ const posts = [
     date: '2026-09-09',
     author: 'The Public Code US Team',
     readTime: '6 min read',
-    featuredImage: '/feature-eu-procurement.png',
+    featuredImage: '/feature-eu-procurement.jpg',
     featuredImageAlt: 'A gavel striking beside the words European preference with a 30 percent quality-over-price badge'
   },
   {
@@ -71,7 +71,7 @@ const posts = [
     date: '2026-09-01',
     author: 'The Public Code US Team',
     readTime: '6 min read',
-    featuredImage: '/feature-schleswig-80.png',
+    featuredImage: '/feature-schleswig-80.jpg',
     featuredImageAlt: 'A progress bar at 80 percent beside the words 30,000 workstations freed and payback in eight months'
   },
   {
@@ -81,7 +81,7 @@ const posts = [
     date: '2026-06-03',
     author: 'The Public Code US Team',
     readTime: '7 min read',
-    featuredImage: '/feature-eu-strategy.png',
+    featuredImage: '/feature-eu-strategy.jpg',
     featuredImageAlt: 'A circle of EU stars merged with code brackets beside a giant €2 BILLION figure and the words public money, public code'
   },
   {
@@ -91,7 +91,7 @@ const posts = [
     date: '2026-04-14',
     author: 'The Public Code US Team',
     readTime: '7 min read',
-    featuredImage: '/feature-omb-ai.png',
+    featuredImage: '/feature-omb-ai.jpg',
     featuredImageAlt: 'The US Capitol beside a locked model box with the figures 3,611 AI use cases and 1 open weight release'
   },
   {
@@ -101,7 +101,7 @@ const posts = [
     date: '2026-02-10',
     author: 'The Public Code US Team',
     readTime: '5 min read',
-    featuredImage: '/feature-grok.png',
+    featuredImage: '/feature-grok.jpg',
     featuredImageAlt: 'A theater stage curtain pulled back to reveal a locked model box labeled open source with strings attached'
   },
   {
@@ -111,7 +111,7 @@ const posts = [
     date: '2025-04-05',
     author: 'The Public Code US Team',
     readTime: '6 min read',
-    featuredImage: '/feature-llama.png',
+    featuredImage: '/feature-llama.jpg',
     featuredImageAlt: 'A model box stamped \'open\' behind a geo-fence blocking off Europe, with a padlock on the license'
   },
   {
@@ -229,7 +229,7 @@ const sortedPosts = posts.sort((a, b) => new Date(b.date).getTime() - new Date(a
                 <img
                   src={post.featuredImage}
                   alt={post.featuredImageAlt}
-                  class="w-full block border-b-4 border-am-dark"
+                  class="w-full aspect-video object-cover block border-b-4 border-am-dark"
                   loading="lazy"
                 />
               )}
@@ -282,7 +282,7 @@ const sortedPosts = posts.sort((a, b) => new Date(b.date).getTime() - new Date(a
             <img
               src={sortedPosts[0].featuredImage}
               alt={sortedPosts[0].featuredImageAlt}
-              class="w-full block border-b-4 border-am-dark"
+              class="w-full aspect-video object-cover block border-b-4 border-am-dark"
               loading="lazy"
             />
           )}
