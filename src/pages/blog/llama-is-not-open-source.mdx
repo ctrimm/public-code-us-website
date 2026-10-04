@@ -1,0 +1,78 @@
+---
+layout: ../../components/BlogPostLayout.astro
+title: "Meta's Llama Isn't Open Source. Llama 4 Won't Even Run in Europe."
+description: "The world's most-used 'open' AI model fails the open source definition — and its newest license geo-fences an entire continent. This is what happens when public infrastructure depends on a vendor's marketing department."
+date: "2025-04-05"
+author: "The Public Code US Team"
+readTime: "6 min read"
+image: "/og-blog-llama.png"
+featuredImage: "/feature-llama.png"
+featuredImageAlt: "A model box stamped 'open' behind a geo-fence blocking off Europe, with a padlock on the license"
+---
+
+# Meta's Llama Isn't Open Source. Llama 4 Won't Even Run in Europe.
+
+Llama is the most widely used "open" AI model family on earth. Governments, researchers, and startups build on it every day, reassured by the word "open" in a thousand pitch decks.
+
+There's just one problem: **it isn't open source.** And with Llama 4, Meta proved the deeper point — when your "open" model belongs to a vendor, the vendor can take it away from an entire continent with a paragraph of legal text.
+
+## The License Fails the Definition
+
+In February 2025, the Open Source Initiative [said the quiet part out loud](https://opensource.org/blog/metas-llama-license-is-still-not-open-source): Meta's Llama 3.x licenses "continue to fail the Open Source Definition." Specifically:
+
+- **"Fails at freedom 0**, the freedom to use the model for any purpose"
+- **"Fails at the Open Source Definition point 5**, discriminates against users"
+- **"Fails at the Open Source Definition point 6**, restricts fields of endeavour"
+- The license was already **"excluding any persons in the European Union** from using the model without explanation"
+
+And: "Meta keeps on falsely promoting Llama as 'Open Source.'" The OSI's term for it: **"Meta's open washing."**
+
+This isn't a technicality. The Open Source Definition's whole purpose is to guarantee that "open" is irrevocable — that no vendor can reach back into the commons and add conditions later. Llama's license reserves exactly that power: acceptable-use restrictions, field-of-use restrictions, and a clause gating commercial scale behind a 700-million-monthly-active-user threshold. Download the weights all you want. The permission slip comes with strings, and Meta holds the scissors.
+
+## Then Came the EU Carve-Out
+
+With Llama 4, released April 5, 2025, Meta went further. Buried in the Acceptable Use Policy incorporated into the Llama 4 Community License is this sentence, quoted verbatim:
+
+> "With respect to any multimodal models included in Llama 4, the rights granted under Section 1(a) of the Llama 4 Community License Agreement are not being granted to you if you are an individual domiciled in, or a company with a principal place of business in, the European Union."
+
+Read that again. The world's most-used "open" model family now ships with a clause that **geo-fences 450 million people**. If you are a European startup, a European university, a European *government agency* building public services on Llama 4's multimodal models — you don't get the rights. An American company does.
+
+Imagine building your country's digital infrastructure on a foundation whose owner can redraw the map of who is allowed to use it. Now imagine the owner is a foreign corporation with its own regulatory fights against your government. That is not a hypothetical. In 2025, [Meta refused to sign the EU's General-Purpose AI Code of Practice](https://digital-strategy.ec.europa.eu/en/news/commission-publishes-general-purpose-ai-code-practice) — while Amazon, Anthropic, Google, IBM, Microsoft, Mistral AI, and OpenAI all signed on. Meta's chief global affairs officer called the code's measures ones that "go far beyond the scope of the AI Act."
+
+So: the "open" model excludes Europe, and its owner won't sign Europe's AI rulebook. If you are a European government, the message could not be clearer — and Brussels heard it. The EU's 2026 Tech Sovereignty Package is, in no small part, a response to exactly this kind of unilateral vendor power.
+
+## Why America Should Care More, Not Less
+
+It's tempting for Americans to read this as Europe's problem. It's ours.
+
+Every US agency, state, and city building AI services on Llama is building on a license Meta can change. The EU carve-out proves the mechanism works: one policy update, one jurisdiction switched off. There is nothing in the Llama license that prevents the same treatment for anyone else — a state government, a competitor, a journalist's project Meta dislikes.
+
+This is the oldest lesson in the public code playbook, wearing a new costume. We wrote about [the vendor lock-in tax](/blog/the-vendor-lock-in-tax): proprietary vendors turn government software into a permanent subscription. Llama shows the AI-era version: **open-washed vendors turn government AI into a permanent permission slip.** Downloadable today, revocable tomorrow, auditable never.
+
+## The Fix Is the Definition
+
+There is a real open source AI ecosystem — models under OSI-approved terms, with training data documented and freedoms intact. Governments should buy from it, fund it, and contribute to it. What they must stop doing is letting the word "open" do the work that the license refuses to do.
+
+OMB's M-25-21 gets this half right: it requires agencies to release custom AI code *including model weights* as open source. The next step is the harder one — procurement rules that test the license instead of trusting the label. "Can I run this?" is not enough. As Stanford's James Landay put it: "Open source answers 'Can I trust this, improve it, and build the next thing on top of it?'"
+
+Llama can't answer yes. Until it can, no government should call it open.
+
+1. **[Sign the petition.](/sign)** Public money should never fund AI the public can't fully inspect and own.
+
+2. **[Contact your representatives.](/campaign)** Ask whether their AI procurement rules distinguish open weights from open source. Most don't.
+
+3. **[Get organized in your state.](/organize)** Write the strict definition into law.
+
+4. **Share this post.** "Open" is doing a lot of unpaid work in AI marketing. Time for an audit.
+
+---
+
+*Read more: [Open Weights Are Not Open Source. The AI Industry Hopes You Won't Notice.](/blog/open-weights-are-not-open-source) · ['Open Source' Theater: Musk Released Grok's Weights and Kept the Keys](/blog/grok-open-washing) · [You're Paying the Vendor Lock-In Tax. Every Single Year.](/blog/the-vendor-lock-in-tax)*
+
+---
+
+## Sources
+
+- **Llama 3.x license "still not Open Source," fails OSD points 5 and 6, EU exclusion** — [Open Source Initiative, February 18, 2025](https://opensource.org/blog/metas-llama-license-is-still-not-open-source)
+- **Llama 4 EU carve-out, Acceptable Use Policy verbatim** — [Meta, llama-models repository](https://github.com/meta-llama/llama-models/blob/main/models/llama4/USE_POLICY.md)
+- **Meta declines EU General-Purpose AI Code of Practice; signatory list** — [European Commission, July 2025](https://digital-strategy.ec.europa.eu/en/news/commission-publishes-general-purpose-ai-code-practice)

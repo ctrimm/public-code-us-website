@@ -1,0 +1,97 @@
+---
+layout: ../../components/BlogPostLayout.astro
+title: "Washington Ordered Its AI Open. The Inventory Says Almost Nobody Listened."
+description: "OMB Memorandum M-25-21 requires agencies to release custom AI code — including model weights — as open source. We dug through the 2026 federal AI use-case inventory: 3,611 use cases, 71 agency-trained models, and exactly one public weight release."
+date: "2026-04-14"
+author: "The Public Code US Team"
+readTime: "7 min read"
+image: "/og-blog-omb-ai.png"
+featuredImage: "/feature-omb-ai.png"
+featuredImageAlt: "The US Capitol beside a locked model box with the figures 3,611 AI use cases and 1 open weight release"
+---
+
+# Washington Ordered Its AI Open. The Inventory Says Almost Nobody Listened.
+
+On April 3, 2025, OMB Director Russell T. Vought signed Memorandum M-25-21, "Accelerating Federal Use of AI through Innovation, Governance, and Public Trust." Buried in its appendix is one of the strongest public-code requirements the US federal government has ever issued:
+
+> "Agencies must proactively share across the Federal Government their custom-developed code — **including models and model weights** — whether agency developed or procured, for AI applications in active use… Agencies, where practicable, must also **release and maintain AI code as open source software in a public repository.**"
+
+Custom AI code. Including model weights. Released and maintained as open source. In a public repository.
+
+That was April 2025. In April 2026, the federal government published its consolidated inventory of AI use cases — [3,611 individually reported use cases](https://github.com/ombegov/2025-Federal-Agency-AI-Use-Case-Inventory) across 41 agencies. We went looking for the open weights. Here's what we found.
+
+## The Inventory, by the Numbers
+
+The [2025 Federal Agency AI Use Case Inventory](https://github.com/ombegov/2025-Federal-Agency-AI-Use-Case-Inventory) (compiled April 2026) is the most complete public picture of AI in the federal government. The headline figures:
+
+- **3,611** individually reported AI use cases, plus **900** consolidated commercial off-the-shelf entries.
+- **1,480** of them are deployed (1,040) or in pilot (440).
+- **581** were developed in-house, **429** are hybrid in-house/contractor, **594** were vendor-purchased — and **2,007** don't say how they were built at all. Half the inventory has no sourcing data. That's the data-quality caveat, stated up front.
+- **706** use cases report custom code. **288** use model-development language. **71** explicitly mention a trained or fine-tuned model — led by DHS (13), Treasury (10), DOE (9), NASA (7), and HHS (6).
+- **136** mention commercial APIs: ChatGPT, Copilot, Azure OpenAI, Bedrock. The 900-row commercial dataset is dominated by Microsoft Copilot — dozens of entries for buying and using, zero for building and publishing.
+
+So: dozens of agencies are training and fine-tuning their own models. The memo says to release the code and weights as open source. Now the key question —
+
+**Search the entire inventory for "open weights" or "model weights": zero hits.**
+
+"Open source" appears 50 times, but nearly all of them mean open-source *intelligence* (OSINT) or the use of open source products — not releases. Of four Hugging Face links in the data, three point to *other organizations'* public models. The fourth is the single exception that proves the rule.
+
+## The One That Did It Right
+
+One agency, one model, one public release: the National Center for Health Statistics' **SANDS** (Semi-Automated Nonresponse Detection for Surveys), published on Hugging Face under a CC0 public-domain dedication — a fine-tuned BERT classifier for survey processing, released in 2023.
+
+One. Out of 3,611.
+
+And it's the exception that indicts the rule: HHS, SANDS' parent department, is also the agency that took M-25-21 most seriously. Its September 2025 AI compliance plan, signed by Acting Chief AI Officer Clark Minor, operationalized the memo with an **"open by default"** stance for agency-developed AI code, models, and weights — and its December 2025 AI strategy commits to "promote open-weight and open-interface models and open datasets when lawful and safe." Where the leadership treated openness as the default, openness happened. Everywhere else, it didn't.
+
+## The Gap, in Two Examples
+
+**The gap: DHS Customs and Border Protection.** A cluster of deployed, in-house-developed risk models — passenger and cargo security assessment, trade entity risk, agriculture commodity models — all with custom code, all with blank code URLs. Development without public release is the norm, and the memo's carve-outs make it easy: agencies can withhold code for national security, privacy, contractual, or mission-integrity reasons. Reasonable exceptions on paper; in practice, a menu of justifications for the default staying closed.
+
+**The middle: DOE's "Merlin."** The Department of Energy is self-hosting the open-weight gpt-oss-120b model with retrieval augmentation — agencies are beginning to *consume* open weights operationally. But Merlin reports `has_custom_code = 'No'` and its vendor field reads "N/A - Open Source Integration." Consuming openness; producing none. The commons gets used. Nothing flows back.
+
+And then there's the 900-row commercial dataset: Copilot, Copilot, Copilot. Billions in AI spending to rent models the public will never see, audit, or reuse — the [black box contracting problem](/blog/the-black-box-contracting-problem), now with GPUs.
+
+## Why the Mandate Isn't Working
+
+M-25-21's requirement is real, and its framing is careful: "where practicable," with four explicit exceptions (law/regulation, national security/privacy/safety, contractual obligation, mission or system integrity). That's a reasonable design. The problem is what surrounds it:
+
+1. **No public registry of compliance.** The inventory tracks use cases, not releases. There is no column for model weights, no column for repository URLs that matter, no way for the public to check whether the mandate is being met. What isn't measured isn't managed.
+2. **The exceptions swallow the rule.** Four broad carve-outs, self-certified by the agency, with no public justification required. "Contractual obligation" alone — the vendor said no — can nullify the entire requirement.
+3. **No 2026 consolidated inventory exists.** 2026 reporting went agency-by-agency, published on individual `[agency].gov/ai` pages. Oversight got *less* centralized the year after the mandate took effect.
+4. **Half the data is missing.** Two thousand use cases don't report how they were built. You can't enforce openness on a dataset that doesn't know what's custom.
+
+A mandate without a registry, without justification requirements, and without enforcement isn't a mandate. It's a suggestion with a memo number.
+
+## What "Open by Default" Would Actually Take
+
+HHS showed the shape of the answer: leadership that treats openness as the default and closure as the thing requiring justification — publicly, per system, in the inventory itself. Add three mechanics:
+
+- **A public release registry.** Every custom model: repository URL, license, weights location. Blank means non-compliant, not "not applicable."
+- **Published exception justifications.** If national security or a contract blocks release, say so — in public, per system. Sunlight on the exceptions shrinks them.
+- **Procurement terms that require it.** "Contractual obligation" can't be an excuse when the government writes the contracts. Future AI contracts should assign the government rights to publish code and weights — or the vendor doesn't get the deal.
+
+Until then, the ledger stands: a 2025 order to open federal AI, a 2026 inventory of 3,611 use cases, 71 agency-trained models — and one public weight release, from 2023, predating the order entirely.
+
+The order was right. Now it needs a law behind it.
+
+1. **[Sign the petition.](/sign)** An OMB memo can be rescinded with a pen stroke. A ballot initiative can't.
+
+2. **[Contact your representatives.](/campaign)** Ask them to put the M-25-21 requirement — code *and* weights, in public — into statute.
+
+3. **[Get organized in your state.](/organize)** States are buying AI too, with even less oversight than the feds.
+
+4. **Share this post.** 3,611 use cases. 71 trained models. One open release. The numbers speak.
+
+---
+
+*Read more: [Open Weights Are Not Open Source. The AI Industry Hopes You Won't Notice.](/blog/open-weights-are-not-open-source) · [The $755 Billion Black Box: Why You Can't Know What Deloitte Built With Your Money](/blog/the-black-box-contracting-problem) · [The Code That Decides Your Life Runs on Trade Secrets](/blog/the-code-that-decides-your-life)*
+
+---
+
+## Sources
+
+- **M-25-21, April 3, 2025; "custom-developed code — including models and model weights"; "release and maintain AI code as open source software in a public repository"; "where practicable" and the four exceptions** — [The White House (official PDF)](https://www.whitehouse.gov/wp-content/uploads/2025/02/M-25-21-Accelerating-Federal-Use-of-AI-through-Innovation-Governance-and-Public-Trust.pdf)
+- **HHS AI Compliance Plan, September 30, 2025; "open by default" (Acting Chief AI Officer Clark Minor)** — [HHS (PDF)](https://hhs.gov/sites/default/files/2025-hhs-ai-compliance-plan.pdf)
+- **2025 Federal Agency AI Use Case Inventory: 3,611 rows, 900 COTS rows, sourcing and custom-code breakdowns, 71 trained/fine-tuned models, zero open-weight releases** — [ombegov/2025-Federal-Agency-AI-Use-Case-Inventory (compiled April 2026)](https://github.com/ombegov/2025-Federal-Agency-AI-Use-Case-Inventory)
+- **NCHS/SANDS open-weight release (CC0, 2023)** — [Hugging Face](https://huggingface.co/NCHS/SANDS)

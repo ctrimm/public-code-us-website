@@ -1,0 +1,79 @@
+---
+layout: ../../components/BlogPostLayout.astro
+title: "'Open Source' Theater: Musk Released Grok's Weights and Kept the Keys"
+description: "Grok 2.5's 'open source' release came with a license banning you from training competing models — and a termination clause for suing. That's not open source. It's marketing with a EULA."
+date: "2026-02-10"
+author: "The Public Code US Team"
+readTime: "5 min read"
+image: "/og-blog-grok.png"
+featuredImage: "/feature-grok.png"
+featuredImageAlt: "A theater stage curtain pulled back to reveal a locked model box labeled open source with strings attached"
+---
+
+# 'Open Source' Theater: Musk Released Grok's Weights and Kept the Keys
+
+On August 23, 2025, Elon Musk posted on X: "The @xAI Grok 2.5 model, which was our best model last year, is now open source. Grok 3 will be made open source in about 6 months."
+
+Headlines around the world repeated the claim. There was one problem, visible to anyone who read past the announcement: **the license.**
+
+## What "Open Source" Came With
+
+AI engineer Tim Kellogg read the actual terms and characterized them as "custom with some anti-competitive terms." That turned out to be generous. As [ZDNet's Steven J. Vaughan-Nichols documented](https://www.zdnet.com/article/no-grok-2-5-has-not-been-open-sourced-heres-how-you-can-tell/), the Grok 2.5 license says, verbatim:
+
+> "You may not use the Materials, derivatives, or outputs (including generated data) to train, create, or improve any foundational, large language, or general-purpose AI models, except for modifications or fine-tuning of Grok 2 permitted under and in accordance with the terms of this Agreement."
+
+Let that sink in. You may download the "open source" model. You may not use anything you learn from it to build a competing model. You may improve Grok — for xAI's benefit — but you may not use it to build anything that threatens xAI.
+
+Commercial use is allowed only if you comply with xAI's Acceptable Use Policy. And this gem: **"The license is terminated if a licensee files certain kinds of litigation."** Sue us, lose the license.
+
+OSI executive director Stefano Maffulli's verdict: "Any license that contains limitations on the field of use is not compliant with the open source definition."
+
+Not compliant. Not close. Not a gray area. A license that bans competition and punishes lawsuits is the opposite of open source — it's a moat with a press release.
+
+## The Pledge That Kept Slipping
+
+Musk's "about 6 months" for Grok 3 came and went. In February 2026, after xAI released its X recommendation algorithm on GitHub, Musk confirmed the Grok 3 open-sourcing pledge again — with a one-word "Yes" on X.
+
+Whether the Grok 3 weights ever actually shipped under anything resembling an open license remains, fittingly, hard to verify from primary sources. The pattern is the point: the announcement gets the headlines; the license gets the control; the follow-through gets forgotten.
+
+This is open-washing as a business strategy. Release last year's model — the one you've already replaced — under restrictive terms. Collect the "open source" credibility. Keep the frontier model, the training data, the training code, and the legal kill switches. The commons gets your leftovers; you keep the kitchen.
+
+## The Pattern, Not the Person
+
+Musk isn't the villain of this story so much as its clearest illustration. Meta does the same dance with Llama's field-of-use restrictions and EU carve-outs. The whole industry has learned that "open source" is a valuable word and that almost nobody checks the license.
+
+But governments can't afford to be "almost nobody." When a city, state, or federal agency procures an "open" model:
+
+- **Field-of-use restrictions** mean the vendor decides what public purposes are allowed.
+- **Non-compete clauses** mean the public can't build alternatives on what it paid to evaluate.
+- **Litigation termination clauses** mean the vendor can punish legal accountability with license revocation.
+- **Missing training data** means nobody can audit what the model learned — including whose data it learned it from.
+
+Every one of those is a live issue in the Grok 2.5 license. Every one of them would be disqualifying under a real open source definition. And every one of them sailed past the headlines in August 2025 because the announcement said "open source" and nobody read the EULA.
+
+## Read the License, Then Write the Law
+
+The fix isn't complicated, but it does require doing the unglamorous work: procurement rules that test licenses instead of trusting announcements. OMB's M-25-21 points the right direction — agencies must release custom AI code *including model weights* as open source. The missing piece is the definition: "open source" must mean the Open Source Definition, all of it, including the freedom to use the software for any purpose and the freedom to compete with the vendor who wrote it.
+
+A model you can download but can't learn from, can't compete with, and can lose for suing isn't a public asset. It's a demo with lawyers.
+
+1. **[Sign the petition.](/sign)** Public money should buy real openness, not theater.
+
+2. **[Contact your representatives.](/campaign)** Ask if their AI procurement rules check licenses or just headlines.
+
+3. **[Get organized in your state.](/organize)** The strict definition belongs in law, not in blog posts.
+
+4. **Share this post.** Next time someone says "open source AI," ask to see the license.
+
+---
+
+*Read more: [Open Weights Are Not Open Source. The AI Industry Hopes You Won't Notice.](/blog/open-weights-are-not-open-source) · [Meta's Llama Isn't Open Source. Llama 4 Won't Even Run in Europe.](/blog/llama-is-not-open-source) · [Washington Ordered Its AI Open. The Inventory Says Almost Nobody Listened.](/blog/omb-ai-open-weights-mandate)*
+
+---
+
+## Sources
+
+- **Musk's Grok 2.5 announcement, August 23, 2025; Kellogg license characterization** — [Dataconomy, August 25, 2025](https://dataconomy.com/2025/08/25/xai-open-sources-grok-2-5-model-on-hugging-face/)
+- **Musk confirms Grok 3 pledge, February 2026** — [Dataconomy, February 10, 2026](https://dataconomy.com/2026/02/10/musk-confirms-xai-to-open-source-grok-3/)
+- **Grok 2.5 license text verbatim; "has not been open-sourced" analysis** — [ZDNet, August 2025](https://www.zdnet.com/article/no-grok-2-5-has-not-been-open-sourced-heres-how-you-can-tell/)
+- **Maffulli: field-of-use limitations fail the open source definition** — [Open Source Initiative](https://opensource.org/osd)
