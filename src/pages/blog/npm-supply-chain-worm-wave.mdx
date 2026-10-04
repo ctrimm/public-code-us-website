@@ -1,0 +1,78 @@
+---
+layout: ../../components/BlogPostLayout.astro
+title: "400 Packages Poisoned in a Day: The npm Worm Wave"
+description: "On August 4, the keyv worm hit 400+ npm packages with valid cryptographic signatures. Three weeks earlier, @asyncapi fell the same way. The year's supply-chain attacks keep proving the same point: signatures verify identity, not intent — and the commons needs public investment, not just attestations."
+date: "2026-08-05"
+author: "The Public Code US Team"
+readTime: "7 min read"
+image: "/og-blog-npm-supply-chain-worm-wave.png"
+featuredImage: "/feature-npm-worms.png"
+featuredImageAlt: "A worm eating through a stack of package boxes with the words 400 packages poisoned and trusted signatures did not stop it"
+---
+
+# 400 Packages Poisoned in a Day: The npm Worm Wave
+
+On August 4, 2026, attackers compromised the GitHub account of maintainer Jared Wray and pushed malicious code into **keyv** — a caching library most developers have never heard of and nearly all of them transitively depend on. Because the poison went in *upstream of the build*, Wray's own legitimate CI built it, signed it, and published **11 malicious releases carrying valid GitHub-Actions-signed npm provenance**.
+
+Microsoft designated it **"ChainDrop."** By disclosure, it had spread to **400+ packages** representing roughly **2 billion combined monthly downloads**.
+
+Let that sink in: the cryptographic signatures worked exactly as designed. They verified *who* published the code. They said nothing about *what* the code did. The worm wore a valid badge all the way down.
+
+## Anatomy of ChainDrop
+
+The details, from the [Snyk](https://snyk.io/blog/inside-keyv-npm-compromise-preinstall-malware-trusted-provenance-ide-hooks/), [Kodem](https://www.kodemsecurity.com/resources/keyv-supply-chain-attack-shai-hulud-npm-worm-affected-versions-iocs-and-first-hour-response-runbook), and [Chainguard](https://www.chainguard.dev/unchained/the-keyv-and-cacheable-npm-supply-chain-attack-inside-the-mini-shai-hulud-campaign) writeups, are worth understanding because they show what the next decade of supply-chain attacks looks like:
+
+- **Entry:** a compromised maintainer account — not a code vulnerability, a *human* one.
+- **Execution:** a preinstall hook (`setup.mjs`) plus a Bun runtime and a 727KB obfuscated payload, harvesting npm, GitHub, AWS, Vault, Kubernetes, and CI credentials.
+- **The tell:** it also harvested **AI-tool configs** — Claude, OpenAI, Cursor, Gemini credentials. The attackers know where the industry's crown jewels moved.
+- **Command and control:** an Ethereum smart contract (StringListStore → npm-cache.com). Take down the domain and the blockchain still answers.
+- **Propagation:** stolen publish tokens turned every compromised package into a new launchpad. Worms don't need you to click anything.
+
+Three weeks earlier, on **July 14**, the **@asyncapi** packages fell to a different flavor of the same disease: a misconfigured GitHub Actions `pull_request_target` workflow let attackers steal a bot token through 37 decoy pull requests, then publish 5 malicious versions across 4 packages. The payload executed at **import/require time** — defeating the `--ignore-scripts` defense everyone recommends — fetched its second stage from **IPFS**, and shipped with valid OIDC provenance. Everything was unpublished within about four hours. It still got out.
+
+## It Was Already a Wave
+
+ChainDrop and @asyncapi weren't isolated. They were the summer crest of a year-long pattern:
+
+- **March 31 — axios.** A North Korea-nexus group (UNC1069) used **AI-deepfake video calls** to socially engineer a maintainer: cloned a founder's identity, built a fake Slack workspace, ran a Teams call where a fake error prompt tricked him into running an "update" that deployed the WAVESHAPER.V2 backdoor. Malicious axios releases were live for 169 minutes. Axios gets ~100 million downloads a week.
+- **May 11 — TanStack.** Eighty-four malicious versions across 42 packages via a poisoned GitHub Actions pnpm cache, with OIDC tokens extracted from runner memory. Valid SLSA Build Level 3 provenance. The poison spread downstream to UiPath, Mistral AI, and OpenSearch packages.
+- **June 1 — @redhat-cloud-services.** Thirty-two packages, 96 malicious versions — "Miasma," a derivative with Greek-mythology theming and a preinstall hook.
+
+Every one of these attacks succeeded *with* the security machinery working: valid signatures, signed provenance, trusted identities. The machinery verifies the envelope. The letter inside was poison.
+
+## What Actually Helps
+
+The standard industry response — more attestations, more signatures, more SBOMs — is necessary and insufficient. Note the timing: in January 2026, OMB **rescinded** the Biden-era memos requiring standardized secure-development self-attestations from federal software vendors. The uniform attestation regime is gone; agencies now set their own "risk-based" policies.
+
+Here's the problem with "risk-based" as a substitute: **you cannot risk-assess what you cannot see.** Attestations are vendor self-reports. Signatures verify publishers. Neither tells you whether the code is safe. The only mechanism that scales against this class of attack is the one this campaign exists for:
+
+1. **Public, auditable code and builds.** Reproducible builds let anyone verify that the published artifact matches the public source. Sunlight doesn't prevent every attack, but it collapses the dwell time — compare @asyncapi's four hours to the months that closed-source compromises routinely enjoy.
+
+2. **Funded maintainers.** Every one of these attacks entered through an under-resourced chokepoint: a single maintainer's account, a misconfigured workflow nobody had time to audit, a project running on volunteer nights and weekends. Attackers have budgets. Defenders have burnout. Public money should fix that asymmetry — Germany's Sovereign Tech Agency (tens of millions across 100+ projects) is the working model.
+
+3. **Procurement that demands it.** The federal government is the world's largest software buyer. When it buys closed, unauditable dependencies, it subsidizes the attack surface. When it requires open code, reproducible builds, and funded maintenance, it shrinks it.
+
+The worms aren't a reason to fear open source. They're the reason to fund it — because the alternative isn't safety, it's the same attacks succeeding in the dark.
+
+1. **[Sign the petition.](/sign)** Public money should fund auditable code, not black boxes with valid signatures.
+
+2. **[Contact your representatives.](/campaign)** Ask what replaced the rescinded attestation memos. If the answer is "risk-based," ask what they can see.
+
+3. **[Get organized in your state.](/organize)** States run their benefits, courts, and elections on this same supply chain.
+
+4. **Share this post.** 400 packages. Valid signatures. Two billion downloads. The badge doesn't mean what people think it means.
+
+---
+
+*Read more: [Washington Ordered Its AI Open. The Inventory Says Almost Nobody Listened.](/blog/omb-ai-open-weights-mandate) · [The Code That Decides Your Life Runs on Trade Secrets](/blog/the-code-that-decides-your-life) · [The Maintainers Are Quitting. Who Keeps the Lights On?](/blog/maintainer-burnout-crisis)*
+
+---
+
+## Sources
+
+- **keyv/ChainDrop (Aug 4, 2026): Wray account compromise, 11 malicious releases, valid provenance, 400+ packages, ~2B downloads, Microsoft designation** — [Snyk, August 2026](https://snyk.io/blog/inside-keyv-npm-compromise-preinstall-malware-trusted-provenance-ide-hooks/) · [Kodem Security](https://www.kodemsecurity.com/resources/keyv-supply-chain-attack-shai-hulud-npm-worm-affected-versions-iocs-and-first-hour-response-runbook) · [Chainguard](https://www.chainguard.dev/unchained/the-keyv-and-cacheable-npm-supply-chain-attack-inside-the-mini-shai-hulud-campaign) · [Microsoft Security Blog, August 4, 2026](https://www.microsoft.com/en-us/security/blog/)
+- **@asyncapi compromise (July 14, 2026): workflow exploit, 5 malicious versions, import-time payload, IPFS second stage** — [Microsoft Security Blog, July 15, 2026](https://www.microsoft.com/en-us/security/blog/2026/07/15/unpacking-asyncapi-npm-supply-chain-compromise-import-time-payload-delivery/)
+- **axios (Mar 31, 2026): UNC1069, AI-deepfake social engineering, WAVESHAPER.V2, 169-minute window** — [maintainer post-mortem, April 3, 2026](https://github.com/axios/axios)
+- **TanStack (May 11, 2026): 84 versions, 42 packages, SLSA Build Level 3 provenance** — [TanStack postmortem](https://tanstack.com/blog/npm-supply-chain-compromise-postmortem)
+- **@redhat-cloud-services "Miasma" (June 1, 2026): 32 packages, 96 versions** — [Red Hat bulletin RHSB-2026-006](https://access.redhat.com/security/vulnerabilities/RHSB-2026-006)
+- **OMB rescinds vendor attestation memos M-22-18/M-23-16 (M-26-05, Jan 23, 2026)** — [Mayer Brown via Mondaq](https://www.mondaq.com/unitedstates/cybersecurity/1748840/omb-rescinds-biden-era-software-security-memoranda)
